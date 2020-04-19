@@ -7,6 +7,7 @@ from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 from sklearn.cluster import SpectralClustering
 from sklearn.cluster import AgglomerativeClustering
+from sklearn.svm import LinearSVC
 from sklearn import metrics
 
 ## Dimension Reduction using PCA
@@ -23,21 +24,31 @@ def PCA_Transform(Matrix, No_Dimensions):
 
 ## 1. KMeans Clustering
 def KMeans_Clustering(Matrix, No_Clusters):
+
     KMeans_Obj = KMeans(n_clusters=No_Clusters, init='k-means++').fit(Matrix)
+    Model_Predict = KMeans_Obj
     Cluster_Labels = KMeans_Obj.labels_
-    return Cluster_Labels
+
+    return Model_Predict, Cluster_Labels
+
+## Using LineasSCV for prediction of labels for future data in case of transductive clustering algorithms
+## reference: https://github.com/scikit-learn/scikit-learn/issues/901
 
 ## 2. Hierarchical Clustering
 def Hierarchical_Clustering(Matrix, No_Clusters):
     Clustering_Obj = AgglomerativeClustering(n_clusters=No_Clusters, linkage="complete").fit(Matrix)
     Cluster_Labels= Clustering_Obj.labels_
-    return Cluster_Labels
+    Model_Predict = LinearSVC().fit(Matrix, Cluster_Labels)
+
+    return Model_Predict, Cluster_Labels
 
 ## 3. Spectral Clustering
 def Spectral_Clustering(Matrix, No_Clusters):
     Clustering_Obj = SpectralClustering(n_clusters=No_Clusters, assign_labels="discretize", random_state=0).fit(Matrix)
     Cluster_Labels = Clustering_Obj.labels_
-    return Cluster_Labels
+    Model_Predict = LinearSVC().fit(Matrix, Cluster_Labels)
+
+    return Model_Predict, Cluster_Labels
 
 
 ## Clustering performance evaluation metrics
@@ -70,21 +81,21 @@ def Clustering_Evaluation(Matrix, Cluster_Labels, Dist_Metric='euclidean'):
 def Perform_Clustering(Matrix, Clustering_Algo, No_Clusters):
 
     if Clustering_Algo=='KMeans':
-        Labels = KMeans_Clustering(Matrix, No_Clusters)
+        Model_Predict, Labels = KMeans_Clustering(Matrix, No_Clusters)
         Evaluation_Metrics = Clustering_Evaluation(Matrix, Labels, 'euclidean')
 
     elif Clustering_Algo=='Hierarchical':
-        Labels = Hierarchical_Clustering(Matrix, No_Clusters)
+        Model_Predict, Labels = Hierarchical_Clustering(Matrix, No_Clusters)
         Evaluation_Metrics = Clustering_Evaluation(Matrix, Labels)
 
     elif Clustering_Algo=='Spectral':
-        Labels = Spectral_Clustering(Matrix, No_Clusters)
+        Model_Predict, Labels = Spectral_Clustering(Matrix, No_Clusters)
         Evaluation_Metrics = Clustering_Evaluation(Matrix, Labels)
 
     else:
         print("Invalid algotirthm: ", Clustering_Algo)
 
-    return (Labels, Evaluation_Metrics)
+    return (Model_Predict, Labels, Evaluation_Metrics)
 
 
 
@@ -103,7 +114,7 @@ def Clustering_Comparison(Matrix, Clustering_AlgoList=[], No_Clusters_List=[], P
         for algo in Clustering_AlgoList:
             for No_Clusters in No_Clusters_List:
 
-                Labels, Evaluation_Metrics = Perform_Clustering(Reduced_Matrix, algo, No_Clusters)
+                Model_Predict, Labels, Evaluation_Metrics = Perform_Clustering(Reduced_Matrix, algo, No_Clusters)
 
                 print("---------------------------------------------------------------------------")
                 print("Performace for algo: " + str(algo) + ", No. of clusters: "+ str(No_Clusters) + ", PCA with dimensions: " + str(pca_dimension))
@@ -132,11 +143,17 @@ def Clustering_Comparison(Matrix, Clustering_AlgoList=[], No_Clusters_List=[], P
 
     return Best_Model_Params
 
-
 ## Store Clustering Algorithm Output
-def Store_Clusters(UserID_List, Labels, Output_Folder_Path):
+def Store_Clusters(Model_Predict, pca_dimension, UserID_List, Labels, Output_Folder_Path):
 
-    ## Dictionary with ClusterLabel as key and list of UserIDs belong to that cluster
+    ## Store Model Params which will be used in prediction of labels for future data.
+    ## Load this model and call predict() function on 'Model_Predict' for inference.
+    Saved_Model = {'Model' : Model_Predict, 'Dimensions' : pca_dimension}
+    with open(Output_Folder_Path + "/Saved_Model.pkl", 'wb') as output_file:
+        pickle.dump(Saved_Model, output_file)
+    print("Storing trained clustering model...")
+
+    ## Store UserIDs divided into clusters which will be used to train autoencoders in next phase.
     Clusters = {}
     for i in range(len(Labels)):
 
@@ -150,5 +167,5 @@ def Store_Clusters(UserID_List, Labels, Output_Folder_Path):
 
     with open(Output_Folder_Path + "/Clusters.pkl", 'wb') as output_file:
         pickle.dump(Clusters, output_file)
-
-    print("Cluster Information saved")
+    print("Storing clustered UserIDs...")
+    

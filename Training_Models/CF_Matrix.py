@@ -71,8 +71,6 @@ def Create_User_Matrix():
 
 def Store_Matrix(Data_Matrix, UserID_List, DataFrame_Header, FilePath):
 
-
-
     Matrix_DataFrame = []
     for i in range(len(UserID_List)):
         DF_Row = [UserID_List[i]]
@@ -98,7 +96,7 @@ UserID_Col = "CustomerID"
 ProductID_Col = "ProductID"
 Quantity_Col = "Quantity"
 
-TopN = 100
+TopN = 500
 
 User_Product_Matrix, UserID_List, ProductID_List = Create_Purchase_Matrix()
 
@@ -106,4 +104,5 @@ Attribute_List = [UserID_Col]
 for i in ProductID_List:
     Attribute_List.append(i)
 
-Store_Matrix(User_Product_Matrix, UserID_List, Attribute_List, "./User_Product_Matrix.csv")
+Store_Matrix(User_Product_Matrix[:300], UserID_List[:300], Attribute_List, "./User_Product_Matrix_Train.csv")
+Store_Matrix(User_Product_Matrix[300:], UserID_List[300:], Attribute_List, "./User_Product_Matrix_Test.csv")
