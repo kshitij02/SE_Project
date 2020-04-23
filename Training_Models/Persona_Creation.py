@@ -1,8 +1,10 @@
 from Clustering_Algorithms import*
 
-def main():
-    Matrix_FilePath = "./User_Product_Matrix_Train.csv"
-    Col_List=[str(i) for i in range(1,453)]
+def Create_Persona():
+    Folder_Path = "./Matrix_Data/"
+    Matrix_FilePath = Folder_Path + "User_Product_Matrix_Train.csv"
+    UserID_Col = "CustomerID"
+    Col_List=[str(i) for i in range(1,621)]
     Matrix_Data = pd.read_csv(Matrix_FilePath, sep=',')
     Matrix = Matrix_Data[Col_List]
 
@@ -13,14 +15,15 @@ def main():
     Best_Model = Clustering_Comparison(Matrix, Clustering_AlgoList, No_Clusters_List, PCA_List)
 
     if Best_Model[2] != Matrix.shape[1]:
-        Reduced_Matrix = PCA_Transform(Matrix, Best_Model[2])
+        PCA_fitted_obj, Reduced_Matrix = PCA_Transform(Matrix, Best_Model[2])
     else:
+        PCA_fitted_obj = None
         Reduced_Matrix = Matrix
 
     Model_Predict, Labels, Evaluation_Metrics = Perform_Clustering(Reduced_Matrix, Best_Model[0], Best_Model[1])
 
     UserIDList = list(Matrix_Data['CustomerID'])
-    Store_Clusters(Model_Predict, Best_Model[2], UserIDList, Labels, "./")
+    Store_Clusters(Matrix_Data, UserID_Col, Model_Predict, Best_Model[3], UserIDList, Labels, "./Clustering_Data/")
 
 if __name__ == "__main__":
-    main()
+    Create_Persona()

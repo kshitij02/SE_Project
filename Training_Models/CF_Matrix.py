@@ -25,35 +25,28 @@ class CF_Matrix:
         Customer_Ids = Data[UserID_Col].unique()
         Product_Ids = Data[ProductID_Col].unique()
 
-        self.Rows = Customer_Ids.shape[0]
-        self.Cols = Product_Ids.shape[0]
         self.Matrix = np.zeros((self.Rows, self.Cols))
 
-        for i in range(self.Rows):
-            for j in range(self.Cols):
+        for Cust_Id in Customer_Ids:
+            for Prod_Id in Product_Ids:
 
-                Cust_Id = Customer_Ids[i]
-                Prod_Id = Product_Ids[j]
                 Prod_Quantity = self.Get_Quantity(Data, UserID_Col, ProductID_Col, Cust_Id, Prod_Id, Quantity_Col)
 
                 if Prod_Quantity > 0:
                     if Binary_Flag:
-                        self.Matrix[i][j] = 1
+                        self.Matrix[Cust_Id][Prod_Id] = 1
                     else:
-                        self.Matrix[i][j] = Prod_Quantity
+                        self.Matrix[Cust_Id][Prod_Id] = Prod_Quantity
 
 def Create_Purchase_Matrix():
 
-    Sales_data = Load_Data(Sales_filepath, Sales_Col_list, seperator=";")
-    Products_data = Load_Data(Products_filepath, Products_Col_list, seperator=";")
+    Sales_data = Load_Data(Sales_filepath, Sales_Col_list, seperator=",")
+    Products_data = Load_Data(Products_filepath, Products_Col_list, seperator=",")
     User_data = Load_Data(Users_filepath, Users_Col_list, seperator=";")
 
     ## Analysis of No. of purchase orders per customer.
     ## Instead of whole data, using only N users' data with maximum purchase orders
     Num_Orders_List, Cust_Id_List = VisualizeSalesPerCustomer(Sales_data, UserID_Col)
-    Num_Orders_List = Num_Orders_List[:TopN]
-    Cust_Id_List = Cust_Id_List[:TopN]
-    # Plot_Graph(Cust_Id_List, Num_Orders_List)
 
     ## Pre-Processing: Combine all data files in one consistent, sort and drop rows with missing value
     Combined_Data = Combine_Data(Sales_data, User_data, Products_data, Cust_Id_List, UserID_Col, ProductID_Col)
@@ -61,6 +54,8 @@ def Create_Purchase_Matrix():
 
     ## Create User_Product Matrix for CF
     User_Product_Mat = CF_Matrix()
+    User_Product_Mat.Rows = User_data.shape[0]
+    User_Product_Mat.Cols = Products_data.shape[0]
     User_Product_Mat.Build_User_Product_Matrix(Processed_Data, UserID_Col, ProductID_Col, Quantity_Col, Binary_Flag=1)
 
     return User_Product_Mat.Matrix, Cust_Id_List, list(Products_data[ProductID_Col])
@@ -83,10 +78,10 @@ def Store_Matrix(Data_Matrix, UserID_List, DataFrame_Header, FilePath):
 
 Data_Folder_Path = "/Users/pranjali/Downloads/SE_Project/Data/SalesDB/"
 
-Sales_filepath = Data_Folder_Path + "sales.csv"
+Sales_filepath = Data_Folder_Path + "new_Reduced_sales.csv"
 Sales_Col_list = ["SalesID", "CustomerID", "ProductID", "Quantity", "SalesDate"]
 
-Products_filepath = Data_Folder_Path + "products.csv"
+Products_filepath = Data_Folder_Path + "new_products.csv"
 Products_Col_list = ["ProductID", "ProductName", "CategoryID", "IsAllergic"]
 
 Users_filepath = Data_Folder_Path + "customers.csv"
@@ -96,13 +91,12 @@ UserID_Col = "CustomerID"
 ProductID_Col = "ProductID"
 Quantity_Col = "Quantity"
 
-TopN = 500
-
 User_Product_Matrix, UserID_List, ProductID_List = Create_Purchase_Matrix()
 
 Attribute_List = [UserID_Col]
 for i in ProductID_List:
     Attribute_List.append(i)
 
-Store_Matrix(User_Product_Matrix[:300], UserID_List[:300], Attribute_List, "./User_Product_Matrix_Train.csv")
-Store_Matrix(User_Product_Matrix[300:], UserID_List[300:], Attribute_List, "./User_Product_Matrix_Test.csv")
+Store_Matrix(User_Product_Matrix, UserID_List, Attribute_List, "./Matrix_Data/User_Product_Matrix.csv")
+Store_Matrix(User_Product_Matrix[:1600], UserID_List[:1600], Attribute_List, "./Matrix_Data/User_Product_Matrix_Train.csv")
+Store_Matrix(User_Product_Matrix[1600:], UserID_List[1600:], Attribute_List, "./Matrix_Data/User_Product_Matrix_Test.csv")
