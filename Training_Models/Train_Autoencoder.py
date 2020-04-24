@@ -8,6 +8,7 @@ import pandas as pd
 import pprint as pp
 import tensorflow as tf
 from Data_Operations import*
+from CF_Matrix import*
 
 class Autoencoder(object):
 
@@ -165,6 +166,9 @@ def Train_all_Clusters(Clusters):
         Cluster_Num = Cluster[0]
         Cust_Id_List = Cluster[1]
 
+        Combined_Data = Combine_Data(Sales_data, User_data, Products_data, Cust_Id_List, UserID_Col, ProductID_Col)
+        Processed_Data = Data_Processing(Combined_Data)
+
         FilePath = Folder_Path + str(Cluster_Num) + 'UP_Mat.csv'
 
         if os.path.exists(FilePath):
@@ -193,28 +197,30 @@ def Train_all_Clusters(Clusters):
 #         path = './Autoencoders'
 #         store_model(autoencoder, path, Cluster_num)
 
-Data_Folder_Path = "../Data/SalesDB/"
 
-Sales_filepath = Data_Folder_Path + "new_Reduced_sales.csv"
-Sales_Col_list = ["SalesID", "CustomerID", "ProductID", "Quantity", "SalesDate"]
-
-Products_filepath = Data_Folder_Path + "new_products.csv"
-Products_Col_list = ["ProductID", "ProductName", "CategoryID", "IsAllergic"]
-
-Users_filepath = Data_Folder_Path + "customers.csv"
-Users_Col_list = ["CustomerID", "FirstName", "LastName", "CityID"]
-
-UserID_Col = "CustomerID"
-ProductID_Col = "ProductID"
-Quantity_Col = "Quantity"
-
-## Create datasets from locally stored data which would be used by all the clusters
-Sales_data = Load_Data(Sales_filepath, Sales_Col_list, seperator=",")
-Products_data = Load_Data(Products_filepath, Products_Col_list, seperator=",")
-User_data = Load_Data(Users_filepath, Users_Col_list, seperator=";")
-Folder_Path = "./Clustering_Data/"
-
-## Load clusters of training data(Buyer_Persona_Clustering)
-Clusters = pickle.load(open(Folder_Path + "Clusters.pkl","rb"))
-
-Train_all_Clusters(Clusters)
+if __name__ == '__main__':
+    Data_Folder_Path = "../Data/SalesDB/"
+    
+    Sales_filepath = Data_Folder_Path + "new_Reduced_sales.csv"
+    Sales_Col_list = ["SalesID", "CustomerID", "ProductID", "Quantity", "SalesDate"]
+    
+    Products_filepath = Data_Folder_Path + "new_products.csv"
+    Products_Col_list = ["ProductID", "ProductName", "CategoryID", "IsAllergic"]
+    
+    Users_filepath = Data_Folder_Path + "customers.csv"
+    Users_Col_list = ["CustomerID", "FirstName", "LastName", "CityID"]
+    
+    UserID_Col = "CustomerID"
+    ProductID_Col = "ProductID"
+    Quantity_Col = "Quantity"
+    
+    ## Create datasets from locally stored data which would be used by all the clusters
+    Sales_data = Load_Data(Sales_filepath, Sales_Col_list, seperator=",")
+    Products_data = Load_Data(Products_filepath, Products_Col_list, seperator=",")
+    User_data = Load_Data(Users_filepath, Users_Col_list, seperator=";")
+    Folder_Path = "./Clustering_Data/"
+    
+    ## Load clusters of training data(Buyer_Persona_Clustering)
+    Clusters = pickle.load(open(Folder_Path + "Clusters.pkl","rb"))
+    
+    Train_all_Clusters(Clusters)
