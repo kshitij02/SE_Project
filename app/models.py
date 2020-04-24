@@ -15,6 +15,7 @@ class User(db.Model):
 
     Cart_List = db.relationship("Cart")
     User_Info = db.relationship("UserDetails")
+    allergy_list = db.relationship("UserAllergies")
 
     def __repr__(self):
         return "User('{self.user_id}', '{self.name}', '{self.email_id}', '{self.gender}', '{self.age}')"
@@ -53,8 +54,6 @@ class UserDetails(db.Model):
     fav_cuisine = db.Column(db.String(60))
     spiciness = db.Column(db.String(60))
     location = db.Column(db.String(60))
-
-    allergy_list = db.relationship('UserAllergies')
 
     def __repr__(self):
         return "UserDetails('{self.user_id}', '{self.fav_cuisine}', '{self.spiciness}', '{self.location}')"

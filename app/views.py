@@ -57,7 +57,26 @@ def Register():
     # 4. Commit database changes.
     # 5. render FoodPreferenceForm page if successfully registered else display error message.
 
-    return render_template('FoodPreferenceForm.html')
+    if request.method == 'POST':
+       if not request.form['name'] or not request.form['email'] or not request.form['password'] or not request.form['gender'] or not request.form['age']:
+          flash('Please enter all the fields', 'error')
+       else:
+          password = request.form['password']
+          # pw_hash = generate_password_hash(password)
+
+          Num_Users = len(User.query.all())
+          user1 = User(user_id = Num_Users+1 , name = request.form['name'], email_id = request.form['email'], gender = request.form['gender'], age = request.form['age'])
+          # Credential1 = Credentials(user_id = Num_Users+1, email_id = request.form['email'], password = pw_hash)
+          Credential1 = Credentials(user_id = Num_Users+1, email_id = request.form['email'], password = password)
+
+          db.session.add(user1)
+          db.session.add(Credential1)
+          db.session.commit()
+
+          flash('Record was successfully added')
+
+    return render_template('Login.html')
+    # return render_template('FoodPreferenceForm.html')
 
 
 @app.route('/Login', methods = ['POST'])
@@ -68,7 +87,38 @@ def Login():
     # 3. Render HomePage if Authenticated
     # 4. Render Login Page again with error message
 
-    Authenticate = True ## Dummy value
+    form = FlaskForm()
+    Authenticate = False
+
+    if request.method == 'POST':
+        emailid=request.form['email']
+        password=request.form['password']
+
+        print("Creds: ", emailid, password)
+
+        users = User.query.filter(User.email_id==emailid).all()
+        Creds = Credentials.query.filter(Credentials.email_id==emailid).all()
+
+        # if user and Cred and check_password_hash(Cred.password, password):
+        #     login_user(user)
+        #     user.is_authenticated = True
+        #     Authenticate = True
+        #     flash('Successful login!')
+
+        Check = False
+        for user1 in Creds :
+            if (user1.password == password):
+                Check = True
+                Auth_User = User.query.filter(User.user_id == user1.user_id).first()
+                Cred = user1
+
+        if Check and Cred and (Cred.password == password):
+            login_user(Auth_User)
+            Auth_User.is_authenticated = True
+            print("Authenticated")
+            Authenticate = True
+            flash('Successful login!')
+
     if Authenticate == True :
         return redirect('/Home')
     else :
@@ -77,7 +127,12 @@ def Login():
 
 def GetAllProducts():
     # 1. Database query to fetch all products from Products table and return Subquery1_results
-    return
+    Product_Tuples = Product.query.with_entities(Product.product_id, Product.name, Product.price).all()
+    Product_List = []
+    for i in range(1,len(Product_Tuples)):
+        Product_List.append(list(Product_Tuples[i]))
+
+    return Product_List
 
 def GetPredictedProducts():
     # 1. Database query to fetch cart content fo current user
@@ -115,21 +170,31 @@ def GetRecipeRecommendations():
 
 def GetCurrentCart():
     # 1. Database query to fetch current cart products for the user
-    # 2. return list
-    return
+
+    uid = current_user.get_id()
+    Cart_Products_Ids = Cart.query.filter(Cart.user_id == uid).all()
+
+    Cart_Products = []
+    for product in Cart_Products_Ids:
+        Cart_Products.append(product.product_id)
+
+    return Cart_Products
 
 
 @app.route('/Home', methods = ['GET', 'POST'])
 def LoadHomePage():
-    # 1. Database query to get all products from Products table.
+    # 1. call GetAllProducts() to get all products
     # 2. call GetCurrentCart() to get cart products
     # 3. render HomePage page with parameter value = above product list and cart list.
+
+    All_Products = GetAllProducts()
+    Cart_Products = GetCurrentCart()
 
     # For now, Only products are displayed with status (added or not in cart) here,
     # If part of screen is dedicated to display recommendations, AJAX is need to be used
     # Recommendations list will also need to be passed to page for OPTION 1
 
-    return render_template('HomePage.html', ProductList=Searched_products, Cart_Products=Cart_Products, Heading="All Products")
+    return render_template('HomePage.html', ProductList=All_Products, Cart_Products=Cart_Products, Heading="All Products")
 
 
 @app.route('/AddToCart/<ProductID>', methods = ['GET', 'POST'])
