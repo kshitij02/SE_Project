@@ -17,7 +17,7 @@ def PCA_Transform(Matrix, No_Dimensions):
     Reduced_Matrix = pca.fit_transform(Matrix)
     Reduced_Matrix = pd.DataFrame(Reduced_Matrix)
 
-    return Reduced_Matrix
+    return pca, Reduced_Matrix
 
 
 ## Clustering Algorithms
@@ -106,8 +106,9 @@ def Clustering_Comparison(Matrix, Clustering_AlgoList=[], No_Clusters_List=[], P
     for dimension in PCA_List:
         if int(dimension) != 0:
             pca_dimension = dimension
-            Reduced_Matrix = PCA_Transform(Matrix, pca_dimension)
+            pca_obj, Reduced_Matrix = PCA_Transform(Matrix, pca_dimension)
         else:
+            pca_obj = None
             pca_dimension = Matrix.shape[1]
             Reduced_Matrix = Matrix
 
@@ -122,7 +123,7 @@ def Clustering_Comparison(Matrix, Clustering_AlgoList=[], No_Clusters_List=[], P
 #                 print("Calinski-Harabasz Index: ", Evaluation_Metrics[1])
                 print("Davies-Bouldin Index:    ", Evaluation_Metrics[2])
 
-                Model_Details = (algo, No_Clusters, pca_dimension)
+                Model_Details = (algo, No_Clusters, pca_dimension, pca_obj)
                 Clustering_Results.append((Model_Details, Evaluation_Metrics))
 
 #     Sorted_Result = sorted(Clustering_Results, key=lambda x: (-x[1][0], -x[1][1], x[1][2]))
@@ -144,12 +145,12 @@ def Clustering_Comparison(Matrix, Clustering_AlgoList=[], No_Clusters_List=[], P
     return Best_Model_Params
 
 ## Store Clustering Algorithm Output
-def Store_Clusters(Model_Predict, pca_dimension, UserID_List, Labels, Output_Folder_Path):
+def Store_Clusters(Matrix, UserID_Col, Model_Predict, PCA_fitted_obj, UserID_List, Labels, Output_Folder_Path):
 
     ## Store Model Params which will be used in prediction of labels for future data.
     ## Load this model and call predict() function on 'Model_Predict' for inference.
-    Saved_Model = {'Model' : Model_Predict, 'Dimensions' : pca_dimension}
-    with open(Output_Folder_Path + "/Saved_Model.pkl", 'wb') as output_file:
+    Saved_Model = {'Model' : Model_Predict, 'PCA_Obj' : PCA_fitted_obj}
+    with open(Output_Folder_Path + "Clustering_Model.pkl", 'wb') as output_file:
         pickle.dump(Saved_Model, output_file)
     print("Storing trained clustering model...")
 
@@ -165,7 +166,12 @@ def Store_Clusters(Model_Predict, pca_dimension, UserID_List, Labels, Output_Fol
         else:
             Clusters[label].append(UserID)
 
-    with open(Output_Folder_Path + "/Clusters.pkl", 'wb') as output_file:
+    with open(Output_Folder_Path + "Clusters.pkl", 'wb') as output_file:
         pickle.dump(Clusters, output_file)
     print("Storing clustered UserIDs...")
-    
+
+    for cluster in Clusters.keys():
+        User_List = Clusters[cluster]
+        Cluster_matrix = Matrix[Matrix[UserID_Col].isin(User_List)]
+        Cluster_matrix.to_csv(Output_Folder_Path + str(cluster) + 'UP_Mat.csv')
+        print("Storing matrix for cluster " + str(cluster))
