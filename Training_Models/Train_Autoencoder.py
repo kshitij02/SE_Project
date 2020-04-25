@@ -7,7 +7,6 @@ import numpy as np
 import pandas as pd
 import pprint as pp
 import tensorflow as tf
-from CF_Matrix import*
 from Data_Operations import*
 
 
@@ -141,7 +140,7 @@ class Autoencoder(object):
         predictions = self.run_session(User_Product_Matrix)
 
         print ('Got the predictions!')
-        Pred_Products = self.GetNextPredProduct(50, predictions, UserID_List)
+        Pred_Products = self.GetNextPredProduct(20, predictions, UserID_List)
 
         print ("Writing to file..")
         pp.pprint(Pred_Products)
@@ -162,9 +161,6 @@ def Train_all_Clusters(Clusters):
         Cluster_Num = Cluster[0]
         UserID_List = Cluster[1]
 
-        # Combined_Data = Combine_Data(Sales_data, User_data, Products_data, UserID_List, UserID_Col, ProductID_Col)
-        # Processed_Data = Data_Processing(Combined_Data)
-
         FilePath = Folder_Path + str(Cluster_Num) + 'UP_Mat.csv'
 
         if os.path.exists(FilePath):
@@ -174,15 +170,11 @@ def Train_all_Clusters(Clusters):
 
             print ('Building User_Product_Matrix from pre-stored User_Product_Matrix_Train..')
             User_Product_Matrix = pd.DataFrame(columns=Columns)
-            
+
             for UserID in UserID_List:
                 row = UPM_Train.loc[UPM_Train[UserID_Col] == UserID]
                 temp = pd.DataFrame(row)
                 User_Product_Matrix = User_Product_Matrix.append(temp, ignore_index=True)
-            
-            # User_Product_Mat = CF_Matrix()
-            # User_Product_Mat.Build_User_Product_Matrix(Processed_Data, UserID_Col, ProductID_Col, Quantity_Col, Binary_Flag=1)
-            # User_Product_Matrix = pd.DataFrame(User_Product_Mat.Matrix)
 
             print ('Storing Matrix..')
             if not os.path.exists(Folder_Path):
@@ -202,32 +194,18 @@ def Train_all_Clusters(Clusters):
 
 
 if __name__ == '__main__':
-    # Data_Folder_Path = "../Data/SalesDB/"
-    
-    # Sales_filepath = Data_Folder_Path + "new_Reduced_sales.csv"
-    # Sales_Col_list = ["SalesID", "CustomerID", "ProductID", "Quantity", "SalesDate"]
-    
-    # Products_filepath = Data_Folder_Path + "new_products.csv"
-    # Products_Col_list = ["ProductID", "ProductName", "CategoryID", "IsAllergic"]
-    
-    # Users_filepath = Data_Folder_Path + "customers.csv"
-    # Users_Col_list = ["CustomerID", "FirstName", "LastName", "CityID"]
-    
+
     UserID_Col = "CustomerID"
     ProductID_Col = "ProductID"
     Quantity_Col = "Quantity"
-    
-    ## Create datasets from locally stored data which would be used by all the clusters
-    # Sales_data = Load_Data(Sales_filepath, Sales_Col_list, seperator=",")
-    # Products_data = Load_Data(Products_filepath, Products_Col_list, seperator=",")
-    # User_data = Load_Data(Users_filepath, Users_Col_list, seperator=";")
+
     Folder_Path = "./Clustering_Data/"
-    
+
     ## Load clusters of training data(Buyer_Persona_Clustering)
     Clusters = pickle.load(open(Folder_Path + "Clusters.pkl","rb"))
-    
+
     UPM_Train_Path = "./Matrix_Data/User_Product_Matrix_Train.csv"
     UPM_Train = pd.read_csv(UPM_Train_Path, sep=',')
-    Columns = list(UPM_Train.columns) 
+    Columns = list(UPM_Train.columns)
 
     Train_all_Clusters(Clusters)

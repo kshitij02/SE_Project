@@ -21,7 +21,7 @@ def Products_prediction(Cluster, user_id, Test_Vector, Col_List):
     temp = []
     if user_id in all_cust:
         # existing user, fetch the prediction
-        temp = fetch_pred(pred_df, user_id)
+        temp = fetch_stored_pred(pred_df, user_id)
     else:
         # load User_Product_Matrix corresponding to cluster
         FilePath = './Clustering_Data/' + str(cluster_num) + 'UP_Mat.csv'
@@ -43,6 +43,6 @@ def Products_prediction(Cluster, user_id, Test_Vector, Col_List):
 
     results = list(map(int, temp))
     print ("Reccommended product ids for user_" + str(user_id) + ": ")
-    print (similar_user,':   ', results)
+    # print (similar_user,':   ', results)
 
     return results
