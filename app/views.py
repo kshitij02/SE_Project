@@ -19,19 +19,18 @@ from sqlalchemy.orm import load_only
 import json
 import numpy as np
 from app.models import User, Credentials, Product, Meal, MealDetails, Cart
-<<<<<<< HEAD
-# from app.Meal_Recommender.Predict_Persona import* 
-# from app.Meal_Recommender.Predict_Autoencoder import*
+
+
 from app.Meal_Recommender.Predict_Ingredients import*
 from app.Meal_Recommender.Predict_Recipes import*
 from flask import jsonify
-=======
+
 
 from app.Meal_Recommender.Predict_Persona import*
 from app.Meal_Recommender.Predict_Autoencoder import*
 
 Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
->>>>>>> fca2e1ed35733f7afd2e20a8a536db8d6b8420db
+
 
 @app.route('/')
 def firstpage():
@@ -303,19 +302,9 @@ def AddToCart(ProductID):
     # Ideally, one of the function will be called out of step 6, 7, 8
     # according to the tab selected by the user in recommendatioin part of the page
     # and view will be updated with the new recommendations
-<<<<<<< HEAD
-=======
-
-    uid = current_user.get_id()
-    CartObject = Cart(user_id = uid, product_id = ProductID)
-    db.session.add(CartObject)
-    db.session.commit()
-
-    print("Added to Cart ProductID: ", ProductID)
 
     NextBuyProducts = GetPredictedProducts()
 
->>>>>>> fca2e1ed35733f7afd2e20a8a536db8d6b8420db
     return redirect('/Home')
 
 
