@@ -17,12 +17,21 @@ from sqlalchemy import func
 from sqlalchemy import desc
 from sqlalchemy.orm import load_only
 import json
+import numpy as np
 from app.models import User, Credentials, Product, Meal, MealDetails, Cart
+<<<<<<< HEAD
 # from app.Meal_Recommender.Predict_Persona import* 
 # from app.Meal_Recommender.Predict_Autoencoder import*
 from app.Meal_Recommender.Predict_Ingredients import*
 from app.Meal_Recommender.Predict_Recipes import*
 from flask import jsonify
+=======
+
+from app.Meal_Recommender.Predict_Persona import*
+from app.Meal_Recommender.Predict_Autoencoder import*
+
+Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
+>>>>>>> fca2e1ed35733f7afd2e20a8a536db8d6b8420db
 
 @app.route('/')
 def firstpage():
@@ -151,12 +160,49 @@ def GetProducts(ProductNames):
 
 def GetPredictedProducts():
     # 1. Database query to fetch cart content fo current user
+    Cart_Products = GetCurrentCart()
+    All_Products = GetAllProducts()
+
     # 2. Create test vector for the user
+    Col_List = [str(i) for i in range(1,621)]
+    Test_Row = np.zeros(621)
+    for product_id in Cart_Products:
+        Test_Row[product_id] = 1
+    Test_Row_DF = pd.DataFrame([Test_Row[1:]], columns=Col_List)
+
     # 3. Call Predict function of clustering model to assign cluster to the user
+    Model_Predict = pickle.load(open(Absolute_Trained_Model_Path + "Clustering_Data/Clustering_Model.pkl","rb"))
+    Clusters = pickle.load(open(Absolute_Trained_Model_Path + "Clustering_Data/Clusters.pkl","rb"))
+
+    uid = current_user.get_id()
+    User_Found = 0
+    for cluster_id in Clusters.keys():
+        if uid in Clusters[cluster_id]:
+            Cluster_Label = [cluster_id]
+            User_Found = 1
+
+    if not User_Found:
+        Cluster_Label = Predict_Cluster(Test_Row_DF, Model_Predict)
+
     # 4. Call corresponding AutoEncoder Model's predict function to get list of
     #    products user is most likely to but next
+    Cluster = (Cluster_Label[0], Clusters[Cluster_Label[0]])
+
+    Ingredient_Prediction = Products_prediction(Cluster, uid, Test_Row_DF.iloc[0], Col_List)
+
     # 5. Return lists
-    return
+    Predicted_Products = []
+    Cart_Product_obj = []
+    for product_obj in All_Products:
+        if product_obj[0] in Ingredient_Prediction:
+            Predicted_Products.append(product_obj)
+        if product_obj[0] in Cart_Products:
+            Cart_Product_obj.append(product_obj)
+
+    print("Cart Products: ", Cart_Product_obj)
+    print("Predicted_Products: ", Predicted_Products)
+
+    return Predicted_Products
 
 def GetSimilarProducts(ProductID):
     # 1. Database query to fetch cart content fo current user
@@ -257,6 +303,19 @@ def AddToCart(ProductID):
     # Ideally, one of the function will be called out of step 6, 7, 8
     # according to the tab selected by the user in recommendatioin part of the page
     # and view will be updated with the new recommendations
+<<<<<<< HEAD
+=======
+
+    uid = current_user.get_id()
+    CartObject = Cart(user_id = uid, product_id = ProductID)
+    db.session.add(CartObject)
+    db.session.commit()
+
+    print("Added to Cart ProductID: ", ProductID)
+
+    NextBuyProducts = GetPredictedProducts()
+
+>>>>>>> fca2e1ed35733f7afd2e20a8a536db8d6b8420db
     return redirect('/Home')
 
 
@@ -270,26 +329,50 @@ def SearchProduct(SearchText):
 @app.route('/ViewCart', methods = ['GET', 'POST'])
 def ViewCart():
     # 1. call GetCurrentCart() to get cart products
+    Cart_Product_Ids = GetCurrentCart()
+
     # 2. Get corresponding product names from product detail table.
+    Cart_Products = []
+    for product_id in Cart_Product_Ids :
+        Cart_Product = Product.query.filter(Product.product_id==product_id).first()
+        Cart_Products.append([Cart_Product.product_id, Cart_Product.name, Cart_Product.price])
+
     # 3. render CartDetailPage with parameter = List of product names in cart.
     # 4. You can pass ProductID list along with is as list of key:value pair if ids are also required.
-
-    return render_template('CartDetailPage.html', CartList=Cart_Product_Names)
+    return render_template('CartDetailPage.html', CartList=Cart_Products)
 
 
 ## For now this function is not called as recommendations will be displayed on terminal only.
 @app.route('/AddMissingProduct/<RecipeID>', methods = ['GET', 'POST'])
 def AddMissingProduct(RecipeID):
     # 1. call GetCurrentCart() to get cart products
-    # 2. Get RecipeID as paramter.
+    Cart_Product_Ids = GetCurrentCart()
+
+    # 2. Get RecipeID as parameter.
+    RecipeID = int(RecipeID)
+
     # 3. DB query to get missing productIDs using above RecipeID and List of Cart ProductIDs.
     # 4. DB Query to get corresponding Product Names from Product Detail table.
-    # 5. render HomePage page with parameter value = above queried list.
 
-    return render_template('HomePage.html', ProductList=Missing_products, Cart_Products=Cart_Products, Heading="Missing Products")
+    Meal_Products = Meal.query.filter(Meal.meal_id == RecipeID).all()
+    Meal_Product_Ids = []
+    for product in Meal_Products:
+        Meal_Product_Ids.append(product.product_id)
+
+    Missing_products = []
+    for meal_product in Meal_Product_Ids :
+        if meal_product not in Cart_Product_Ids:
+            Missing_product = Product.query.filter(Product.product_id==meal_product).first()
+            Missing_products.append([Missing_product.product_id, Missing_product.name, Missing_product.price])
+
+    # 5. render HomePage page with parameter value = above queried list.
+    return render_template('HomePage.html', ProductList=Missing_products, Cart_Products=Cart_Product_Ids, Heading="Missing Products")
 
 @app.route('/logout', methods = ['GET', 'POST'])
 def logout():
+    user = current_user
+    user.is_authenticated = False
+    logout_user()
     return render_template('firstpage.html', message = "Logged out successfully")
 
 @app.route('/ViewSimilar/<ProductID>', methods = ['GET', 'POST'])

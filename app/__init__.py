@@ -7,7 +7,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///MealRecommender.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///SE_Project.db'
 app.config['SECRET_KEY'] = "random string"
 db = SQLAlchemy(app)
 Bootstrap(app)
