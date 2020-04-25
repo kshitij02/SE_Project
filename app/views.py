@@ -20,10 +20,17 @@ import json
 import numpy as np
 from app.models import User, Credentials, Product, Meal, MealDetails, Cart
 
+
+from app.Meal_Recommender.Predict_Ingredients import*
+from app.Meal_Recommender.Predict_Recipes import*
+from flask import jsonify
+
+
 from app.Meal_Recommender.Predict_Persona import*
 from app.Meal_Recommender.Predict_Autoencoder import*
 
 Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
+
 
 @app.route('/')
 def firstpage():
@@ -138,6 +145,17 @@ def GetAllProducts():
         Product_List.append(list(Product_Tuples[i]))
 
     return Product_List
+# 
+def GetProducts(ProductNames):
+    Product_List = []
+    for ProductName in ProductNames:
+        product_n = Product.query.filter(Product.name == ProductName).first()
+        if(product_n is not None):
+            Product_Tuple = (product_n.product_id , product_n.name, product_n.price)
+            print(Product_Tuple)
+            Product_List.append(list(Product_Tuple))
+    return Product_List
+
 
 def GetPredictedProducts():
     # 1. Database query to fetch cart content fo current user
@@ -185,42 +203,64 @@ def GetPredictedProducts():
 
     return Predicted_Products
 
-def GetSimilarProducts():
+def GetSimilarProducts(ProductID):
     # 1. Database query to fetch cart content fo current user
+    Product_Name = GetProductName(ProductID)
     # 2. Database query to fetch user's personal info
     # 3. Call predict fuction of corresponding embedding model (Input: results from step 1)
     # 4. Filter results obtained in step 3 according to the info fetchd in step 2 (eg. Allergies)
     # 5. return final list
-    return
+    return findSimilarIngredients(Product_Name)
 
-def GetComplementaryProducts():
+def GetComplementaryProducts(ProductID):
     # 1. Database query to fetch cart content fo current user
+    Product_Name = GetProductName(ProductID)
     # 2. Database query to fetch user's personal info
     # 3. Call predict fuction of corresponding embedding model (Input: results from step 1)
     # 4. Filter results obtained in step 3 according to the info fetchd in step 2 (eg. Allergies)
     # 5. return final list
-    return
+    return findComplementaryIngredients(Product_Name)
 
-def GetRecipeRecommendations():
+def GetRecipeRecommendations(Cart_Products):
     # 1. Database query to fetch cart content fo current user
+    Product_Names = []
+    for ProductID in Cart_Products:
+        Product_Names.append(GetProductName(ProductID)) 
+
     # 2. Call GetPredictedProducts() to get predicted products
     # 3. Database query to fetch user's personal info
     # 4. Call predict fuction of corresponding embedding model (Input: results from step 1 and step 2)
     # 5. Filter results obtained in step 4 according to the info fetchd in step 3 (eg. Allergies, fav_Cuisine)
     # 6. return final list
-    return
+    return suggest_recipe(Product_Names)
 
+# Returns id of products in current cart 
 def GetCurrentCart():
     # 1. Database query to fetch current cart products for the user
 
     uid = current_user.get_id()
     Cart_Products_Ids = Cart.query.filter(Cart.user_id == uid).all()
-
     Cart_Products = []
     for product in Cart_Products_Ids:
         Cart_Products.append(product.product_id)
 
     return Cart_Products
+
+
+# Returns name of products in current cart
+def GetProductName(ProductID):
+    # 1. Database query to fetch current cart products for the user
+    product_n = Product.query.filter(Product.product_id == ProductID).first()
+    return product_n.name
+
+def GetMealDetails(MealIDs):
+    # 1. Database query to fetch current cart products for the user
+    for MealID in MealIDs:
+        meal_n = MealDetails.query.filter(MealDetails.meal_id == MealID).first()
+        print("RECIPE NAME", meal_n.name)
+        ingredients = Meal.query.filter(Meal.meal_id == MealID).all()
+        for ingredient in ingredients:
+            print(GetProductName(ingredient.product_id))
 
 
 @app.route('/Home', methods = ['GET', 'POST'])
@@ -245,7 +285,13 @@ def AddToCart(ProductID):
     # 2. Get ProductID as a parameter.
     # 3. Add new entry in Cart table with above UserID and ProductID.
     # 4. Commit database after above entry.
+    uid = current_user.get_id()
+    CartObject = Cart(user_id = uid, product_id = ProductID)
+    db.session.add(CartObject)
+    db.session.commit()
 
+
+    print("ProductID: ", ProductID)
     # For now: OPTION 1
     # 5. call GetPredictedProducts() and calculate runtime r1
     # 6. call GetSimilarProducts() and calculate runtime r2
@@ -256,13 +302,6 @@ def AddToCart(ProductID):
     # Ideally, one of the function will be called out of step 6, 7, 8
     # according to the tab selected by the user in recommendatioin part of the page
     # and view will be updated with the new recommendations
-
-    uid = current_user.get_id()
-    CartObject = Cart(user_id = uid, product_id = ProductID)
-    db.session.add(CartObject)
-    db.session.commit()
-
-    print("Added to Cart ProductID: ", ProductID)
 
     NextBuyProducts = GetPredictedProducts()
 
@@ -324,3 +363,27 @@ def logout():
     user.is_authenticated = False
     logout_user()
     return render_template('firstpage.html', message = "Logged out successfully")
+
+@app.route('/ViewSimilar/<ProductID>', methods = ['GET', 'POST'])
+def SimilarProducts(ProductID):
+    Similar_Products = GetSimilarProducts(ProductID)
+    Similar_Products = GetProducts(Similar_Products)
+    # return jsonify(ProductList=All_Products, Cart_Products=Cart_Products)
+    return redirect('/Home')
+
+@app.route('/ViewComplement/<ProductID>', methods = ['GET', 'POST'])
+def ComplementProducts(ProductID):
+    Complement_Products = GetComplementaryProducts(ProductID)
+    Complement_Products = GetProducts(Complement_Products)
+    # return jsonify(ProductList=All_Products, Cart_Products=Cart_Products)
+    return redirect('/Home')
+
+@app.route('/RecommendRecipes', methods = ['GET', 'POST'])
+def RecommendRecipes():
+    Cart_Products = GetCurrentCart()
+    Recipe_Recommendations = GetRecipeRecommendations(Cart_Products)
+    Recipe_Recommendations = GetMealDetails(Recipe_Recommendations)
+    # Complement_Products = GetComplementaryProducts(ProductID)
+    # Complement_Products = GetProducts(Complement_Products)
+    # return jsonify(ProductList=All_Products, Cart_Products=Cart_Products)
+    return redirect('/Home')
