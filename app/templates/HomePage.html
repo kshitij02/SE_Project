@@ -15,11 +15,18 @@ On click "Go to Cart" button: Redirects to route "/ViewCart" or function ViewCar
 
 <html>
   <head>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <link href="{{ url_for('static',filename = 'styles.css') }}" rel="stylesheet" type="text/css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
     <style>
             .element
@@ -117,6 +124,7 @@ On click "Go to Cart" button: Redirects to route "/ViewCart" or function ViewCar
       color: #01598d;
     }
     </style>
+
       </head>
 
         <body style="background-color:white";font-family: Arial, Helvetica, sans-serif;>
@@ -141,6 +149,10 @@ On click "Go to Cart" button: Redirects to route "/ViewCart" or function ViewCar
                       {% else %}
                         <td id="{{product[0]}}"><a href="/AddToCart/{{ product[0]}}"><img src="/static/add-to-cart.png" alt="Add to Cart" class="cartbtn"  height="5%" width="8%" ></a></td>
                       {% endif %}
+
+                      <td id="{{product[0]}}"><a href="/ViewSimilar/{{ product[0]}}"><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">View Similar</button></a></td>
+
+                      <td id="{{product[0]}}"><a href="/ViewComplement/{{ product[0]}}"><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">View Complement</button></a></td>
                     </tr>
                     {% endfor %}
                   </tbody>
@@ -148,16 +160,21 @@ On click "Go to Cart" button: Redirects to route "/ViewCart" or function ViewCar
               </table>
             </div>
 
+
               <div class="element" >
 
                 <a href="/ViewCart"><button style="background: #FFB81C" >Go To My Cart</button></a>
+                <a href="/RecommendRecipes"><button style="background: #FFB81C" >Recommend recipes</button></a>
 
               </div>
-            <ul id="productlist">
+
+
+
+              <ul id="productlist">
 
             </ul>
 
-
-
         </body>
     </html>
+
+

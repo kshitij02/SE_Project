@@ -87,7 +87,7 @@ class Product(db.Model):
     Meal_Product_List = db.relationship("Meal")
 
     def __repr__(self):
-        return "Product('{self.product_id}', '{self.category_id}', '{self.product_name}', '{self.price}')"
+        return "Product('{self.product_id}', '{self.category_id}', '{self.name}', '{self.price}')"
 
 class Meal(db.Model):
     __tablename__ = 'Meal'
