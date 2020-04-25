@@ -17,8 +17,13 @@ from sqlalchemy import func
 from sqlalchemy import desc
 from sqlalchemy.orm import load_only
 import json
+import numpy as np
 from app.models import User, Credentials, Product, Meal, MealDetails, Cart
 
+from app.Meal_Recommender.Predict_Persona import*
+from app.Meal_Recommender.Predict_Autoencoder import*
+
+Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
 
 @app.route('/')
 def firstpage():
@@ -136,12 +141,49 @@ def GetAllProducts():
 
 def GetPredictedProducts():
     # 1. Database query to fetch cart content fo current user
+    Cart_Products = GetCurrentCart()
+    All_Products = GetAllProducts()
+
     # 2. Create test vector for the user
+    Col_List = [str(i) for i in range(1,621)]
+    Test_Row = np.zeros(621)
+    for product_id in Cart_Products:
+        Test_Row[product_id] = 1
+    Test_Row_DF = pd.DataFrame([Test_Row[1:]], columns=Col_List)
+
     # 3. Call Predict function of clustering model to assign cluster to the user
+    Model_Predict = pickle.load(open(Absolute_Trained_Model_Path + "Clustering_Data/Clustering_Model.pkl","rb"))
+    Clusters = pickle.load(open(Absolute_Trained_Model_Path + "Clustering_Data/Clusters.pkl","rb"))
+
+    uid = current_user.get_id()
+    User_Found = 0
+    for cluster_id in Clusters.keys():
+        if uid in Clusters[cluster_id]:
+            Cluster_Label = [cluster_id]
+            User_Found = 1
+
+    if not User_Found:
+        Cluster_Label = Predict_Cluster(Test_Row_DF, Model_Predict)
+
     # 4. Call corresponding AutoEncoder Model's predict function to get list of
     #    products user is most likely to but next
+    Cluster = (Cluster_Label[0], Clusters[Cluster_Label[0]])
+
+    Ingredient_Prediction = Products_prediction(Cluster, uid, Test_Row_DF.iloc[0], Col_List)
+
     # 5. Return lists
-    return
+    Predicted_Products = []
+    Cart_Product_obj = []
+    for product_obj in All_Products:
+        if product_obj[0] in Ingredient_Prediction:
+            Predicted_Products.append(product_obj)
+        if product_obj[0] in Cart_Products:
+            Cart_Product_obj.append(product_obj)
+
+    print("Cart Products: ", Cart_Product_obj)
+    print("Predicted_Products: ", Predicted_Products)
+
+    return Predicted_Products
 
 def GetSimilarProducts():
     # 1. Database query to fetch cart content fo current user
@@ -214,6 +256,15 @@ def AddToCart(ProductID):
     # Ideally, one of the function will be called out of step 6, 7, 8
     # according to the tab selected by the user in recommendatioin part of the page
     # and view will be updated with the new recommendations
+
+    uid = current_user.get_id()
+    CartObject = Cart(user_id = uid, product_id = ProductID)
+    db.session.add(CartObject)
+    db.session.commit()
+
+    print("Added to Cart ProductID: ", ProductID)
+
+    NextBuyProducts = GetPredictedProducts()
 
     return redirect('/Home')
 
