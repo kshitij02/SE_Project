@@ -9,19 +9,23 @@ li
   margin-right: 40px;
 }
 
+html {
+    background: url('/static/img/Food_Background_2.jpeg') no-repeat center fixed;
+    background-size: cover;
+}
 
 body
 {
   /* The image used */
-  background-image: url('/static/img/Food_Background_2.jpeg');
+  /* background-image: url('/static/img/Food_Background_2.jpeg'); */
 
   /* Full height */
-  height: 100%;
+  /* height: 100%; */
 
   /* Center and scale the image nicely */
-  background-position: center;
+  /* background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 
   /* background: #00498d; */
   font-size: 8em;

@@ -20,16 +20,15 @@ import json
 import numpy as np
 from app.models import User, Credentials, Product, Meal, MealDetails, Cart
 import operator
+from flask import jsonify
 
 from app.Meal_Recommender.Predict_Ingredients import*
 from app.Meal_Recommender.Predict_Recipes import*
-from flask import jsonify
-
-
 from app.Meal_Recommender.Predict_Persona import*
 from app.Meal_Recommender.Predict_Autoencoder import*
+from app.Meal_Recommender.personalised_prediction import*
 
-Absolute_Trained_Model_Path = "/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/"
+Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
 
 
 @app.route('/')
@@ -58,6 +57,8 @@ def Food_Prefernce_Data():
     # 1. Get Food_Prefernce Form content by POST method.
     # 2. Add entry in User_Info table with user food_preference info and userid.
     # 3. Commit database changes.
+    Rules_FilePath = Absolute_Trained_Model_Path + "Associative_Rules_Data/cuisines.csv"
+    Predicted_Cuisines = Predict_Cuisines(Rules_FilePath)
     return render_template('Login.html')
 
 @app.route('/Register', methods = ['GET', 'POST'])
@@ -145,7 +146,7 @@ def GetAllProducts():
         Product_List.append(list(Product_Tuples[i]))
 
     return Product_List
-# 
+#
 def GetProducts(ProductNames):
     Product_List = []
     for ProductName in ProductNames:
@@ -186,8 +187,9 @@ def GetPredictedProducts():
     # 4. Call corresponding AutoEncoder Model's predict function to get list of
     #    products user is most likely to but next
     Cluster = (Cluster_Label[0], Clusters[Cluster_Label[0]])
-
-    Ingredient_Prediction = Products_prediction(Cluster, uid, Test_Row_DF.iloc[0], Col_List)
+    print("Type Test_Row_DF.iloc[0]: ", type(Test_Row_DF.iloc[0]))
+    print("Test_Row_DF.iloc[0] shape: ", Test_Row_DF.iloc[0].shape)
+    Ingredient_Prediction = Products_prediction(Cluster, uid, Test_Row_DF.iloc[0], Col_List, Absolute_Trained_Model_Path)
 
     # 5. Return lists
     Predicted_Products = []
@@ -205,12 +207,22 @@ def GetPredictedProducts():
 
 def GetSimilarProducts(ProductID):
     Product_Name = GetProductName(ProductID)
-    ModelPath = Absolute_Trained_Model_Path + "word2vec_cl_new_ng7.model"
+
+    # 2. Database query to fetch user's personal info
+    # 3. Call predict fuction of corresponding embedding model (Input: results from step 1)
+    # 4. Filter results obtained in step 3 according to the info fetchd in step 2 (eg. Allergies)
+    # 5. return final list
+    ModelPath = Absolute_Trained_Model_Path + "Recommender_Data/word2vec_cl_new_ng7.model"
     return findSimilarIngredients(Product_Name, ModelPath)
 
 def GetComplementaryProducts(ProductID):
     Product_Name = GetProductName(ProductID)
-    ModelPath = Absolute_Trained_Model_Path + "word2vec_cl_new_ng7.model"
+
+    # 2. Database query to fetch user's personal info
+    # 3. Call predict fuction of corresponding embedding model (Input: results from step 1)
+    # 4. Filter results obtained in step 3 according to the info fetchd in step 2 (eg. Allergies)
+    # 5. return final list
+    ModelPath = Absolute_Trained_Model_Path + "Recommender_Data/word2vec_cl_new_ng7.model"
     return findComplementaryIngredients(Product_Name, ModelPath)
 
 def GetRecipeRecommendations(Cart_Products,Predicted_Products):
@@ -222,9 +234,17 @@ def GetRecipeRecommendations(Cart_Products,Predicted_Products):
     for Product in Predicted_Products:
         Predicted_Product_Names.append(Product[1])
 
-    ModelPath = Absolute_Trained_Model_Path + "word2vec_cl_new_ng7.model"
-    VectorPath = Absolute_Trained_Model_Path + "culinaryDB_new_vectors.pkl"
-    return suggest_recipe(Cart_Product_Names,Predicted_Product_Names, ModelPath, VectorPath)
+
+
+    # 2. Call GetPredictedProducts() to get predicted products
+    # 3. Database query to fetch user's personal info
+    # 4. Call predict fuction of corresponding embedding model (Input: results from step 1 and step 2)
+    # 5. Filter results obtained in step 4 according to the info fetchd in step 3 (eg. Allergies, fav_Cuisine)
+    # 6. return final list
+    ModelPath = Absolute_Trained_Model_Path + "Recommender_Data/word2vec_cl_new_ng7.model"
+    VectorPath = Absolute_Trained_Model_Path + "Recommender_Data/culinaryDB_new_vectors.pkl"
+    return suggest_recipe(Product_Names, ModelPath, VectorPath)
+
 
 
 def GetRecipesFromDBUtil(product_meal):
@@ -314,7 +334,7 @@ def GetRecipesFromDB(Cart_Products,Predicted_Products):
         Meal_Names.extend(GetRecipesFromDBUtil(product_meal))
     return Meal_Names
 
-# Returns id of products in current cart 
+# Returns id of products in current cart
 def GetCurrentCart():
     # 1. Database query to fetch current cart products for the user
 
@@ -493,7 +513,7 @@ def RemoveFromCart(ProductID):
     return redirect('/Home')
 
 @app.route('/AddMealToCart/<MealId>',methods = ['GET', 'POST'])
-def AddMealToCart(MealId):    
+def AddMealToCart(MealId):
     uid = current_user.get_id()
     Cart_Product_Ids = GetCurrentCart()
     Meal_Products = Meal.query.filter(Meal.meal_id == MealId).all()
