@@ -16,13 +16,9 @@ def Products_prediction(Cluster, UserID, Test_Vector, Col_List, ModelPath):
     UserID_List = Cluster[1]
 
     # read the predictions for this cluster
-<<<<<<< HEAD
-    pred_csv_path = '/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/Autoencoder_Data/' + str(cluster_num) + "_preds.csv"
-    pred_df = pd.read_csv(pred_csv_path, header=None)
-=======
+
     Pred_csv_path = ModelPath + "Autoencoder_Data/" + str(Cluster_Num) + "_preds.csv"
     Pred_df = pd.read_csv(Pred_csv_path, header=None)
->>>>>>> 5f1942d1606e57fea1a3d675b8700548c268d67e
 
     temp = []
     if UserID in UserID_List:
@@ -30,11 +26,8 @@ def Products_prediction(Cluster, UserID, Test_Vector, Col_List, ModelPath):
         temp = Fetch_stored_pred(Pred_df, UserID)
     else:
         # load User_Product_Matrix corresponding to cluster
-<<<<<<< HEAD
-        FilePath = '/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/Clustering_Data/' + str(cluster_num) + 'UP_Mat.csv'
-=======
+
         FilePath = ModelPath + "Clustering_Data/" + str(Cluster_Num) + 'UP_Mat.csv'
->>>>>>> 5f1942d1606e57fea1a3d675b8700548c268d67e
         User_Product_Matrix = pd.read_csv(FilePath, sep=',')
 
         # Determine User with highest cosine similarity wrt this user
