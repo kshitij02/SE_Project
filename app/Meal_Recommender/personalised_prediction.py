@@ -11,8 +11,8 @@ import pandas as pd
 import numpy as np
 import itertools
 
-def read_file():
-  dataset = pd.read_csv("/Trained_Models/cuisines.csv")
+def read_file(Rules_FilePath):
+  dataset = pd.read_csv(Rules_FilePath)
   return dataset
 
 def process_input_data(dataset):
@@ -62,7 +62,7 @@ def make_dict(ans,ans1):
   inps=[]
   for i in range(len(ans)):
     li=ans[i]
-    listToStr = ','.join([str(elem) for elem in li]) 
+    listToStr = ','.join([str(elem) for elem in li])
     inps.append(listToStr)
   out={}
   for i in range(0,len(ans)):
@@ -72,8 +72,8 @@ def make_dict(ans,ans1):
 def find_subsets(li,num):
   return list(itertools.combinations(li, num))
 
-def cuisine(gender=None,fav_cuisine=None,spiciness=None,food_choice=None,allergy=None,state=None):
-  dataset=read_file()
+def Predict_Cuisines(Rules_FilePath, gender=None,fav_cuisine=None,spiciness=None,food_choice=None,allergy=None,state=None):
+  dataset=read_file(Rules_FilePath)
   ans=process_input_data(dataset)
   ans1=process_output_data(dataset)
   ans_sort=sort(ans)
