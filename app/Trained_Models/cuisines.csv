@@ -1,3 +1,4 @@
+Input,Output
 Mexican," 'Italian' , 'Chinese' , 'Indian' "
 Italian," 'Mexican' , 'Chinese' , 'American' , 'Indian' , 'Barbecue' "
 Chinese," 'Italian' , 'Mexican' , 'American' , 'Indian' , 'Barbecue' "
@@ -132,3 +133,21 @@ French," 'Italian' , 'Chinese' , 'Indian' "
 "Male,Moderate,Italian,Chinese", 'Indian' 
 "Male,Moderate,Chinese,Indian", 'Italian' 
 "Male,Moderate,Italian,Indian", 'Chinese' 
+Turkish, 'Indian’
+African, 'Chinese' 
+Jamaican, 'Chinese' 
+Kid Friendly, ‘Indian’
+Mediterranean, 'Italian' 
+Greek, 'Italian' 
+Portuguese," 'Chinese' , 'Barbecue' "
+Hungarian, 'Indian' 
+Swedish, 'Indian' 
+Hawaiian, 'Chinese' 
+Cuban," 'Mexican' , 'American' , 'Barbecue' "
+Japanese, 'Indian' 
+Irish, 'Chinese' 
+Moroccan," 'Mexican' , 'American' , 'Barbecue' "
+German," 'Chinese' , 'Barbecue' "
+Spanish, 'Indian' 
+Southwestern," 'Chinese' , 'Barbecue' "
+Other, 'Indian' 
