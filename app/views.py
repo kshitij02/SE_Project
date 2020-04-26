@@ -27,7 +27,7 @@ from app.Meal_Recommender.Predict_Recipes import*
 from app.Meal_Recommender.Predict_Persona import*
 from app.Meal_Recommender.Predict_Autoencoder import*
 from app.Meal_Recommender.personalised_prediction import*
-
+from app.Meal_Recommender.PRedication_Transaction_History import *
 Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
 
 
@@ -204,6 +204,35 @@ def GetPredictedProducts():
     print("Predicted_Products: ", Predicted_Products)
 
     return Predicted_Products
+
+# Returns Object of products with Given Product Name
+def GetProductObject(ProductName):
+    # 1. Database query to fetch current cart products for the user
+    product_n = Product.query.filter(Product.Product_Name == ProductName).first()
+    return product_n
+
+# Returns List Product Objects on basis Apriori On Transaction History 
+def GetPredictedProductsBasedOnTransactionHistory():
+    # Get Current Cart Product ID's
+    Cart_Products = GetCurrentCart()
+    # Get Current Cart Product Name's
+    Cart_Products_Names=[]
+    for cart_item in Cart_Products:
+        Cart_Products_Names.append(GetProductName(cart_item))
+    Cart_Products_Names.sort()
+    Cart_Products_Names_Str=",".join(Cart_Products_Names)
+    # Get Predicated_Product_Names_List
+    Predicated_Products_Name=reterving_results_form_transaction_history(Cart_Products_Names,Absolute_Trained_Model_Path)
+    
+    # Get Predicated_Product_Names_List to Predicated_Object_List
+
+    Predicted_Products=[]
+    for product in Predicated_Products_Name:
+        if product not in Cart_Products_Names:
+            Predicted_Products.append(GetProductObject(product))
+    
+    return Predicted_Products
+
 
 def GetSimilarProducts(ProductID):
     Product_Name = GetProductName(ProductID)
