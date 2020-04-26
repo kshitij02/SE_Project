@@ -9,7 +9,7 @@ Click on Login button : Redirect to route "/Logging" or function "Logging()"  --
 <html>
   <head>
 
-    <link href="{{ url_for('static',filename = 'styles.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='/css/styles.css') }}" rel="stylesheet" type="text/css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -19,10 +19,11 @@ Click on Login button : Redirect to route "/Logging" or function "Logging()"  --
   <body style="background-color:#00498d";font-size: 2em; font-family: Arial, Helvetica, sans-serif;">
 
       <form action="/" method="get" style="background-color:white;width: 100%;height: 80%">
-        <center>
-          <h1 style ="font-style: bold;font-family:Verdana;font-weight: 650;display: inline-block;margin-top: 10px">Shop With </h1>
 
-          <img src="/static/wmt.jpg"  alt="Add to Cart" class="cartbtn"  height="25%" width="40%" style="margin-top: -20px">
+        <center>
+          <h1 style ="font-style: bold;font-family:Verdana;font-weight: 650;display: inline-block;margin-top: 10px">Food Recommender</h1>
+
+          <!-- <img src="/static/wmt.jpg"  alt="Add to Cart" class="cartbtn"  height="25%" width="40%" style="margin-top: -20px"> -->
           <div style="margin-top: 10%">
           <div class="btn-group" style="display: inline-block;width: 15%;background-color: #FFB81C;">
               <button style="font-size: 1em; font-family:Verdana;background-color: #FFB81C;" type="submit" formaction="{{ url_for('Registration') }}" id="aa">Register</button>

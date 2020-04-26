@@ -53,10 +53,11 @@ class UserDetails(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('User.user_id'), nullable=False, primary_key=True)
     fav_cuisine = db.Column(db.String(60))
     spiciness = db.Column(db.String(60))
+    food_choice = db.Column(db.String(60))
     location = db.Column(db.String(60))
 
     def __repr__(self):
-        return "UserDetails('{self.user_id}', '{self.fav_cuisine}', '{self.spiciness}', '{self.location}')"
+        return "UserDetails('{self.user_id}', '{self.fav_cuisine}', '{self.spiciness}', '{self.food_choice}' '{self.location}')"
 
 class UserAllergies(db.Model):
     __tablename__ = 'UserAllergies'

@@ -1,0 +1,153 @@
+Input,Output
+Mexican," 'Italian' , 'Chinese' , 'Indian' "
+Italian," 'Mexican' , 'Chinese' , 'American' , 'Indian' , 'Barbecue' "
+Chinese," 'Italian' , 'Mexican' , 'American' , 'Indian' , 'Barbecue' "
+American," 'Italian' , 'Chinese' , 'Indian' "
+Indian," 'Italian' , 'Chinese' "
+Asian," 'Italian' , 'Chinese' , 'Indian' "
+Thai," 'Italian' , 'Chinese' , 'Indian' "
+English," 'Italian' , 'Indian' "
+Barbecue," 'Italian' , 'Chinese' , 'Indian' "
+French," 'Italian' , 'Chinese' , 'Indian' "
+"Moderate,Female"," 'Italian' , 'Chinese' , 'Indian' "
+"Non-Vegetarian,Female"," 'Italian' , 'Indian' "
+"Female,Vegetarian"," 'Italian' , 'Chinese' , 'Indian' "
+"Female,Maharashtra"," 'Italian' , 'Indian' "
+"Female,Chinese"," 'Italian' , 'Indian' "
+"Female,Italian"," 'Chinese' , 'Indian' "
+"Female,Indian"," 'Italian' , 'Chinese' "
+"Mexican,Female", 'Indian' 
+"Thai,Female", 'Indian' 
+"Male,High", 'Indian' 
+"Male,Moderate"," 'Italian' , 'Chinese' , 'Indian' "
+"Male,Non-Vegetarian"," 'Chinese' , 'Indian' "
+"Male,Vegetarian", 'Indian' 
+"Male,Maharashtra", 'Indian' 
+"Male,Chinese"," 'Italian' , 'American' , 'Indian' "
+"Male,Italian"," 'Chinese' , 'Indian' "
+"Male,Indian"," 'Italian' , 'Chinese' "
+"Male,American"," 'Chinese' , 'Indian' "
+"Non-Vegetarian,High", 'Indian' 
+"Non-Vegetarian,Moderate"," 'Italian' , 'Chinese' , 'Indian' , 'Barbecue' "
+"Moderate,Vegetarian,"," 'Italian' , 'Chinese' , 'Indian' "
+"Moderate,Maharashtra", 'Indian' 
+"Mexican,Moderate"," 'Italian' , 'Chinese' , 'Indian' "
+"Moderate,Italian"," 'Mexican' , 'Chinese' , 'American' , 'Indian' , 'Barbecue' "
+"Moderate,Chinese"," 'Italian' , 'Mexican' , 'American' , 'Indian' , 'Barbecue' "
+"Moderate,American"," 'Italian' , 'Chinese' , 'Indian' "
+"Moderate,Indian"," 'Italian' , 'Chinese' "
+"Barbecue,Moderate"," 'Italian' , 'Chinese' , 'Indian' "
+"Non-Vegetarian,Maharashtra", 'Indian' 
+"Non-Vegetarian,Chinese"," 'Italian' , 'Indian' , 'Barbecue' "
+"Non-Vegetarian,Italian"," 'Chinese' , 'Indian' , 'Barbecue' "
+"Non-Vegetarian,Indian"," 'Italian' , 'Chinese' , 'Barbecue' "
+"Barbecue,Non-Vegetarian"," 'Italian' , 'Chinese' , 'Indian' "
+"Mexican,Non-Vegetarian", 'Indian' 
+"Vegetarian,Maharashtra", 'Indian' 
+"Vegetarian,Chinese"," 'Italian' , 'Indian' "
+"Vegetarian,Italian"," 'Chinese' , 'Indian' "
+"Vegetarian,Indian"," 'Italian' , 'Chinese' "
+"Maharashtra,Italian", 'Indian' 
+"Maharashtra,Indian"," 'Italian' , 'Chinese' "
+"Maharashtra,Chinese", 'Indian' 
+"Mexican,Chinese"," 'Italian' , 'Indian' "
+"Mexican,Italian"," 'Chinese' , 'Indian' "
+"Italian,Chinese"," 'Mexican' , 'American' , 'Indian' , 'Barbecue' "
+"Mexican,Indian"," 'Italian' , 'Chinese' "
+"Italian,Indian"," 'Mexican' , 'Chinese' , 'American' "
+"American,Chinese"," 'Italian' , 'Indian' "
+"American,Italian"," 'Chinese' , 'Indian' "
+"Chinese,Indian"," 'Italian' , 'Mexican' , 'American' "
+"Barbecue,Chinese"," 'Italian' , 'Indian' "
+"Barbecue,Italian"," 'Chinese' , 'Indian' "
+"American,Indian"," 'Italian' , 'Chinese' "
+"Italian,Asian", 'Indian' 
+"Indian,Asian", 'Italian' 
+"Thai,Italian", 'Indian' 
+"Thai,Indian"," 'Italian' , 'Chinese' "
+"Barbecue,Indian"," 'Italian' , 'Chinese' "
+"French,Italian", 'Indian' 
+"French,Indian", 'Italian' 
+"Thai,Chinese", 'Indian' 
+"Non-Vegetarian,Female,Moderate", 'Indian' 
+"Moderate,Female,Vegetarian", 'Indian' 
+"Moderate,Female,Maharashtra", 'Indian' 
+"Moderate,Female,Chinese"," 'Italian' , 'Indian' "
+"Moderate,Female,Italian"," 'Chinese' , 'Indian' "
+"Moderate,Female,Indian"," 'Italian' , 'Chinese' "
+"Non-Vegetarian,Female,Maharashtra", 'Indian' 
+"Non-Vegetarian,Female,Italian", 'Indian' 
+"Non-Vegetarian,Female,Indian", 'Italian' 
+"Female,Vegetarian,Chinese", 'Indian' 
+"Female,Vegetarian,Indian", 'Chinese' 
+"Female,Maharashtra,Italian", 'Indian' 
+"Female,Maharashtra,Indian", 'Italian' 
+"Female,Chinese,Italian", 'Indian' 
+"Female,Chinese,Indian", 'Italian' 
+"Female,Italian,Indian", 'Chinese' 
+"Male,Moderate,Vegetarian", 'Indian' 
+"Male,Moderate,Chinese"," 'Italian' , 'Indian' "
+"Male,Moderate,Italian"," 'Chinese' , 'Indian' "
+"Male,Moderate,Indian"," 'Italian' , 'Chinese' "
+"Male,Italian,Chinese", 'Indian' 
+"Male,Chinese,Indian", 'Italian' 
+"Male,Italian,Indian", 'Chinese' 
+"Non-Vegetarian,Maharashtra,Moderate", 'Indian' 
+"Non-Vegetarian,Italian,Moderate", 'Indian' 
+"Indian,Non-Vegetarian,Moderate"," 'Italian' , 'Chinese' "
+"Non-Vegetarian,Chinese,Moderate", 'Indian' 
+"Moderate,Vegetarian,Italian", 'Indian' 
+"Moderate,Vegetarian,Indian"," 'Italian' , 'Chinese' "
+"Moderate,Vegetarian,Chinese", 'Indian' 
+"Mexican,Moderate,Italian", 'Indian' 
+"Mexican,Moderate,Indian", 'Italian' 
+"Moderate,Italian,Indian"," 'Mexican' , 'Chinese' , 'American' "
+"Moderate,Italian,Chinese", 'Indian' 
+"Moderate,Chinese,Indian"," 'Italian' , 'American' "
+"Moderate,American,Italian", 'Indian' 
+"Moderate,American,Indian"," 'Italian' , 'Chinese' "
+"Moderate,American,Chinese", 'Indian' 
+"Non-Vegetarian,Italian,Chinese", 'Indian' 
+"Non-Vegetarian,Chinese,Indian"," 'Italian' , 'Barbecue' "
+"Non-Vegetarian,Italian,Indian"," 'Chinese' , 'Barbecue' "
+"Barbecue,Non-Vegetarian,Italian", 'Indian' 
+"Barbecue,Non-Vegetarian,Indian"," 'Italian' , 'Chinese' "
+"Barbecue,Non-Vegetarian,Chinese", 'Indian' 
+"Vegetarian,Chinese,Italian", 'Indian' 
+"Vegetarian,Chinese,Indian", 'Italian' 
+"Vegetarian,Italian,Indian", 'Chinese' 
+"Mexican,Italian,Chinese", 'Indian' 
+"Mexican,Chinese,Indian", 'Italian' 
+"Mexican,Italian,Indian", 'Chinese' 
+"Italian,Chinese,Indian"," 'Mexican' , 'American' , 'Barbecue' "
+"American,Chinese,Italian", 'Indian' 
+"American,Chinese,Indian", 'Italian' 
+"American,Italian,Indian", 'Chinese' 
+"Barbecue,Italian,Chinese", 'Indian' 
+"Barbecue,Chinese,Indian", 'Italian' 
+"Barbecue,Italian,Indian", 'Chinese' 
+"Moderate,Female,Italian,Chinese", 'Indian' 
+"Moderate,Female,Chinese,Indian", 'Italian' 
+"Moderate,Female,Italian,Indian", 'Chinese' 
+"Female,Italian,Chinese", 'Indian' 
+"Male,Moderate,Italian,Chinese", 'Indian' 
+"Male,Moderate,Chinese,Indian", 'Italian' 
+"Male,Moderate,Italian,Indian", 'Chinese' 
+Turkish, 'Indian’
+African, 'Chinese' 
+Jamaican, 'Chinese' 
+Kid Friendly, ‘Indian’
+Mediterranean, 'Italian' 
+Greek, 'Italian' 
+Portuguese," 'Chinese' , 'Barbecue' "
+Hungarian, 'Indian' 
+Swedish, 'Indian' 
+Hawaiian, 'Chinese' 
+Cuban," 'Mexican' , 'American' , 'Barbecue' "
+Japanese, 'Indian' 
+Irish, 'Chinese' 
+Moroccan," 'Mexican' , 'American' , 'Barbecue' "
+German," 'Chinese' , 'Barbecue' "
+Spanish, 'Indian' 
+Southwestern," 'Chinese' , 'Barbecue' "
+Other, 'Indian' 
