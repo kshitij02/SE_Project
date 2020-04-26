@@ -204,63 +204,53 @@ def GetPredictedProducts():
     return Predicted_Products
 
 def GetSimilarProducts(ProductID):
-    # 1. Database query to fetch cart content fo current user
     Product_Name = GetProductName(ProductID)
-    # 2. Database query to fetch user's personal info
-    # 3. Call predict fuction of corresponding embedding model (Input: results from step 1)
-    # 4. Filter results obtained in step 3 according to the info fetchd in step 2 (eg. Allergies)
-    # 5. return final list
     ModelPath = Absolute_Trained_Model_Path + "word2vec_cl_new_ng7.model"
     return findSimilarIngredients(Product_Name, ModelPath)
 
 def GetComplementaryProducts(ProductID):
-    # 1. Database query to fetch cart content fo current user
     Product_Name = GetProductName(ProductID)
-    # 2. Database query to fetch user's personal info
-    # 3. Call predict fuction of corresponding embedding model (Input: results from step 1)
-    # 4. Filter results obtained in step 3 according to the info fetchd in step 2 (eg. Allergies)
-    # 5. return final list
     ModelPath = Absolute_Trained_Model_Path + "word2vec_cl_new_ng7.model"
     return findComplementaryIngredients(Product_Name, ModelPath)
 
 def GetRecipeRecommendations(Cart_Products,Predicted_Products):
     # 1. Database query to fetch cart content fo current user
-    Product_Names = []
+    Cart_Product_Names = []
     for ProductID in Cart_Products:
-        Product_Names.append(GetProductName(ProductID))
-
+        Cart_Product_Names.append(GetProductName(ProductID))
+    Predicted_Product_Names = []
     for Product in Predicted_Products:
-        Product_Names.append(Product[1])
+        Predicted_Product_Names.append(Product[1])
 
-
-    # 2. Call GetPredictedProducts() to get predicted products
-    # 3. Database query to fetch user's personal info
-    # 4. Call predict fuction of corresponding embedding model (Input: results from step 1 and step 2)
-    # 5. Filter results obtained in step 4 according to the info fetchd in step 3 (eg. Allergies, fav_Cuisine)
-    # 6. return final list
     ModelPath = Absolute_Trained_Model_Path + "word2vec_cl_new_ng7.model"
     VectorPath = Absolute_Trained_Model_Path + "culinaryDB_new_vectors.pkl"
-    return suggest_recipe(Product_Names, ModelPath, VectorPath)
+    return suggest_recipe(Cart_Product_Names,Predicted_Product_Names, ModelPath, VectorPath)
 
 
 def GetRecipesFromDBUtil(product_meal):
     # INTERSECTION
     Meal_Names = []
     Meal_Details = []
-    set1 = set(product_meal[0])
-    for i in range(1,len(product_meal),1):
-        set2 = set1.intersection(set(product_meal[i]))
-        set1 = set2
-    for meal_id in set1:
-        meal_n = MealDetails.query.filter(MealDetails.meal_id == meal_id).first()
-        # print("RECIPE NAME", meal_n.name)
-        Meal_Names.append([meal_id,meal_n.name])
-        # ingredients = Meal.query.filter(Meal.meal_id == meal_id).all()
-        # ingredient_list = []
-        # for ingredient in ingredients:
-        #     ingredient_list.append(ingredient.product_id)
-        # Meal_Details.append([meal_id,ingredient_list])
-            # print(GetProductName(ingredient.product_id))
+    if(len(product_meal) == 1):
+        mcount = 1
+        for meal_id in product_meal[0]:
+            meal_n = MealDetails.query.filter(MealDetails.meal_id == meal_id).first()
+            Meal_Names.append([meal_id,meal_n.name])
+            mcount += 1
+            if mcount > 5:
+                break
+    else:
+        set1 = set(product_meal[0])
+        for i in range(1,len(product_meal),1):
+            set2 = set1.intersection(set(product_meal[i]))
+            set1 = set2
+        mcount = 1
+        for meal_id in set1:
+            meal_n = MealDetails.query.filter(MealDetails.meal_id == meal_id).first()
+            Meal_Names.append([meal_id,meal_n.name])
+            mcount += 1
+            if mcount > 5:
+                break
     # UNION
     meal_count = dict()
     for list_l in product_meal:
@@ -275,45 +265,53 @@ def GetRecipesFromDBUtil(product_meal):
     for i in meal_count:
         meal_ids.append(i[0])
         count += 1
-        if count > 3:
+        if count > 5:
             break
     for meal_id in meal_ids:
         meal_n = MealDetails.query.filter(MealDetails.meal_id == meal_id).first()
         Meal_Names.append([meal_id,meal_n.name])
-        # ingredients = Meal.query.filter(Meal.meal_id == meal_id).all()
-        # ingredient_list = []
-        # for ingredient in ingredients:
-        #     ingredient_list.append(ingredient.product_id)
-        # Meal_Details.append([meal_id,ingredient_list])
-            # print(GetProductName(ingredient.product_id))
-    # return Meal_Names,Meal_Details
     return Meal_Names
 
 def GetRecipesFromDB(Cart_Products,Predicted_Products):
     Meal_Names = []
-    Meal_Details = []
-    Product_Ids = Cart_Products
+    # Meals from current cart
     product_meal = []
-    for product_id in Product_Ids:
+    for product_id in Cart_Products:
         meal_n = Meal.query.filter(Meal.product_id == product_id).all()
         meal_ids = []
         for meal in meal_n:
             meal_ids.append(meal.meal_id)
         product_meal.append(meal_ids)
-    # Meal_Names,Meal_Details = GetRecipesFromDBUtil(product_meal)
     if len(product_meal):
-        Meal_Names = GetRecipesFromDBUtil(product_meal)
-    Product_Ids = []
+        Meal_Names.extend(GetRecipesFromDBUtil(product_meal))
+
+    # Meals from common ingredients of current cart and predicted products
+    Common_Products = []
     for Product in Predicted_Products:
-        Product_Ids.append(Product[0])
-    for product_id in Product_Ids:
+        if Product[0] in Cart_Products:
+            Common_Products.append(Product[0])
+    product_meal = []
+    for product_id in Common_Products:
         meal_n = Meal.query.filter(Meal.product_id == product_id).all()
         meal_ids = []
         for meal in meal_n:
             meal_ids.append(meal.meal_id)
         product_meal.append(meal_ids)
-    # Meal_Names,Meal_Details = GetRecipesFromDBUtil(product_meal)
-    Meal_Names.extend(GetRecipesFromDBUtil(product_meal))
+    if len(product_meal):
+        Meal_Names.extend(GetRecipesFromDBUtil(product_meal))
+    
+    if(len(Meal_Names) == 0):
+        Product_Ids = []
+        for Product in Predicted_Products:
+            Product_Ids.append(Product[0])
+        product_meal = []
+        for product_id in Product_Ids:
+            meal_n = Meal.query.filter(Meal.product_id == product_id).all()
+            meal_ids = []
+            for meal in meal_n:
+                meal_ids.append(meal.meal_id)
+            product_meal.append(meal_ids)
+        Meal_Names.extend(GetRecipesFromDBUtil(product_meal))
     return Meal_Names
 
 # Returns id of products in current cart 
@@ -475,16 +473,14 @@ def ComplementProducts(ProductID):
 
 @app.route('/Recommendations', methods = ['GET', 'POST'])
 def Recommendations():
+    Predicted_Products = []
     Cart_Product_Ids = GetCurrentCart()
     Predicted_Products = GetPredictedProducts()
     Recipe_Recommendations = GetRecipeRecommendations(Cart_Product_Ids,Predicted_Products)
-    # Recipe_Recommendations,Recipe_Details = GetMealDetails(Recipe_Recommendations)
-    # DB_Recipe_Recommendations,DB_Recipe_Details = GetRecipesFromDB(Cart_Products,Predicted_Products)
     Recipe_Recommendations = GetMealDetails(Recipe_Recommendations)
     DB_Recipe_Recommendations = GetRecipesFromDB(Cart_Product_Ids,Predicted_Products)
     Cart_Products = []
     for product_id in Cart_Product_Ids:
-        # product_n = Product.query.filter(Product.product_id == ProductID).first()
         Cart_Products.append([product_id,GetProductName(product_id)])
     return render_template('MealRecommendation.html',MealList = Recipe_Recommendations,DbMealList = DB_Recipe_Recommendations,CartProducts = Cart_Products)
 
