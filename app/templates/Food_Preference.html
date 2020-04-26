@@ -10,3 +10,179 @@ On click SKIP button: Redirects to route "/Logging" or function Logging()
 On click DONE button: Redirects to route "/Food_Prefernce_Data" or function Food_Prefernce_Data()
                       Submit form data
 -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <link href="{{ url_for('static', filename='/css/styles.css') }}" rel="stylesheet" type="text/css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  </head>
+  <!-- 00498d -->
+  <body style="background-color:#fafbfc";font-size: 2em; font-family: Arial, Helvetica, sans-serif;">
+
+        <form action="/" method="post" style="background-color:white;width: 100%;height: 80%">
+          <div></div>
+
+            <div style="text-align:center;">
+            <label>
+                <p class="label-txt" style="text-align: center; color : #00498d; font-size : 20px;"><b>Favourite Cuisines</b></p>
+              <form>
+                <input type="checkbox" id="cuisine1" name="cuisine1" value="Italian">
+                <label for="cuisine1">Italian</label><br>
+                <input type="checkbox" id="cuisine2" name="cuisine2" value="Mexican">
+                <label for="cuisine2">Mexican</label><br>
+                <input type="checkbox" id="cuisine3" name="cuisine3" value="Arabic or Turkish">
+                <label for="cuisine3">Arabic or Turkish</label><br>
+                <input type="checkbox" id="cuisine4" name="cuisine4" value="Chinese">
+                <label for="cuisine4">Chinese</label><br>
+                <input type="checkbox" id="cuisine5" name="cuisine5" value="American">
+                <label for="cuisine5">American</label><br>
+                <input type="checkbox" id="cuisine6" name="cuisine6" value="African">
+                <label for="cuisine6">African</label><br>
+                <input type="checkbox" id="cuisine7" name="cuisine7" value="Jamaican">
+                <label for="cuisine7">Jamaican</label><br>
+                <input type="checkbox" id="cuisine8" name="cuisine8" value="Indian">
+                <label for="cuisine8">Indian</label><br>
+                <input type="checkbox" id="cuisine9" name="cuisine9" value="Kid Friendly">
+                <label for="cuisine9">Kid Friendly</label><br>
+                <input type="checkbox" id="cuisine10" name="cuisine10" value="Mediterranean">
+                <label for="cuisine10">Mediterranean</label><br>
+                <input type="checkbox" id="cuisine11" name="cuisine11" value="Asian">
+                <label for="cuisine11">Asian</label><br>
+                <input type="checkbox" id="cuisine12" name="cuisine12" value="Greek">
+                <label for="cuisine12">Greek</label><br>
+                <input type="checkbox" id="cuisine13" name="cuisine13" value="Portuguese">
+                <label for="cuisine13">Portuguese</label><br>
+                <input type="checkbox" id="cuisine14" name="cuisine14" value="Hungarian">
+                <label for="cuisine14">Hungarian</label><br>
+                <input type="checkbox" id="cuisine15" name="cuisine15" value="Swedish">
+                <label for="cuisine15">Swedish</label><br>
+                <input type="checkbox" id="cuisine16" name="cuisine16" value="Hawaiian">
+                <label for="cuisine16">Hawaiian</label><br>
+                <input type="checkbox" id="cuisine17" name="cuisine17" value="Cuban">
+                <label for="cuisine17">Cuban</label><br>
+                <input type="checkbox" id="cuisine18" name="cuisine18" value="Japanese">
+                <label for="cuisine18">Japanese</label><br>
+                <input type="checkbox" id="cuisine19" name="cuisine19" value="Irish">
+                <label for="cuisine19">Irish</label><br>
+                <input type="checkbox" id="cuisine20" name="cuisine20" value="Moroccan">
+                <label for="cuisine20">Moroccan</label><br>
+                <input type="checkbox" id="cuisine21" name="cuisine21" value="German">
+                <label for="cuisine21">German</label><br>
+                <input type="checkbox" id="cuisine22" name="cuisine22" value="Thai">
+                <label for="cuisine22">Thai</label><br>
+                <input type="checkbox" id="cuisine23" name="cuisine23" value="Spanish">
+                <label for="cuisine23">Spanish</label><br>
+                <input type="checkbox" id="cuisine24" name="cuisine24" value="English">
+                <label for="cuisine24">Enlish</label><br>
+                <input type="checkbox" id="cuisine25" name="cuisine25" value="Barbecue">
+                <label for="cuisine25">Barbecue</label><br>
+                <input type="checkbox" id="cuisine26" name="cuisine26" value="Southwestern">
+                <label for="cuisine26">Southwestern</label><br>
+                <input type="checkbox" id="cuisine27" name="cuisine27" value="French">
+                <label for="cuisine27">French</label><br>
+              </form>
+            </label>
+            <br>
+            <br>
+            <!-- <div> -->
+            <label>
+              <p class="label-txt" style="text-align: center; color : #00498d; font-size : 20px;"><b>Allergies</b></p>
+              <!-- <br> -->
+              <input type="checkbox" id="allergy1" name="allergy1" value="Peanuts">
+              <label for="allergy1">Peanuts</label><br>
+              <input type="checkbox" id="allergy2" name="allergy2" value="Dairy">
+              <label for="allergy2">Dairy</label><br>
+              <input type="checkbox" id="allergy3" name="allergy3" value="Shellfish">
+              <label for="allergy3">Shellfish</label><br>
+              <input type="checkbox" id="allergy4" name="allergy4" value="Gluten">
+              <label for="allergy4">Gluten</label><br>
+              <input type="checkbox" id="allergy5" name="allergy5" value="Soy">
+              <label for="allergy5">Soy</label><br>
+            </label>
+
+            <br>
+            <br>
+            <label>
+              <!-- <label for="foodpref">Foodpref</label> -->
+              <p class="label-txt" style="text-align: center; color : #00498d; font-size : 20px;"><b>You Are?</b></p>
+              <!-- <br> -->
+                <select id="foodpref" name="foodpref">
+                  <option value="vegetarian">Vegetarian</option>
+                  <option value="nonvegetarian">Non-Vegetarian</option>
+                  <option value="eggitarian">Eggitarian</option>
+                  <option value="vegan">Vegan</option>
+                </select>
+            </label>
+
+            <br>
+            <br>
+            <label>
+              <!-- <label for="spice">Spiciness</label> -->
+              <p class="label-txt" style="text-align: center; color : #00498d; font-size : 20px;"><b>Spiciness</b></p>
+              <!-- <br> -->
+                <select id="spice" name="spice">
+                  <option value="low">Low</option>
+                  <option value="moderate">Moderate</option>
+                  <option value="high">High</option>
+                </select>
+            </label>
+
+        <br><br>
+        <label>
+          <p class="label-txt" style="text-align: center; color : #00498d; font-size : 20px;"><b>Choose your State</b></p>
+          <!-- <br> -->
+            <select id="state" name="state">
+              <option value="AndhraPradesh">Andhra Pradesh</option>
+              <option value="ArunachalPradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="HimachalPradesh">HimachalPradesh</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="MadhyaPradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="TamilNadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="UttarPradesh">Uttar Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="WestBengal">West Bengal</option>
+            </select>
+        </label>
+        <br><br>
+      <div>
+        <div class="btn-group" >
+            <button  type="submit" style="font-size: 1em;background-color:#FFB81C" formaction="{{ url_for('Register') }}" id="ff">DONE</button>
+
+            <button  type="submit" style="font-size: 1em;background-color:#FFB81C" formaction="{{ url_for('Login') }}">SKIP</button>
+          </div>
+
+      </div>
+    </div>
+    </form>
+      {% block content %}{% endblock %}
+    </body>
+    </html>
