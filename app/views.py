@@ -19,7 +19,7 @@ from sqlalchemy.orm import load_only
 import json
 import numpy as np
 from app.models import User, Credentials, Product, Meal, MealDetails, Cart
-
+import operator
 
 from app.Meal_Recommender.Predict_Ingredients import*
 from app.Meal_Recommender.Predict_Recipes import*
@@ -29,7 +29,7 @@ from flask import jsonify
 from app.Meal_Recommender.Predict_Persona import*
 from app.Meal_Recommender.Predict_Autoencoder import*
 
-Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
+Absolute_Trained_Model_Path = "/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/"
 
 
 @app.route('/')
@@ -221,11 +221,15 @@ def GetComplementaryProducts(ProductID):
     # 5. return final list
     return findComplementaryIngredients(Product_Name)
 
-def GetRecipeRecommendations(Cart_Products):
+def GetRecipeRecommendations(Cart_Products,Predicted_Products):
     # 1. Database query to fetch cart content fo current user
     Product_Names = []
     for ProductID in Cart_Products:
-        Product_Names.append(GetProductName(ProductID)) 
+        Product_Names.append(GetProductName(ProductID))
+
+    for Product in Predicted_Products:
+        Product_Names.append(Product[1])
+
 
     # 2. Call GetPredictedProducts() to get predicted products
     # 3. Database query to fetch user's personal info
@@ -233,6 +237,79 @@ def GetRecipeRecommendations(Cart_Products):
     # 5. Filter results obtained in step 4 according to the info fetchd in step 3 (eg. Allergies, fav_Cuisine)
     # 6. return final list
     return suggest_recipe(Product_Names)
+
+
+def GetRecipesFromDBUtil(product_meal):
+    # INTERSECTION
+    Meal_Names = []
+    Meal_Details = []
+    set1 = set(product_meal[0])
+    for i in range(1,len(product_meal),1):
+        set2 = set1.intersection(set(product_meal[i]))
+        set1 = set2
+    for meal_id in set1:
+        meal_n = MealDetails.query.filter(MealDetails.meal_id == meal_id).first()
+        # print("RECIPE NAME", meal_n.name)
+        Meal_Names.append([meal_id,meal_n.name])
+        # ingredients = Meal.query.filter(Meal.meal_id == meal_id).all()
+        # ingredient_list = []
+        # for ingredient in ingredients:
+        #     ingredient_list.append(ingredient.product_id)
+        # Meal_Details.append([meal_id,ingredient_list])
+            # print(GetProductName(ingredient.product_id))
+    # UNION
+    meal_count = dict()
+    for list_l in product_meal:
+        for l in list_l:
+            if l not in meal_count:
+                meal_count[l] = 1
+            else:
+                meal_count[l] += 1
+    meal_count = sorted(meal_count.items(), key=operator.itemgetter(1),reverse=True)
+    meal_ids = []
+    count = 1
+    for i in meal_count:
+        meal_ids.append(i[0])
+        count += 1
+        if count > 3:
+            break
+    for meal_id in meal_ids:
+        meal_n = MealDetails.query.filter(MealDetails.meal_id == meal_id).first()
+        Meal_Names.append([meal_id,meal_n.name])
+        # ingredients = Meal.query.filter(Meal.meal_id == meal_id).all()
+        # ingredient_list = []
+        # for ingredient in ingredients:
+        #     ingredient_list.append(ingredient.product_id)
+        # Meal_Details.append([meal_id,ingredient_list])
+            # print(GetProductName(ingredient.product_id))
+    # return Meal_Names,Meal_Details
+    return Meal_Names
+
+def GetRecipesFromDB(Cart_Products,Predicted_Products):
+    Meal_Names = []
+    Meal_Details = []
+    Product_Ids = Cart_Products
+    product_meal = []
+    for product_id in Product_Ids:
+        meal_n = Meal.query.filter(Meal.product_id == product_id).all()
+        meal_ids = []
+        for meal in meal_n:
+            meal_ids.append(meal.meal_id)
+        product_meal.append(meal_ids)
+    # Meal_Names,Meal_Details = GetRecipesFromDBUtil(product_meal)
+    Meal_Names = GetRecipesFromDBUtil(product_meal)
+    Product_Ids = []
+    for Product in Predicted_Products:
+        Product_Ids.append(Product[0])
+    for product_id in Product_Ids:
+        meal_n = Meal.query.filter(Meal.product_id == product_id).all()
+        meal_ids = []
+        for meal in meal_n:
+            meal_ids.append(meal.meal_id)
+        product_meal.append(meal_ids)
+    # Meal_Names,Meal_Details = GetRecipesFromDBUtil(product_meal)
+    Meal_Names.extend(GetRecipesFromDBUtil(product_meal))
+    return Meal_Names
 
 # Returns id of products in current cart 
 def GetCurrentCart():
@@ -255,12 +332,22 @@ def GetProductName(ProductID):
 
 def GetMealDetails(MealIDs):
     # 1. Database query to fetch current cart products for the user
+    Meal_Names = []
+    Meal_Details = []
     for MealID in MealIDs:
         meal_n = MealDetails.query.filter(MealDetails.meal_id == MealID).first()
-        print("RECIPE NAME", meal_n.name)
-        ingredients = Meal.query.filter(Meal.meal_id == MealID).all()
-        for ingredient in ingredients:
-            print(GetProductName(ingredient.product_id))
+        # print("RECIPE NAME", meal_n.name)
+        Meal_Names.append([MealID,meal_n.name])
+        # ingredients = Meal.query.filter(Meal.meal_id == MealID).all()
+        # ingredient_list = []
+        # for ingredient in ingredients:
+        #     ingredient_list.append(ingredient.product_id)
+        # Meal_Details.append([MealID,ingredient_list])
+            # print(GetProductName(ingredient.product_id))
+    # return Meal_Names,Meal_Details
+    return Meal_Names
+
+
 
 
 @app.route('/Home', methods = ['GET', 'POST'])
@@ -328,6 +415,7 @@ def ViewCart():
 
     # 3. render CartDetailPage with parameter = List of product names in cart.
     # 4. You can pass ProductID list along with is as list of key:value pair if ids are also required.
+    Cart_Products
     return render_template('CartDetailPage.html', CartList=Cart_Products)
 
 
@@ -366,24 +454,54 @@ def logout():
 
 @app.route('/ViewSimilar/<ProductID>', methods = ['GET', 'POST'])
 def SimilarProducts(ProductID):
+    Cart_Product_Ids = GetCurrentCart()
     Similar_Products = GetSimilarProducts(ProductID)
     Similar_Products = GetProducts(Similar_Products)
     # return jsonify(ProductList=All_Products, Cart_Products=Cart_Products)
-    return redirect('/Home')
+    return render_template('HomePage.html', ProductList=Similar_Products, Cart_Products=Cart_Product_Ids, Heading="Similar Products")
 
 @app.route('/ViewComplement/<ProductID>', methods = ['GET', 'POST'])
 def ComplementProducts(ProductID):
+    Cart_Product_Ids = GetCurrentCart()
     Complement_Products = GetComplementaryProducts(ProductID)
     Complement_Products = GetProducts(Complement_Products)
     # return jsonify(ProductList=All_Products, Cart_Products=Cart_Products)
+    return render_template('HomePage.html', ProductList=Complement_Products, Cart_Products=Cart_Product_Ids, Heading="Complement Products")
+
+@app.route('/Recommendations', methods = ['GET', 'POST'])
+def Recommendations():
+    Cart_Product_Ids = GetCurrentCart()
+    Predicted_Products = GetPredictedProducts()
+    Recipe_Recommendations = GetRecipeRecommendations(Cart_Product_Ids,Predicted_Products)
+    # Recipe_Recommendations,Recipe_Details = GetMealDetails(Recipe_Recommendations)
+    # DB_Recipe_Recommendations,DB_Recipe_Details = GetRecipesFromDB(Cart_Products,Predicted_Products)
+    Recipe_Recommendations = GetMealDetails(Recipe_Recommendations)
+    DB_Recipe_Recommendations = GetRecipesFromDB(Cart_Product_Ids,Predicted_Products)
+    Cart_Products = []
+    for product_id in Cart_Product_Ids:
+        # product_n = Product.query.filter(Product.product_id == ProductID).first()
+        Cart_Products.append([product_id,GetProductName(product_id)])
+    return render_template('MealRecommendation.html',MealList = Recipe_Recommendations,DbMealList = DB_Recipe_Recommendations,CartProducts = Cart_Products)
+
+@app.route('/RemoveFromCart/<ProductID>', methods = ['GET', 'POST'])
+def RemoveFromCart(ProductID):
+    uid = current_user.get_id()
+    CartObject = Cart.query.filter(Cart.user_id == uid).filter(Cart.product_id == ProductID).first()
+    db.session.delete(CartObject)
+    db.session.commit()
     return redirect('/Home')
 
-@app.route('/RecommendRecipes', methods = ['GET', 'POST'])
-def RecommendRecipes():
-    Cart_Products = GetCurrentCart()
-    Recipe_Recommendations = GetRecipeRecommendations(Cart_Products)
-    Recipe_Recommendations = GetMealDetails(Recipe_Recommendations)
-    # Complement_Products = GetComplementaryProducts(ProductID)
-    # Complement_Products = GetProducts(Complement_Products)
-    # return jsonify(ProductList=All_Products, Cart_Products=Cart_Products)
+@app.route('/AddMealToCart/<MealId>',methods = ['GET', 'POST'])
+def AddMealToCart(MealId):    
+    uid = current_user.get_id()
+    Cart_Product_Ids = GetCurrentCart()
+    Meal_Products = Meal.query.filter(Meal.meal_id == MealId).all()
+    Meal_Product_Ids = []
+    for product in Meal_Products:
+        Meal_Product_Ids.append(product.product_id)
+    for product_id in Meal_Product_Ids:
+        if product_id not in Cart_Product_Ids:
+            CartObject = Cart(user_id = uid, product_id = product_id)
+            db.session.add(CartObject)
+            db.session.commit()
     return redirect('/Home')

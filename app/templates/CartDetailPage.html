@@ -20,9 +20,11 @@ Buttons:
             .element
                { position:fixed; bottom:2%; right:2%; }
                .element2
-               { position:fixed; bottom:2%;  right:38%;}
+               { position:fixed; bottom:2%;  right:30%;}
                .element3
                { position:fixed; bottom:2%; left:2%; }
+               .element4
+               { position:fixed; bottom:2%; left:30%; }
           .cartbtn {
             cursor:pointer;
               cursor:hand;
@@ -130,13 +132,11 @@ Buttons:
                     </tr>
                   </thead>
                   <tbody>
-
                     {% for product in CartList %}
                     <tr id="{{product[0]}}">
                       <td >{{ product[1] }}</td>
                       <td>{{ product[2]}}</td>
                       <td><button type="button" style="display: inline-block;" onclick="dec(this.parentNode)">-</button><input type="number" value=1 style="width:15%;text-align:center"/><button type="button" onclick="inc(this.parentNode)">+</button></td>
-
                     </tr>
                     {% endfor %}
                   </tbody>
@@ -155,6 +155,12 @@ Buttons:
                       <a href="/Home"><button style="background: #FFB81C" onclick="" id="Total2">Continue Shopping</button></a>
 
                     </div>
+                  <div class="element4" >
+
+                      <a href="/Recommendations"><button style="background: #FFB81C" onclick="" id="Total2">Recommendations</button></a>
+
+                    </div>
+
                 </center>
                     <div class="element3" >
 

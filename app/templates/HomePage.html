@@ -130,6 +130,7 @@ On click "Go to Cart" button: Redirects to route "/ViewCart" or function ViewCar
         <body style="background-color:white";font-family: Arial, Helvetica, sans-serif;>
           <p style="text-align: center; color : #00498d; font-size : 20px;"><b>{{Heading}}</b></p>
 
+
           <div>
             <table style="width: 100%;margin-top: 10px" id="ProductTable">
                 <thead>
@@ -145,14 +146,11 @@ On click "Go to Cart" button: Redirects to route "/ViewCart" or function ViewCar
                       <td >{{ product[1] }}</td>
                       <td>{{ product[2] }}</td>
                       {% if product[0] in Cart_Products %}
-                        <td id="{{product[0]}}">Added To Cart</td>
+                      <td id="{{product[0]}}"><a href="/RemoveFromCart/{{ product[0]}}"><img src="/static/remove-from-cart.png" alt="Remove from Cart" title="Remove From Cart" class="cartbtn"  height="10%" width="10%" ></a></td>
                       {% else %}
-                        <td id="{{product[0]}}"><a href="/AddToCart/{{ product[0]}}"><img src="/static/add-to-cart.png" alt="Add to Cart" class="cartbtn"  height="5%" width="8%" ></a></td>
+                        <td id="{{product[0]}}"><a href="/AddToCart/{{ product[0]}}"><img src="/static/add-to-cart.png" alt="Add to Cart" title="Add to Cart" class="cartbtn"  height="10%" width="10%" ></a></td>
                       {% endif %}
 
-                      <td id="{{product[0]}}"><a href="/ViewSimilar/{{ product[0]}}"><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">View Similar</button></a></td>
-
-                      <td id="{{product[0]}}"><a href="/ViewComplement/{{ product[0]}}"><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">View Complement</button></a></td>
                     </tr>
                     {% endfor %}
                   </tbody>
@@ -164,7 +162,7 @@ On click "Go to Cart" button: Redirects to route "/ViewCart" or function ViewCar
               <div class="element" >
 
                 <a href="/ViewCart"><button style="background: #FFB81C" >Go To My Cart</button></a>
-                <a href="/RecommendRecipes"><button style="background: #FFB81C" >Recommend recipes</button></a>
+                <a href="/Recommendations"><button style="background: #FFB81C" >Recommend recipes</button></a>
 
               </div>
 
