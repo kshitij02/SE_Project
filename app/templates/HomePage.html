@@ -18,7 +18,7 @@
           <p style="text-align: center; color : #00498d; font-size : 20px;"><b>{{Heading}}</b></p>
 
 
-          <input type="text" id="SearchText" onkeyup="SearchProducts()" placeholder="Search for names.." title="Type in a product" style="margin-left:16px; padding-right:50px;">
+          <input type="text" id="SearchText" onkeyup="SearchProducts()" placeholder="Search for names.." title="Type in a product" style="margin-left:16px; padding-right:50px; color: white">
             <div style="margin-left: 2%; margin-top:2%; margin-right:3%; margin-bottom:3%;">
           <table id="ProductTable">
 
@@ -34,9 +34,9 @@
               <td >{{ product[1] }}</td>
               <td>{{ product[2] }}</td>
               {% if product[0] in Cart_Products %}
-              <td id="{{product[0]}}"><a href="/RemoveFromCart/{{ product[0]}}"><img src="/static/remove-from-cart.png" alt="Remove from Cart" title="Remove From Cart" class="cartbtn"  height="10%" width="10%" ></a></td>
+              <td id="{{product[0]}}"><a href="/RemoveFromCart/{{ product[0]}}"><img src="/static/img/remove-from-cart.png" alt="Remove from Cart" title="Remove From Cart" class="cartbtn"  height="10%" width="10%" ></a></td>
               {% else %}
-                <td id="{{product[0]}}"><a href="/AddToCart/{{ product[0]}}"><img src="/static/add-to-cart.png" alt="Add to Cart" title="Add to Cart" class="cartbtn"  height="10%" width="10%" ></a></td>
+                <td id="{{product[0]}}"><a href="/AddToCart/{{ product[0]}}"><img src="/static/img/add-to-cart.png" alt="Add to Cart" title="Add to Cart" class="cartbtn"  height="10%" width="10%" ></a></td>
               {% endif %}
 
             </tr>
@@ -75,4 +75,3 @@
                 }
               }
               </script>
->>>>>>> e069b7e965f5fe1ec253719463b6ad5744791db2

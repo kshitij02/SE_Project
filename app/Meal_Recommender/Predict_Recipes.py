@@ -13,11 +13,11 @@ import math
 from .Predict_Ingredients import *
 
 
-def getCommonComplements(current_ingredients):
+def getCommonComplements(current_ingredients, ModelPath):
     complements = []
     for ingredient in current_ingredients:
-        complements.append(findComplementaryIngredients(ingredient))
-    set1 = complements[0] 
+        complements.append(findComplementaryIngredients(ingredient, ModelPath))
+    set1 = complements[0]
     set1 = set(set1)
     for i in range(1,len(complements),1):
         set2 = set1.intersection(set(complements[i]))
@@ -25,15 +25,15 @@ def getCommonComplements(current_ingredients):
     return list(set1)
 
 
-def suggest_recipe(current_ingredients):
-    complements = getCommonComplements(current_ingredients)
+def suggest_recipe(current_ingredients, ModelPath, VectorsPath):
+    complements = getCommonComplements(current_ingredients, ModelPath)
     print("COMPLEMENTS", complements)
     current_ingredients.extend(complements)
     recommended_recipes = []
     id_vector = dict()
-    with open('/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/culinaryDB_new_vectors.pkl','rb') as f:
+    with open(VectorsPath,'rb') as f:
         id_vector = pickle.load(f)
-    model = Word2Vec.load('/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/word2vec_cl_new_ng7.model')
+    model = Word2Vec.load(ModelPath)
     model.init_sims(replace=True)
     n = len(current_ingredients)
     current_sum = np.zeros(100)

@@ -210,7 +210,8 @@ def GetSimilarProducts(ProductID):
     # 3. Call predict fuction of corresponding embedding model (Input: results from step 1)
     # 4. Filter results obtained in step 3 according to the info fetchd in step 2 (eg. Allergies)
     # 5. return final list
-    return findSimilarIngredients(Product_Name)
+    ModelPath = Absolute_Trained_Model_Path + "word2vec_cl_new_ng7.model"
+    return findSimilarIngredients(Product_Name, ModelPath)
 
 def GetComplementaryProducts(ProductID):
     # 1. Database query to fetch cart content fo current user
@@ -219,7 +220,8 @@ def GetComplementaryProducts(ProductID):
     # 3. Call predict fuction of corresponding embedding model (Input: results from step 1)
     # 4. Filter results obtained in step 3 according to the info fetchd in step 2 (eg. Allergies)
     # 5. return final list
-    return findComplementaryIngredients(Product_Name)
+    ModelPath = Absolute_Trained_Model_Path + "word2vec_cl_new_ng7.model"
+    return findComplementaryIngredients(Product_Name, ModelPath)
 
 def GetRecipeRecommendations(Cart_Products,Predicted_Products):
     # 1. Database query to fetch cart content fo current user
@@ -236,7 +238,9 @@ def GetRecipeRecommendations(Cart_Products,Predicted_Products):
     # 4. Call predict fuction of corresponding embedding model (Input: results from step 1 and step 2)
     # 5. Filter results obtained in step 4 according to the info fetchd in step 3 (eg. Allergies, fav_Cuisine)
     # 6. return final list
-    return suggest_recipe(Product_Names)
+    ModelPath = Absolute_Trained_Model_Path + "word2vec_cl_new_ng7.model"
+    VectorPath = Absolute_Trained_Model_Path + "culinaryDB_new_vectors.pkl"
+    return suggest_recipe(Product_Names, ModelPath, VectorPath)
 
 
 def GetRecipesFromDBUtil(product_meal):
@@ -297,7 +301,8 @@ def GetRecipesFromDB(Cart_Products,Predicted_Products):
             meal_ids.append(meal.meal_id)
         product_meal.append(meal_ids)
     # Meal_Names,Meal_Details = GetRecipesFromDBUtil(product_meal)
-    Meal_Names = GetRecipesFromDBUtil(product_meal)
+    if len(product_meal):
+        Meal_Names = GetRecipesFromDBUtil(product_meal)
     Product_Ids = []
     for Product in Predicted_Products:
         Product_Ids.append(Product[0])

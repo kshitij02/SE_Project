@@ -18,8 +18,8 @@ import math
 #         ingredient_ids.append(product_id[ingredient])
 #     return ingredient_ids
 
-def findSimilarIngredientsUtil(current_ingredient,number_of_items=10):
-    model = Word2Vec.load('/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/word2vec_cl_new_ng7.model')
+def findSimilarIngredientsUtil(current_ingredient,ModelPath, number_of_items=10):
+    model = Word2Vec.load(ModelPath)
     model.init_sims(replace=True)
     current_vector = model.wv.get_vector(current_ingredient)
     vectors = []
@@ -33,8 +33,8 @@ def findSimilarIngredientsUtil(current_ingredient,number_of_items=10):
             similar_ingredients.append(model.wv.index2word[i])
     return similar_ingredients
 
-def findComplementaryIngredientsUtil(current_ingredient, number_of_items=10):
-    model = Word2Vec.load('/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/word2vec_cl_new_ng7.model')
+def findComplementaryIngredientsUtil(current_ingredient, ModelPath, number_of_items=10):
+    model = Word2Vec.load(ModelPath)
     # model.init_sims(replace=True)
     current_vector = model.wv.get_vector(current_ingredient)
     vectors = []
@@ -46,18 +46,18 @@ def findComplementaryIngredientsUtil(current_ingredient, number_of_items=10):
     for i in smallest_distances:
         if i != model.wv.vocab[current_ingredient].index:
             complementary_ingredients.append(model.wv.index2word[i])
-    return complementary_ingredients   
+    return complementary_ingredients
 
-def findSimilarIngredients(current_ingredient):
+def findSimilarIngredients(current_ingredient, ModelPath):
     # similar_ingredients = dict()
     # for ingredient in current_ingredients:
     #     similar_ingredients[ingredient] = findSimilarIngredientsUtil(ingredient)
     # return similar_ingredients
-    return findSimilarIngredientsUtil(current_ingredient)
+    return findSimilarIngredientsUtil(current_ingredient, ModelPath)
 
-def findComplementaryIngredients(current_ingredient):
+def findComplementaryIngredients(current_ingredient, ModelPath):
     # complementary_ingredients = []
     # for ingredient in current_ingredients:
     #     complementary_ingredients.append(findComplementaryIngredientsUtil(ingredient))
     # return complementary_ingredients
-    return findComplementaryIngredientsUtil(current_ingredient)
+    return findComplementaryIngredientsUtil(current_ingredient, ModelPath)
