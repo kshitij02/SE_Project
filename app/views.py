@@ -536,14 +536,13 @@ def ViewCart():
     Cart_Product_Ids = GetCurrentCart()
 
     # 2. Get corresponding product names from product detail table.
-    Cart_Products = []
+    Cart_Products = [[-1,'Dummy',100]] ## Dummy product added because of Jinja issue,
     for product_id in Cart_Product_Ids :
         Cart_Product = Product.query.filter(Product.product_id==product_id).first()
         Cart_Products.append([Cart_Product.product_id, Cart_Product.name, Cart_Product.price])
 
     # 3. render CartDetailPage with parameter = List of product names in cart.
     # 4. You can pass ProductID list along with is as list of key:value pair if ids are also required.
-    Cart_Products
     return render_template('CartDetailPage.html', CartList=Cart_Products)
 
 
