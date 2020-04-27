@@ -72,7 +72,14 @@ def make_dict(ans,ans1):
 def find_subsets(li,num):
   return list(itertools.combinations(li, num))
 
-def Predict_Cuisines(Rules_FilePath, gender=None,fav_cuisine=None,spiciness=None,food_choice=None,allergy=None,state=None):
+def Predict_Cuisines(Rules_FilePath,User_Details):
+  Rules_FilePath = Rules_FilePath + "/Associative_Rules_Data/cuisines.csv"
+  fav_cuisine = User_Details[1]
+  spiciness = User_Details[2]
+  food_choice = User_Details[3]
+  state = User_Details[4]
+  allergy = User_Details[5]
+  gender = User_Details[6]
   dataset=read_file(Rules_FilePath)
   ans=process_input_data(dataset)
   ans1=process_output_data(dataset)

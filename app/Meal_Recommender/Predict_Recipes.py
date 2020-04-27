@@ -76,6 +76,6 @@ def suggest_recipe(current_ingredients,predicted_ingredients, ModelPath, Vectors
     for i in id_cos:
         recommended_recipes.append(i[1])
         count += 1
-        if(count>10):
+        if(count>20):
             break
     return recommended_recipes

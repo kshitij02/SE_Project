@@ -18,7 +18,7 @@ from sqlalchemy import desc
 from sqlalchemy.orm import load_only
 import json
 import numpy as np
-from app.models import User, Credentials, Product, Meal, MealDetails, Cart
+from app.models import User, Credentials, Product, Meal, MealDetails, Cart, UserDetails
 import operator
 from flask import jsonify
 
@@ -28,7 +28,8 @@ from app.Meal_Recommender.Predict_Persona import*
 from app.Meal_Recommender.Predict_Autoencoder import*
 from app.Meal_Recommender.personalised_prediction import*
 
-Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
+# Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
+Absolute_Trained_Model_Path = "/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/"
 
 
 @app.route('/')
@@ -243,7 +244,7 @@ def GetRecipeRecommendations(Cart_Products,Predicted_Products):
     # 6. return final list
     ModelPath = Absolute_Trained_Model_Path + "Recommender_Data/word2vec_cl_new_ng7.model"
     VectorPath = Absolute_Trained_Model_Path + "Recommender_Data/culinaryDB_new_vectors.pkl"
-    return suggest_recipe(Product_Names, ModelPath, VectorPath)
+    return suggest_recipe(Cart_Product_Names,Predicted_Product_Names, ModelPath, VectorPath)
 
 
 
@@ -347,7 +348,7 @@ def GetCurrentCart():
     return Cart_Products
 
 
-# Returns name of products in current cart
+# Returns name of product
 def GetProductName(ProductID):
     # 1. Database query to fetch current cart products for the user
     product_n = Product.query.filter(Product.product_id == ProductID).first()
@@ -370,7 +371,82 @@ def GetMealDetails(MealIDs):
     # return Meal_Names,Meal_Details
     return Meal_Names
 
+def GetUserDetails():
+    uid = current_user.get_id()
+    print("UID",uid)
+    userdetails_n = UserDetails.query.filter(UserDetails.user_id == uid).first()
+    print("User Details",userdetails_n)
+    user_n = User.query.filter(User.user_id == uid).first()
+    if(userdetails_n is not None):
+        User_Details = (userdetails_n.user_id , userdetails_n.fav_cuisine, userdetails_n.spiciness, 
+            userdetails_n.food_choice,userdetails_n.state, userdetails_n.allergy, user_n.gender)
+        return User_Details
+    else:
+        return None
 
+def Predict_Cuisines(User_Details):
+    Model_Path = Absolute_Trained_Model_Path + "Associative_Rules_Data/cuis_data.pkl"
+    with open(Model_Path,'rb') as f:
+        cuisine_model = pickle.load(f)
+    return cuisine_model[User_Details[0]]
+
+def Rank_By_Cuisine(cuisine,Recommendations):
+    new_Recommendations = []
+    cusine_mapping#to be loaded
+    meal_cuisines = []
+    for i in Recommendations:
+        meal_id = i[0]
+        meal_cuisine = MealDetails.query.with_entities(MealDetails.meal_id == meal_id, MealDetails.cuisine).first()
+        meal_cuisines.append((cuisine_mapping[meal_cuisine],i))
+    for i in meal_cuisines:
+        if i[0] in cuisine:
+            new_Recommendations.append(i[1])
+    for i in Recommendations:
+        if i not in new_Recommendations:
+            new_Recommendations.append(i)
+    return new_Recommendations
+
+def Filter_By_FoodChoice(food_choice,Recommendations):
+    nonveg = "Non - Vegetarian"
+    egg = "Eggiterian"
+    veg = "Vegetarian"
+    if food_choice.strip() == nonveg:
+        return Recommendations    
+    data_path = Absolute_Trained_Model_Path+"/Recommender_Data/Food_Category.json"
+    with open(data_path,'r') as f:
+        food_choice_data = json.load(f)
+    new_Recommendations = []
+    for i in Recommendations:
+        meal_id = i[0]
+        ingredients = Meal.query.filter(Meal.meal_id == meal_id).all()
+        ingredient_names = []
+        for ingredient in ingredients:
+            product_n = Product.query.filter(Product.product_id == ingredient.product_id).first()
+            ingredient_names.append(product_n.name)
+        if(food_choice.strip() == egg or food_choice.strip() == veg):
+            if(len(set(ingredient_names).intersection(set(food_choice_data["Non-Veg"])))):
+                continue
+            else:
+                if(food_choice.strip() == veg):
+                    if(len(set(ingredient_names).intersection(set(food_choice_data["Egg"])))):
+                        continue
+                    else:
+                        new_Recommendations.append(i)
+                else:
+                    new_Recommendations.append(i)
+    return new_Recommendations
+
+
+def Personalise_Recommendations(Recipe_Recommendations,DB_Recipe_Recommendations):
+    User_Details = GetUserDetails()
+    if User_Details is None:
+        return Recipe_Recommendations,DB_Recipe_Recommendations
+    else:
+        cuisines = Predict_Cuisines(User_Details)
+        Recipe_Recommendations = Filter_By_FoodChoice(User_Details[3],Recipe_Recommendations)
+        DB_Recipe_Recommendations = Filter_By_FoodChoice(User_Details[3],DB_Recipe_Recommendations)
+        return Recipe_Recommendations,DB_Recipe_Recommendations
+        # return Rank_By_Cuisine(cuisines,Recipe_Recommendations),Rank_By_Cuisine(cuisines,DB_Recipe_Recommendations)
 
 
 @app.route('/Home', methods = ['GET', 'POST'])
@@ -502,6 +578,9 @@ def Recommendations():
     Cart_Products = []
     for product_id in Cart_Product_Ids:
         Cart_Products.append([product_id,GetProductName(product_id)])
+    Recipe_Recommendations,DB_Recipe_Recommendations = Personalise_Recommendations(Recipe_Recommendations,DB_Recipe_Recommendations)
+    if len(Recipe_Recommendations)>10:
+        Recipe_Recommendations = Recipe_Recommendations[:10]
     return render_template('MealRecommendation.html',MealList = Recipe_Recommendations,DbMealList = DB_Recipe_Recommendations,CartProducts = Cart_Products)
 
 @app.route('/RemoveFromCart/<ProductID>', methods = ['GET', 'POST'])
