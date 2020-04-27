@@ -1,0 +1,1588 @@
+antecedents,consequents
+banana,coffee
+biscuit,beef
+bread,beef
+butter,beef
+chocolate,beef
+coffee,beef
+beef,coffee
+corn flour,beef
+lettuce,beef
+lime,beef
+mushroom,beef
+onion,beef
+pepper,beef
+sausage,beef
+scallop,beef
+soft drink,beef
+sponge cake,beef
+tomato,beef
+veal,beef
+water,beef
+wine,beef
+biscuit,coffee
+bread,coffee
+bread,flour
+bread,wine red
+butter,coffee
+butter,flour
+butter,wine red
+cheese cream,coffee
+chicken,flour
+chocolate,coffee
+chocolate,flour
+cooking oil,coffee
+corn flour,coffee
+fruit juice,coffee
+lettuce,coffee
+onion,coffee
+pastry,coffee
+potato,coffee
+sausage,coffee
+tomato,coffee
+veal,coffee
+water,coffee
+wine,coffee
+wine red,coffee
+coffee,wine red
+wine white,coffee
+cooking oil,wine red
+fruit juice,flour
+grapefruit,flour
+lamb,flour
+lettuce,flour
+mushroom,flour
+pasta,flour
+pork,flour
+potato,flour
+sausage,flour
+sponge cake,flour
+tomato,flour
+veal,flour
+wine,flour
+wine white,flour
+fruit juice,wine red
+grapefruit,wine red
+lettuce,wine red
+lime,wine red
+onion,wine red
+orange,wine red
+pasta,wine red
+pastry,wine red
+potato,wine red
+sausage,wine red
+soft drink,wine red
+sponge cake,wine red
+tomato,wine red
+wine,wine red
+"banana,chocolate",beef
+"banana,coffee",beef
+"banana,beef",coffee
+banana,"beef,coffee"
+"banana,sponge cake",beef
+"banana,chocolate",flour
+"banana,flour",coffee
+"banana,wine red",coffee
+"banana,coffee",wine red
+"banana,wine white",coffee
+"banana,orange",wine red
+"biscuit,coffee",beef
+"beef,biscuit",coffee
+biscuit,"beef,coffee"
+"bread,coffee",beef
+"beef,bread",coffee
+bread,"beef,coffee"
+"bread,flour",beef
+"beef,bread",flour
+bread,"beef,flour"
+"bread,wine red",beef
+"beef,bread",wine red
+bread,"beef,wine red"
+"bread,wine white",beef
+"butter,chocolate",beef
+"butter,coffee",beef
+"beef,butter",coffee
+butter,"beef,coffee"
+"butter,flour",beef
+"beef,butter",flour
+butter,"beef,flour"
+"butter,orange",beef
+"butter,sponge cake",beef
+"butter,wine red",beef
+"beef,butter",wine red
+butter,"beef,wine red"
+"butter,wine white",beef
+"cake mix,chocolate",beef
+"cake mix,sponge cake",beef
+"beef,cheese cream",coffee
+cheese cream,"beef,coffee"
+"chicken,coffee",beef
+"beef,chicken",coffee
+"chicken,corn flour",beef
+"beef,chicken",flour
+"chocolate,coffee",beef
+"beef,chocolate",coffee
+chocolate,"beef,coffee"
+"chocolate,corn flour",beef
+"beef,chocolate",flour
+chocolate,"beef,flour"
+"chocolate,lime",beef
+"chocolate,mushroom",beef
+"chocolate,orange",beef
+"chocolate,sponge cake",beef
+"chocolate,water",beef
+"chocolate,wine",beef
+"beef,cooking oil",coffee
+cooking oil,"beef,coffee"
+"beef,corn flour",coffee
+"coffee,corn flour",beef
+corn flour,"beef,coffee"
+"coffee,flour",beef
+"beef,flour",coffee
+coffee,"beef,flour"
+"beef,fruit juice",coffee
+"coffee,lamb",beef
+"coffee,lettuce",beef
+"beef,lettuce",coffee
+lettuce,"beef,coffee"
+"coffee,lime",beef
+"coffee,mushroom",beef
+"coffee,onion",beef
+"beef,onion",coffee
+onion,"beef,coffee"
+"coffee,pasta",beef
+"beef,pastry",coffee
+pastry,"beef,coffee"
+"coffee,pork",beef
+"beef,pork",coffee
+"beef,potato",coffee
+"coffee,potato",beef
+potato,"beef,coffee"
+"coffee,sausage",beef
+"beef,sausage",coffee
+sausage,"beef,coffee"
+"coffee,scallop",beef
+"coffee,soft drink",beef
+"coffee,sponge cake",beef
+sponge cake,"beef,coffee"
+"coffee,tea green",beef
+"coffee,tomato",beef
+"beef,tomato",coffee
+tomato,"beef,coffee"
+"coffee,veal",beef
+"beef,veal",coffee
+veal,"beef,coffee"
+"coffee,water",beef
+"beef,water",coffee
+water,"beef,coffee"
+"coffee,wine",beef
+"beef,wine",coffee
+wine,"beef,coffee"
+"coffee,wine red",beef
+"beef,wine red",coffee
+"beef,coffee",wine red
+wine red,"beef,coffee"
+coffee,"beef,wine red"
+"coffee,wine white",beef
+"beef,wine white",coffee
+wine white,"beef,coffee"
+"corn flour,flour",beef
+corn flour,"beef,flour"
+"corn flour,orange",beef
+"corn flour,scallop",beef
+"corn flour,soft drink",beef
+"corn flour,sponge cake",beef
+"corn flour,veal",beef
+"corn flour,wine red",beef
+corn flour,"beef,wine red"
+"beef,fruit juice",flour
+"beef,grapefruit",flour
+grapefruit,"beef,flour"
+"beef,lamb",flour
+lamb,"beef,flour"
+"flour,lettuce",beef
+"beef,lettuce",flour
+lettuce,"beef,flour"
+"flour,lime",beef
+lime,"beef,flour"
+"flour,mushroom",beef
+"beef,mushroom",flour
+mushroom,"beef,flour"
+"flour,onion",beef
+onion,"beef,flour"
+"beef,pasta",flour
+pasta,"beef,flour"
+"beef,potato",flour
+potato,"beef,flour"
+"flour,sausage",beef
+sausage,"beef,flour"
+"flour,scallop",beef
+"flour,sponge cake",beef
+"beef,sponge cake",flour
+sponge cake,"beef,flour"
+"flour,tomato",beef
+"beef,tomato",flour
+tomato,"beef,flour"
+"beef,veal",flour
+veal,"beef,flour"
+"flour,water",beef
+"flour,wine",beef
+"beef,wine",flour
+wine,"beef,flour"
+"beef,wine white",flour
+wine white,"beef,flour"
+"beef,fruit juice",wine red
+"beef,grapefruit",wine red
+grapefruit,"beef,wine red"
+"lettuce,wine red",beef
+"beef,lettuce",wine red
+lettuce,"beef,wine red"
+"lime,orange",beef
+"lime,pork",beef
+"lime,sponge cake",beef
+"lime,veal",beef
+"lime,wine red",beef
+"beef,lime",wine red
+lime,"beef,wine red"
+"lime,wine white",beef
+"mushroom,orange",beef
+"mushroom,pork",beef
+"mushroom,sponge cake",beef
+"mushroom,veal",beef
+"mushroom,wine red",beef
+"mushroom,wine white",beef
+"onion,wine red",beef
+"beef,onion",wine red
+onion,"beef,wine red"
+"orange,scallop",beef
+"orange,water",beef
+"orange,wine",beef
+"beef,orange",wine red
+orange,"beef,wine red"
+"beef,pasta",wine red
+pasta,"beef,wine red"
+"beef,pastry",wine red
+pastry,"beef,wine red"
+"pork,scallop",beef
+"pork,water",beef
+"pork,wine",beef
+"beef,potato",wine red
+potato,"beef,wine red"
+"sausage,wine red",beef
+"beef,sausage",wine red
+sausage,"beef,wine red"
+"scallop,sponge cake",beef
+"scallop,veal",beef
+"scallop,wine red",beef
+"scallop,wine white",beef
+"soft drink,sponge cake",beef
+"beef,soft drink",wine red
+soft drink,"beef,wine red"
+"sponge cake,water",beef
+"sponge cake,wine",beef
+"sponge cake,wine red",beef
+"beef,sponge cake",wine red
+sponge cake,"beef,wine red"
+"sponge cake,wine white",beef
+"tomato,wine red",beef
+tomato,"beef,wine red"
+"tomato,wine white",beef
+"veal,water",beef
+"veal,wine",beef
+"water,wine red",beef
+"water,wine white",beef
+"wine,wine red",beef
+"beef,wine",wine red
+wine,"beef,wine red"
+"wine,wine white",beef
+"biscuit,flour",coffee
+"biscuit,wine red",coffee
+"bread,flour",coffee
+"bread,coffee",flour
+"bread,wine red",coffee
+"bread,coffee",wine red
+bread,"flour,wine red"
+"butter,chocolate",flour
+"butter,chocolate",wine red
+"butter,coffee",flour
+"butter,wine red",coffee
+"butter,coffee",wine red
+"butter,orange",flour
+"butter,pork",flour
+"butter,sponge cake",flour
+"butter,veal",flour
+"butter,flour",wine red
+"butter,wine red",flour
+butter,"flour,wine red"
+"butter,wine white",flour
+"butter,sponge cake",wine red
+"cake mix,chocolate",flour
+"cake mix,wine white",flour
+"chicken,chocolate",flour
+"chicken,wine red",coffee
+"chicken,coffee",wine red
+"chicken,wine white",coffee
+"chicken,corn flour",flour
+"chicken,pork",flour
+"chicken,sponge cake",flour
+"chicken,veal",flour
+"chicken,wine white",flour
+"chicken,sponge cake",wine red
+"chocolate,flour",coffee
+"chocolate,coffee",flour
+"chocolate,pork",coffee
+"chocolate,veal",coffee
+"chocolate,wine red",coffee
+"chocolate,wine white",coffee
+"chocolate,corn flour",flour
+"chocolate,fruit juice",flour
+"chocolate,grapefruit",flour
+"chocolate,lime",flour
+"chocolate,mushroom",flour
+"chocolate,orange",flour
+"chocolate,pasta",flour
+"chocolate,pork",flour
+"chocolate,potato",flour
+"chocolate,scallop",flour
+"chocolate,soft drink",flour
+"chocolate,sponge cake",flour
+"chocolate,veal",flour
+"chocolate,water",flour
+"chocolate,wine",flour
+"chocolate,wine red",flour
+chocolate,"flour,wine red"
+"chocolate,wine white",flour
+"chocolate,sponge cake",wine red
+"corn flour,flour",coffee
+"corn flour,wine red",coffee
+"coffee,corn flour",wine red
+"corn flour,wine white",coffee
+"flour,fruit juice",coffee
+"coffee,fruit juice",flour
+"coffee,grapefruit",flour
+"coffee,lamb",flour
+"flour,lettuce",coffee
+"coffee,lettuce",flour
+"coffee,lime",flour
+"coffee,mushroom",flour
+"flour,onion",coffee
+"coffee,pasta",flour
+"coffee,pork",flour
+"flour,potato",coffee
+"coffee,potato",flour
+"flour,sausage",coffee
+"coffee,sausage",flour
+"coffee,sponge cake",flour
+"flour,tomato",coffee
+"coffee,veal",flour
+"flour,wine",coffee
+"coffee,wine",flour
+"flour,wine red",coffee
+"coffee,flour",wine red
+coffee,"flour,wine red"
+"flour,wine white",coffee
+"coffee,wine white",flour
+"fruit juice,wine red",coffee
+"coffee,fruit juice",wine red
+"coffee,grapefruit",wine red
+"grapefruit,wine white",coffee
+"coffee,lamb",wine red
+"lime,wine red",coffee
+"coffee,lime",wine red
+"lime,wine white",coffee
+"onion,wine red",coffee
+"coffee,onion",wine red
+"coffee,orange",wine red
+"coffee,pasta",wine red
+"pork,wine red",coffee
+"coffee,pork",wine red
+"pork,wine white",coffee
+"potato,wine red",coffee
+"coffee,potato",wine red
+"potato,wine white",coffee
+"sausage,wine red",coffee
+"coffee,sausage",wine red
+"coffee,soft drink",wine red
+"sponge cake,veal",coffee
+"sponge cake,wine red",coffee
+"coffee,sponge cake",wine red
+"sponge cake,wine white",coffee
+"tomato,wine red",coffee
+"coffee,tomato",wine red
+"veal,wine red",coffee
+"coffee,veal",wine red
+"veal,wine white",coffee
+"water,wine red",coffee
+"water,wine white",coffee
+"wine,wine red",coffee
+"coffee,wine",wine red
+"wine,wine white",coffee
+"wine red,wine white",coffee
+"coffee,wine white",wine red
+"corn flour,sponge cake",flour
+"corn flour,veal",flour
+"corn flour,sponge cake",wine red
+"fruit juice,sponge cake",flour
+fruit juice,"flour,wine red"
+"fruit juice,wine white",flour
+"grapefruit,sponge cake",flour
+"flour,grapefruit",wine red
+"grapefruit,wine red",flour
+grapefruit,"flour,wine red"
+"grapefruit,wine white",flour
+"lamb,wine red",flour
+lamb,"flour,wine red"
+"lettuce,wine red",flour
+"flour,lettuce",wine red
+lettuce,"flour,wine red"
+"lime,orange",flour
+"lime,veal",flour
+"lime,wine white",flour
+"mushroom,orange",flour
+"mushroom,pork",flour
+"mushroom,sponge cake",flour
+"mushroom,veal",flour
+"mushroom,wine red",flour
+"mushroom,wine white",flour
+"orange,pasta",flour
+"orange,potato",flour
+"orange,veal",flour
+orange,"flour,wine red"
+"pasta,sponge cake",flour
+"flour,pasta",wine red
+"pasta,wine red",flour
+pasta,"flour,wine red"
+"pasta,wine white",flour
+"flour,pastry",wine red
+"pork,potato",flour
+"pork,soft drink",flour
+"pork,sponge cake",flour
+"pork,veal",flour
+"pork,wine white",flour
+"flour,potato",wine red
+"potato,wine red",flour
+potato,"flour,wine red"
+"potato,wine white",flour
+sausage,"flour,wine red"
+"soft drink,veal",flour
+"flour,soft drink",wine red
+soft drink,"flour,wine red"
+"sponge cake,veal",flour
+"flour,sponge cake",wine red
+sponge cake,"flour,wine red"
+"sponge cake,wine white",flour
+tomato,"flour,wine red"
+"veal,water",flour
+"veal,wine red",flour
+veal,"flour,wine red"
+"veal,wine white",flour
+"flour,wine",wine red
+"wine,wine red",flour
+wine,"flour,wine red"
+"wine,wine white",flour
+"grapefruit,orange",wine red
+"grapefruit,sponge cake",wine red
+"grapefruit,wine white",wine red
+"lime,orange",wine red
+"lime,sponge cake",wine red
+"orange,pasta",wine red
+"orange,potato",wine red
+"orange,soft drink",wine red
+"orange,sponge cake",wine red
+"orange,veal",wine red
+"orange,wine",wine red
+"pasta,sponge cake",wine red
+"pasta,wine white",wine red
+"pork,potato",wine red
+"pork,soft drink",wine red
+"pork,sponge cake",wine red
+"potato,wine white",wine red
+"scallop,sponge cake",wine red
+"soft drink,sponge cake",wine red
+"soft drink,wine white",wine red
+"sponge cake,veal",wine red
+"sponge cake,water",wine red
+"sponge cake,wine white",wine red
+"wine,wine white",wine red
+"banana,beef,chocolate",flour
+"banana,chocolate","beef,flour"
+"banana,beef,flour",coffee
+"banana,flour","beef,coffee"
+"banana,beef,wine red",coffee
+"banana,beef,coffee",wine red
+"banana,wine red","beef,coffee"
+"banana,coffee","beef,wine red"
+"banana,flour,wine red",coffee
+"banana,coffee,flour",wine red
+"biscuit,coffee,flour",beef
+"beef,biscuit,flour",coffee
+"biscuit,flour","beef,coffee"
+"biscuit,coffee,wine red",beef
+"beef,biscuit,wine red",coffee
+"biscuit,wine red","beef,coffee"
+"biscuit,coffee","beef,wine red"
+"bread,coffee,flour",beef
+"beef,bread,flour",coffee
+"beef,bread,coffee",flour
+"bread,flour","beef,coffee"
+"bread,coffee","beef,flour"
+"bread,flour,wine red",beef
+"bread,flour","beef,wine red"
+"bread,wine red","beef,flour"
+"beef,bread","flour,wine red"
+bread,"beef,flour,wine red"
+"butter,chocolate,flour",beef
+"beef,butter,chocolate",flour
+"butter,chocolate","beef,flour"
+"beef,butter,chocolate",wine red
+"butter,chocolate","beef,wine red"
+"butter,coffee,flour",beef
+"beef,butter,flour",coffee
+"beef,butter,coffee",flour
+"butter,flour","beef,coffee"
+"butter,coffee","beef,flour"
+"butter,coffee,wine red",beef
+"beef,butter,wine red",coffee
+"beef,butter,coffee",wine red
+"butter,wine red","beef,coffee"
+"butter,coffee","beef,wine red"
+"butter,flour,orange",beef
+"beef,butter,orange",flour
+"butter,orange","beef,flour"
+"beef,butter,pork",flour
+"butter,pork","beef,flour"
+"butter,flour,sponge cake",beef
+"beef,butter,sponge cake",flour
+"butter,sponge cake","beef,flour"
+"beef,butter,veal",flour
+"butter,veal","beef,flour"
+"butter,flour,wine red",beef
+"beef,butter,flour",wine red
+"beef,butter,wine red",flour
+"butter,flour","beef,wine red"
+"butter,wine red","beef,flour"
+"beef,butter","flour,wine red"
+butter,"beef,flour,wine red"
+"butter,flour,wine white",beef
+"beef,butter,wine white",flour
+"butter,wine white","beef,flour"
+"butter,wine red,wine white",beef
+"beef,cake mix,wine white",flour
+"cake mix,wine white","beef,flour"
+"beef,chicken,chocolate",flour
+"chicken,chocolate","beef,flour"
+"chicken,coffee,flour",beef
+"chicken,coffee","beef,flour"
+"beef,chicken,pork",coffee
+"beef,chicken,wine red",coffee
+"beef,chicken,coffee",wine red
+"chicken,wine red","beef,coffee"
+"chicken,coffee","beef,wine red"
+"beef,chicken,wine white",coffee
+"chicken,wine white","beef,coffee"
+"beef,chicken,corn flour",flour
+"chicken,corn flour","beef,flour"
+"beef,chicken,pork",flour
+"beef,chicken,sponge cake",flour
+"chicken,sponge cake","beef,flour"
+"beef,chicken,veal",flour
+"chicken,veal","beef,flour"
+"beef,chicken,wine white",flour
+"chicken,wine white","beef,flour"
+"beef,chicken,sponge cake",wine red
+"chicken,sponge cake","beef,wine red"
+"chocolate,coffee,flour",beef
+"beef,chocolate,flour",coffee
+"beef,chocolate,coffee",flour
+"chocolate,flour","beef,coffee"
+"chocolate,coffee","beef,flour"
+"chocolate,coffee,orange",beef
+"chocolate,coffee,pork",beef
+"beef,chocolate,pork",coffee
+"chocolate,pork","beef,coffee"
+"chocolate,coffee,sponge cake",beef
+"beef,chocolate,sponge cake",coffee
+"chocolate,sponge cake","beef,coffee"
+"chocolate,coffee,veal",beef
+"beef,chocolate,veal",coffee
+"chocolate,veal","beef,coffee"
+"chocolate,coffee,wine red",beef
+"beef,chocolate,wine red",coffee
+"chocolate,wine red","beef,coffee"
+"chocolate,coffee","beef,wine red"
+"chocolate,coffee,wine white",beef
+"beef,chocolate,wine white",coffee
+"chocolate,wine white","beef,coffee"
+"chocolate,corn flour,flour",beef
+"beef,chocolate,corn flour",flour
+"chocolate,corn flour","beef,flour"
+"chocolate,corn flour,wine red",beef
+"beef,chocolate,fruit juice",flour
+"chocolate,fruit juice","beef,flour"
+"beef,chocolate,grapefruit",flour
+"chocolate,grapefruit","beef,flour"
+"chocolate,flour,lime",beef
+"beef,chocolate,lime",flour
+"chocolate,lime","beef,flour"
+"beef,chocolate,orange",flour
+"chocolate,orange","beef,flour"
+"beef,chocolate,pasta",flour
+"chocolate,pasta","beef,flour"
+"beef,chocolate,pork",flour
+"chocolate,pork","beef,flour"
+"beef,chocolate,scallop",flour
+"chocolate,scallop","beef,flour"
+"beef,chocolate,soft drink",flour
+"chocolate,soft drink","beef,flour"
+"chocolate,flour,sponge cake",beef
+"beef,chocolate,sponge cake",flour
+"chocolate,sponge cake","beef,flour"
+"beef,chocolate,veal",flour
+"chocolate,veal","beef,flour"
+"chocolate,flour,water",beef
+"beef,chocolate,water",flour
+"chocolate,water","beef,flour"
+"chocolate,flour,wine",beef
+"beef,chocolate,wine",flour
+"chocolate,wine","beef,flour"
+"beef,chocolate,wine red",flour
+"chocolate,wine red","beef,flour"
+"beef,chocolate","flour,wine red"
+chocolate,"beef,flour,wine red"
+"beef,chocolate,wine white",flour
+"chocolate,wine white","beef,flour"
+"chocolate,lime,wine red",beef
+"chocolate,sponge cake,wine red",beef
+"beef,chocolate,sponge cake",wine red
+"chocolate,sponge cake","beef,wine red"
+"chocolate,water,wine red",beef
+"beef,corn flour,flour",coffee
+"coffee,corn flour,flour",beef
+"corn flour,flour","beef,coffee"
+"coffee,corn flour","beef,flour"
+"coffee,corn flour,orange",beef
+"beef,corn flour,wine red",coffee
+"coffee,corn flour,wine red",beef
+"beef,coffee,corn flour",wine red
+"corn flour,wine red","beef,coffee"
+"coffee,corn flour","beef,wine red"
+"beef,corn flour,wine white",coffee
+"coffee,corn flour,wine white",beef
+"corn flour,wine white","beef,coffee"
+"beef,flour,fruit juice",coffee
+"beef,coffee,fruit juice",flour
+"coffee,fruit juice","beef,flour"
+"beef,coffee,grapefruit",flour
+"coffee,grapefruit","beef,flour"
+"beef,coffee,lamb",flour
+"coffee,lamb","beef,flour"
+"coffee,flour,lime",beef
+"coffee,lime","beef,flour"
+"coffee,flour,mushroom",beef
+"beef,coffee,mushroom",flour
+"coffee,mushroom","beef,flour"
+"coffee,flour,onion",beef
+"beef,flour,onion",coffee
+"flour,onion","beef,coffee"
+"beef,flour,pasta",coffee
+"beef,coffee,pasta",flour
+"coffee,pasta","beef,flour"
+"beef,flour,pork",coffee
+"beef,coffee,pork",flour
+"coffee,pork","beef,flour"
+"beef,flour,potato",coffee
+"beef,coffee,potato",flour
+"flour,potato","beef,coffee"
+"coffee,potato","beef,flour"
+"beef,flour,sausage",coffee
+"flour,sausage","beef,coffee"
+"coffee,sausage","beef,flour"
+"coffee,flour,scallop",beef
+"coffee,flour,soft drink",beef
+"coffee,flour,sponge cake",beef
+"coffee,sponge cake","beef,flour"
+"coffee,flour,tomato",beef
+"beef,flour,tomato",coffee
+"flour,tomato","beef,coffee"
+"coffee,flour,veal",beef
+"beef,flour,veal",coffee
+"beef,coffee,veal",flour
+"coffee,veal","beef,flour"
+"coffee,flour,water",beef
+"beef,flour,water",coffee
+"flour,water","beef,coffee"
+"coffee,water","beef,flour"
+"coffee,flour,wine",beef
+"beef,flour,wine",coffee
+"beef,coffee,wine",flour
+"flour,wine","beef,coffee"
+"coffee,wine","beef,flour"
+"beef,flour,wine red",coffee
+"beef,coffee,flour",wine red
+"flour,wine red","beef,coffee"
+"coffee,flour","beef,wine red"
+"beef,coffee","flour,wine red"
+coffee,"beef,flour,wine red"
+"coffee,flour,wine white",beef
+"beef,flour,wine white",coffee
+"beef,coffee,wine white",flour
+"flour,wine white","beef,coffee"
+"coffee,wine white","beef,flour"
+"beef,fruit juice,wine red",coffee
+"beef,coffee,fruit juice",wine red
+"fruit juice,wine red","beef,coffee"
+"coffee,fruit juice","beef,wine red"
+"beef,coffee,grapefruit",wine red
+"coffee,grapefruit","beef,wine red"
+"beef,grapefruit,wine white",coffee
+"coffee,lime,wine red",beef
+"beef,lime,wine red",coffee
+"beef,coffee,lime",wine red
+"lime,wine red","beef,coffee"
+"coffee,lime","beef,wine red"
+"coffee,lime,wine white",beef
+"beef,lime,wine white",coffee
+"lime,wine white","beef,coffee"
+"coffee,mushroom,wine red",beef
+"coffee,mushroom","beef,wine red"
+"coffee,onion,wine red",beef
+"beef,onion,wine red",coffee
+"beef,coffee,onion",wine red
+"onion,wine red","beef,coffee"
+"coffee,onion","beef,wine red"
+"coffee,orange,scallop",beef
+"beef,coffee,orange",wine red
+"coffee,orange","beef,wine red"
+"beef,coffee,pasta",wine red
+"coffee,pasta","beef,wine red"
+"coffee,pork,sponge cake",beef
+"beef,pork,sponge cake",coffee
+"coffee,pork,veal",beef
+"beef,pork,wine red",coffee
+"beef,coffee,pork",wine red
+"coffee,pork","beef,wine red"
+"beef,pork,wine white",coffee
+"pork,wine white","beef,coffee"
+"beef,potato,wine red",coffee
+"beef,coffee,potato",wine red
+"potato,wine red","beef,coffee"
+"coffee,potato","beef,wine red"
+"beef,potato,wine white",coffee
+"coffee,potato,wine white",beef
+"potato,wine white","beef,coffee"
+"coffee,scallop,wine red",beef
+"coffee,scallop,wine white",beef
+"coffee,soft drink,wine red",beef
+"beef,coffee,soft drink",wine red
+"coffee,soft drink","beef,wine red"
+"coffee,soft drink,wine white",beef
+"coffee,sponge cake,veal",beef
+"beef,sponge cake,veal",coffee
+"sponge cake,veal","beef,coffee"
+"coffee,sponge cake,wine red",beef
+"beef,sponge cake,wine red",coffee
+"beef,coffee,sponge cake",wine red
+"sponge cake,wine red","beef,coffee"
+"coffee,sponge cake","beef,wine red"
+"coffee,sponge cake,wine white",beef
+"beef,sponge cake,wine white",coffee
+"sponge cake,wine white","beef,coffee"
+"coffee,veal,wine red",beef
+"beef,veal,wine red",coffee
+"beef,coffee,veal",wine red
+"veal,wine red","beef,coffee"
+"coffee,veal","beef,wine red"
+"coffee,veal,wine white",beef
+"beef,veal,wine white",coffee
+"veal,wine white","beef,coffee"
+"coffee,water,wine red",beef
+"beef,water,wine red",coffee
+"water,wine red","beef,coffee"
+"coffee,water","beef,wine red"
+"coffee,water,wine white",beef
+"beef,water,wine white",coffee
+"water,wine white","beef,coffee"
+"coffee,wine,wine red",beef
+"beef,wine,wine red",coffee
+"beef,coffee,wine",wine red
+"wine,wine red","beef,coffee"
+"coffee,wine","beef,wine red"
+"coffee,wine,wine white",beef
+"beef,wine,wine white",coffee
+"wine,wine white","beef,coffee"
+"coffee,wine red,wine white",beef
+"beef,wine red,wine white",coffee
+"beef,coffee,wine white",wine red
+"wine red,wine white","beef,coffee"
+"coffee,wine white","beef,wine red"
+"corn flour,flour,orange",beef
+"corn flour,flour,sponge cake",beef
+"corn flour,sponge cake","beef,flour"
+"corn flour,flour,veal",beef
+"beef,corn flour,veal",flour
+"corn flour,veal","beef,flour"
+"corn flour,flour,wine red",beef
+"corn flour,orange,wine red",beef
+"corn flour,orange","beef,wine red"
+"corn flour,sponge cake,wine red",beef
+"beef,corn flour,sponge cake",wine red
+"corn flour,sponge cake","beef,wine red"
+"corn flour,veal,wine red",beef
+"beef,fruit juice","flour,wine red"
+"beef,fruit juice,wine white",flour
+"beef,grapefruit,sponge cake",flour
+"grapefruit,sponge cake","beef,flour"
+"beef,flour,grapefruit",wine red
+"beef,grapefruit,wine red",flour
+"beef,grapefruit","flour,wine red"
+grapefruit,"beef,flour,wine red"
+"beef,grapefruit,wine white",flour
+"grapefruit,wine white","beef,flour"
+"beef,lamb,wine red",flour
+"beef,lamb","flour,wine red"
+lamb,"beef,flour,wine red"
+"flour,lettuce,wine red",beef
+"beef,lettuce,wine red",flour
+"beef,flour,lettuce",wine red
+"lettuce,wine red","beef,flour"
+"flour,lettuce","beef,wine red"
+"beef,lettuce","flour,wine red"
+lettuce,"beef,flour,wine red"
+"flour,lime,orange",beef
+"beef,lime,orange",flour
+"lime,orange","beef,flour"
+"flour,lime,sponge cake",beef
+"lime,sponge cake","beef,flour"
+"flour,lime,veal",beef
+"lime,veal","beef,flour"
+lime,"beef,flour,wine red"
+"flour,lime,wine white",beef
+"beef,lime,wine white",flour
+"lime,wine white","beef,flour"
+"flour,mushroom,orange",beef
+"beef,mushroom,orange",flour
+"mushroom,orange","beef,flour"
+"flour,mushroom,pork",beef
+"beef,mushroom,pork",flour
+"mushroom,pork","beef,flour"
+"flour,mushroom,wine red",beef
+"beef,mushroom,wine red",flour
+"mushroom,wine red","beef,flour"
+"flour,mushroom,wine white",beef
+"beef,mushroom,wine white",flour
+"mushroom,wine white","beef,flour"
+"flour,onion,wine red",beef
+"flour,onion","beef,wine red"
+onion,"beef,flour,wine red"
+"beef,orange,pasta",flour
+"beef,orange,potato",flour
+"beef,orange,veal",flour
+"orange,veal","beef,flour"
+"flour,orange,water",beef
+"beef,flour,pasta",wine red
+"beef,pasta,wine red",flour
+"flour,pasta","beef,wine red"
+"beef,pasta","flour,wine red"
+pasta,"beef,flour,wine red"
+"beef,pasta,wine white",flour
+"flour,pork,scallop",beef
+"beef,pork,soft drink",flour
+"pork,soft drink","beef,flour"
+"beef,pork,sponge cake",flour
+"pork,sponge cake","beef,flour"
+"beef,pork,veal",flour
+"pork,veal","beef,flour"
+"flour,pork,water",beef
+"beef,pork,wine white",flour
+"beef,flour,potato",wine red
+"beef,potato,wine red",flour
+"flour,potato","beef,wine red"
+"beef,potato","flour,wine red"
+potato,"beef,flour,wine red"
+"beef,potato,wine white",flour
+"flour,sausage,wine red",beef
+"flour,sausage","beef,wine red"
+"beef,sausage","flour,wine red"
+sausage,"beef,flour,wine red"
+"flour,scallop,sponge cake",beef
+"flour,scallop,veal",beef
+"scallop,veal","beef,flour"
+"flour,soft drink,sponge cake",beef
+"beef,soft drink,veal",flour
+"soft drink,veal","beef,flour"
+"beef,flour,soft drink",wine red
+"flour,soft drink","beef,wine red"
+soft drink,"beef,flour,wine red"
+"beef,sponge cake,veal",flour
+"sponge cake,veal","beef,flour"
+"flour,sponge cake,water",beef
+"sponge cake,water","beef,flour"
+"flour,sponge cake,wine red",beef
+"beef,flour,sponge cake",wine red
+"flour,sponge cake","beef,wine red"
+"beef,sponge cake","flour,wine red"
+sponge cake,"beef,flour,wine red"
+"flour,sponge cake,wine white",beef
+"beef,sponge cake,wine white",flour
+"sponge cake,wine white","beef,flour"
+"flour,tomato,wine red",beef
+"tomato,wine red","beef,flour"
+"beef,tomato","flour,wine red"
+tomato,"beef,flour,wine red"
+"flour,veal,water",beef
+"beef,veal,water",flour
+"veal,water","beef,flour"
+"beef,veal,wine red",flour
+"veal,wine red","beef,flour"
+"beef,veal","flour,wine red"
+veal,"beef,flour,wine red"
+"beef,veal,wine white",flour
+"veal,wine white","beef,flour"
+"flour,water,wine red",beef
+"flour,water,wine white",beef
+"water,wine white","beef,flour"
+"flour,wine,wine red",beef
+"beef,flour,wine",wine red
+"flour,wine","beef,wine red"
+"wine,wine red","beef,flour"
+"beef,wine","flour,wine red"
+wine,"beef,flour,wine red"
+"flour,wine,wine white",beef
+"beef,wine,wine white",flour
+"wine,wine white","beef,flour"
+"beef,grapefruit,orange",wine red
+"beef,grapefruit,sponge cake",wine red
+"grapefruit,sponge cake","beef,wine red"
+"beef,grapefruit,wine white",wine red
+"lime,orange,wine red",beef
+"beef,lime,orange",wine red
+"lime,orange","beef,wine red"
+"lime,wine red,wine white",beef
+"mushroom,orange,wine red",beef
+"mushroom,wine red,wine white",beef
+"beef,orange,pasta",wine red
+"orange,pasta","beef,wine red"
+"beef,orange,potato",wine red
+"orange,potato","beef,wine red"
+"beef,orange,soft drink",wine red
+"orange,soft drink","beef,wine red"
+"beef,orange,sponge cake",wine red
+"orange,sponge cake","beef,wine red"
+"beef,orange,veal",wine red
+"orange,water,wine red",beef
+"beef,orange,wine",wine red
+"orange,wine","beef,wine red"
+"beef,pasta,wine white",wine red
+"pasta,wine white","beef,wine red"
+"pork,scallop,wine red",beef
+"beef,pork,soft drink",wine red
+"pork,soft drink","beef,wine red"
+"beef,pork,sponge cake",wine red
+"pork,sponge cake","beef,wine red"
+"pork,water,wine red",beef
+"beef,potato,wine white",wine red
+"potato,wine white","beef,wine red"
+"scallop,sponge cake,wine red",beef
+"beef,scallop,sponge cake",wine red
+"scallop,sponge cake","beef,wine red"
+"scallop,veal,wine red",beef
+"soft drink,sponge cake,wine red",beef
+"beef,soft drink,sponge cake",wine red
+"soft drink,sponge cake","beef,wine red"
+"beef,soft drink,wine white",wine red
+"soft drink,wine white","beef,wine red"
+"beef,sponge cake,veal",wine red
+"sponge cake,veal","beef,wine red"
+"sponge cake,water,wine red",beef
+"sponge cake,water","beef,wine red"
+"sponge cake,wine red,wine white",beef
+"beef,sponge cake,wine white",wine red
+"sponge cake,wine white","beef,wine red"
+"water,wine red,wine white",beef
+"wine,wine red,wine white",beef
+"beef,wine,wine white",wine red
+"wine,wine white","beef,wine red"
+"butter,chocolate,flour",wine red
+"butter,chocolate,wine red",flour
+"butter,chocolate","flour,wine red"
+"butter,flour,wine red",coffee
+"butter,coffee,flour",wine red
+"butter,coffee,wine red",flour
+"butter,wine red","coffee,flour"
+"butter,coffee","flour,wine red"
+"butter,orange,wine red",flour
+"butter,orange","flour,wine red"
+"butter,wine red,wine white",flour
+"butter,wine white","flour,wine red"
+"chicken,chocolate,wine red",flour
+"chicken,flour,wine red",coffee
+"chicken,coffee","flour,wine red"
+"chicken,flour,wine white",coffee
+"chicken,coffee,wine white",flour
+"chicken,wine red,wine white",coffee
+"chicken,coffee,wine white",wine red
+"chicken,flour,sponge cake",wine red
+"chicken,sponge cake","flour,wine red"
+"chicken,veal,wine red",flour
+"chicken,wine red,wine white",flour
+"chocolate,coffee,orange",flour
+"chocolate,coffee,pork",flour
+"chocolate,flour,pork",coffee
+"chocolate,coffee,sponge cake",flour
+"chocolate,flour,veal",coffee
+"chocolate,coffee,veal",flour
+"chocolate,flour,wine red",coffee
+"chocolate,coffee,wine red",flour
+"chocolate,coffee","flour,wine red"
+"chocolate,flour,wine white",coffee
+"chocolate,coffee,wine white",flour
+"chocolate,orange,wine red",coffee
+"chocolate,coffee,orange",wine red
+"chocolate,pork,wine red",coffee
+"chocolate,sponge cake,wine red",coffee
+"chocolate,coffee,sponge cake",wine red
+"chocolate,veal,wine red",coffee
+"chocolate,wine red,wine white",coffee
+"chocolate,coffee,wine white",wine red
+"chocolate,orange,wine red",flour
+"chocolate,orange","flour,wine red"
+"chocolate,orange,wine white",flour
+"chocolate,pork,wine red",flour
+"chocolate,soft drink,wine red",flour
+"chocolate,soft drink","flour,wine red"
+"chocolate,sponge cake,wine red",flour
+"chocolate,sponge cake","flour,wine red"
+"chocolate,veal,wine red",flour
+"chocolate,veal","flour,wine red"
+"chocolate,wine red,wine white",flour
+"corn flour,flour,wine red",coffee
+"corn flour,flour,wine white",coffee
+"coffee,corn flour,wine white",flour
+"corn flour,wine red,wine white",coffee
+"flour,fruit juice,wine red",coffee
+"coffee,flour,fruit juice",wine red
+"coffee,fruit juice,wine red",flour
+"coffee,fruit juice","flour,wine red"
+"coffee,flour,grapefruit",wine red
+"coffee,grapefruit,wine red",flour
+"coffee,grapefruit","flour,wine red"
+"flour,lime,wine red",coffee
+"coffee,flour,lime",wine red
+"coffee,lime","flour,wine red"
+"coffee,mushroom,wine red",flour
+"coffee,mushroom","flour,wine red"
+"coffee,orange,pork",flour
+"coffee,orange,veal",flour
+"coffee,flour,orange",wine red
+"coffee,orange","flour,wine red"
+"coffee,orange,wine white",flour
+"coffee,flour,pasta",wine red
+"coffee,pasta,wine red",flour
+"coffee,pasta","flour,wine red"
+"flour,pork,sponge cake",coffee
+"coffee,pork,sponge cake",flour
+"coffee,pork,veal",flour
+"flour,pork,wine red",coffee
+"coffee,pork","flour,wine red"
+"flour,pork,wine white",coffee
+"coffee,pork,wine white",flour
+"flour,potato,wine red",coffee
+"coffee,flour,potato",wine red
+"coffee,potato,wine red",flour
+"coffee,potato","flour,wine red"
+"coffee,flour,soft drink",wine red
+"coffee,sponge cake,veal",flour
+"flour,sponge cake,wine red",coffee
+"coffee,flour,sponge cake",wine red
+"coffee,sponge cake","flour,wine red"
+"flour,sponge cake,wine white",coffee
+"coffee,sponge cake,wine white",flour
+"flour,veal,wine red",coffee
+"coffee,flour,veal",wine red
+"coffee,veal","flour,wine red"
+"flour,veal,wine white",coffee
+"coffee,veal,wine white",flour
+"flour,water,wine red",coffee
+"flour,water,wine white",coffee
+"flour,wine,wine red",coffee
+"coffee,flour,wine",wine red
+"coffee,wine","flour,wine red"
+"flour,wine red,wine white",coffee
+"coffee,flour,wine white",wine red
+"coffee,wine white","flour,wine red"
+"coffee,orange,pork",wine red
+"coffee,orange,sponge cake",wine red
+"orange,veal,wine red",coffee
+"coffee,orange,veal",wine red
+"orange,wine red,wine white",coffee
+"coffee,orange,wine white",wine red
+"pork,sponge cake,wine red",coffee
+"coffee,pork,sponge cake",wine red
+"pork,wine red,wine white",coffee
+"coffee,pork,wine white",wine red
+"coffee,soft drink,wine white",wine red
+"sponge cake,veal,wine red",coffee
+"coffee,sponge cake,veal",wine red
+"sponge cake,wine red,wine white",coffee
+"coffee,sponge cake,wine white",wine red
+"veal,wine red,wine white",coffee
+"coffee,veal,wine white",wine red
+"corn flour,flour,sponge cake",wine red
+"corn flour,sponge cake","flour,wine red"
+"fruit juice,wine red,wine white",flour
+"grapefruit,orange","flour,wine red"
+"flour,grapefruit,wine white",wine red
+"grapefruit,wine red,wine white",flour
+"grapefruit,wine white","flour,wine red"
+"flour,lime,orange",wine red
+"lime,orange","flour,wine red"
+"mushroom,wine red,wine white",flour
+"flour,orange,soft drink",wine red
+"orange,soft drink","flour,wine red"
+"flour,orange,sponge cake",wine red
+"orange,sponge cake","flour,wine red"
+"orange,sponge cake,wine white",flour
+"orange,veal","flour,wine red"
+"orange,veal,wine white",flour
+"flour,pasta,wine white",wine red
+"pasta,wine red,wine white",flour
+"pasta,wine white","flour,wine red"
+"pork,soft drink","flour,wine red"
+"pork,sponge cake,wine red",flour
+"flour,pork,sponge cake",wine red
+"pork,sponge cake","flour,wine red"
+"pork,veal,wine red",flour
+"pork,veal","flour,wine red"
+"flour,potato,wine white",wine red
+"potato,wine white","flour,wine red"
+"flour,soft drink,sponge cake",wine red
+"soft drink,sponge cake","flour,wine red"
+"soft drink,veal,wine red",flour
+"flour,soft drink,wine white",wine red
+"soft drink,wine white","flour,wine red"
+"flour,sponge cake,veal",wine red
+"sponge cake,veal,wine red",flour
+"sponge cake,veal","flour,wine red"
+"flour,sponge cake,wine white",wine red
+"sponge cake,wine red,wine white",flour
+"sponge cake,wine white","flour,wine red"
+"veal,wine red,wine white",flour
+"veal,wine white","flour,wine red"
+"flour,wine,wine white",wine red
+"wine,wine red,wine white",flour
+"wine,wine white","flour,wine red"
+"orange,sponge cake,wine white",wine red
+"banana,beef,flour,wine red",coffee
+"banana,flour,wine red","beef,coffee"
+"banana,coffee,flour","beef,wine red"
+"beef,butter,chocolate,flour",wine red
+"beef,butter,chocolate,wine red",flour
+"butter,chocolate,flour","beef,wine red"
+"beef,butter,chocolate","flour,wine red"
+"butter,chocolate,wine red","beef,flour"
+"butter,chocolate","beef,flour,wine red"
+"beef,butter,flour,wine red",coffee
+"beef,butter,coffee,flour",wine red
+"butter,coffee,flour,wine red",beef
+"beef,butter,coffee,wine red",flour
+"butter,flour,wine red","beef,coffee"
+"butter,coffee,flour","beef,wine red"
+"beef,butter,wine red","coffee,flour"
+"beef,butter,coffee","flour,wine red"
+"butter,coffee,wine red","beef,flour"
+"butter,coffee","beef,flour,wine red"
+"butter,flour,wine red,wine white",beef
+"beef,butter,wine red,wine white",flour
+"beef,butter,wine white","flour,wine red"
+"butter,wine red,wine white","beef,flour"
+"butter,wine white","beef,flour,wine red"
+"beef,chicken,chocolate,wine red",flour
+"beef,chicken,flour,wine red",coffee
+"chicken,coffee","beef,flour,wine red"
+"beef,chicken,flour,wine white",coffee
+"beef,chicken,coffee,wine white",flour
+"chicken,flour,wine white","beef,coffee"
+"chicken,coffee,wine white","beef,flour"
+"beef,chicken,wine red,wine white",coffee
+"beef,chicken,coffee,wine white",wine red
+"chicken,wine red,wine white","beef,coffee"
+"chicken,coffee,wine white","beef,wine red"
+"beef,chicken,sponge cake","flour,wine red"
+"chicken,sponge cake","beef,flour,wine red"
+"beef,chicken,wine red,wine white",flour
+"chocolate,coffee,flour,orange",beef
+"beef,chocolate,coffee,orange",flour
+"chocolate,coffee,orange","beef,flour"
+"beef,chocolate,flour,pork",coffee
+"beef,chocolate,coffee,pork",flour
+"chocolate,flour,pork","beef,coffee"
+"chocolate,coffee,pork","beef,flour"
+"beef,chocolate,flour,sponge cake",coffee
+"chocolate,coffee,flour,sponge cake",beef
+"beef,chocolate,coffee,sponge cake",flour
+"chocolate,coffee,sponge cake","beef,flour"
+"beef,chocolate,flour,veal",coffee
+"beef,chocolate,coffee,veal",flour
+"chocolate,coffee,veal","beef,flour"
+"beef,chocolate,flour,wine red",coffee
+"chocolate,coffee,flour,wine red",beef
+"beef,chocolate,coffee,wine red",flour
+"chocolate,flour,wine red","beef,coffee"
+"beef,chocolate,coffee","flour,wine red"
+"chocolate,coffee,wine red","beef,flour"
+"chocolate,coffee","beef,flour,wine red"
+"beef,chocolate,flour,wine white",coffee
+"beef,chocolate,coffee,wine white",flour
+"chocolate,flour,wine white","beef,coffee"
+"chocolate,coffee,wine white","beef,flour"
+"beef,chocolate,orange,wine red",coffee
+"beef,chocolate,coffee,orange",wine red
+"chocolate,coffee,orange,wine red",beef
+"chocolate,coffee,orange","beef,wine red"
+"beef,chocolate,pork,wine red",coffee
+"chocolate,pork,wine red","beef,coffee"
+"beef,chocolate,sponge cake,wine red",coffee
+"beef,chocolate,coffee,sponge cake",wine red
+"chocolate,coffee,sponge cake,wine red",beef
+"chocolate,sponge cake,wine red","beef,coffee"
+"chocolate,coffee,sponge cake","beef,wine red"
+"beef,chocolate,veal,wine red",coffee
+"chocolate,veal,wine red","beef,coffee"
+"chocolate,coffee,veal","beef,wine red"
+"beef,chocolate,wine red,wine white",coffee
+"chocolate,wine red,wine white","beef,coffee"
+"chocolate,coffee,wine white","beef,wine red"
+"chocolate,corn flour,flour,wine red",beef
+"beef,chocolate,orange,wine red",flour
+"beef,chocolate,orange","flour,wine red"
+"chocolate,orange,wine red","beef,flour"
+"chocolate,orange","beef,flour,wine red"
+"beef,chocolate,orange,wine white",flour
+"chocolate,orange,wine white","beef,flour"
+"beef,chocolate,pork,wine red",flour
+"beef,chocolate,soft drink,wine red",flour
+"beef,chocolate,soft drink","flour,wine red"
+"chocolate,soft drink,wine red","beef,flour"
+"chocolate,soft drink","beef,flour,wine red"
+"beef,chocolate,sponge cake,wine red",flour
+"beef,chocolate,sponge cake","flour,wine red"
+"chocolate,sponge cake,wine red","beef,flour"
+"chocolate,sponge cake","beef,flour,wine red"
+"beef,chocolate,veal,wine red",flour
+"beef,chocolate,veal","flour,wine red"
+"chocolate,veal,wine red","beef,flour"
+"chocolate,veal","beef,flour,wine red"
+"beef,chocolate,wine red,wine white",flour
+"chocolate,wine red,wine white","beef,flour"
+"beef,corn flour,flour,wine red",coffee
+"coffee,corn flour,flour,wine red",beef
+"corn flour,flour,wine red","beef,coffee"
+"coffee,corn flour,flour","beef,wine red"
+"coffee,corn flour","beef,flour,wine red"
+"beef,corn flour,flour,wine white",coffee
+"coffee,corn flour,flour,wine white",beef
+"corn flour,flour,wine white","beef,coffee"
+"coffee,corn flour,wine white","beef,flour"
+"beef,corn flour,wine red,wine white",coffee
+"coffee,corn flour,wine red,wine white",beef
+"corn flour,wine red,wine white","beef,coffee"
+"coffee,corn flour,wine white","beef,wine red"
+"beef,flour,fruit juice,wine red",coffee
+"beef,coffee,fruit juice,wine red",flour
+"beef,coffee,flour,fruit juice",wine red
+"flour,fruit juice,wine red","beef,coffee"
+"coffee,flour,fruit juice","beef,wine red"
+"beef,coffee,fruit juice","flour,wine red"
+"coffee,fruit juice","beef,flour,wine red"
+"beef,coffee,flour,grapefruit",wine red
+"beef,coffee,grapefruit,wine red",flour
+"coffee,flour,grapefruit","beef,wine red"
+"beef,coffee,grapefruit","flour,wine red"
+"coffee,grapefruit","beef,flour,wine red"
+"beef,flour,lime,wine red",coffee
+"beef,coffee,flour,lime",wine red
+"coffee,flour,lime,wine red",beef
+"flour,lime,wine red","beef,coffee"
+"coffee,flour,lime","beef,wine red"
+"beef,coffee,lime","flour,wine red"
+"coffee,lime","beef,flour,wine red"
+"coffee,flour,mushroom,wine red",beef
+"beef,coffee,mushroom,wine red",flour
+"coffee,mushroom,wine red","beef,flour"
+"coffee,mushroom","beef,flour,wine red"
+"beef,coffee,orange,pork",flour
+"coffee,orange,pork","beef,flour"
+"beef,coffee,orange,veal",flour
+"coffee,orange,veal","beef,flour"
+"beef,coffee,flour,orange",wine red
+"coffee,flour,orange","beef,wine red"
+"beef,coffee,orange","flour,wine red"
+"coffee,orange","beef,flour,wine red"
+"beef,coffee,flour,pasta",wine red
+"beef,coffee,pasta,wine red",flour
+"coffee,flour,pasta","beef,wine red"
+"beef,coffee,pasta","flour,wine red"
+"coffee,pasta,wine red","beef,flour"
+"coffee,pasta","beef,flour,wine red"
+"beef,flour,pork,sponge cake",coffee
+"coffee,flour,pork,sponge cake",beef
+"beef,coffee,pork,sponge cake",flour
+"flour,pork,sponge cake","beef,coffee"
+"coffee,pork,sponge cake","beef,flour"
+"coffee,flour,pork,veal",beef
+"beef,coffee,pork,veal",flour
+"coffee,pork,veal","beef,flour"
+"beef,flour,pork,wine red",coffee
+"coffee,pork","beef,flour,wine red"
+"beef,flour,pork,wine white",coffee
+"beef,coffee,pork,wine white",flour
+"flour,pork,wine white","beef,coffee"
+"coffee,pork,wine white","beef,flour"
+"beef,flour,potato,wine red",coffee
+"beef,coffee,flour,potato",wine red
+"beef,coffee,potato,wine red",flour
+"flour,potato,wine red","beef,coffee"
+"coffee,flour,potato","beef,wine red"
+"beef,coffee,potato","flour,wine red"
+"coffee,potato,wine red","beef,flour"
+"coffee,potato","beef,flour,wine red"
+"coffee,flour,scallop,wine red",beef
+"coffee,flour,scallop,wine white",beef
+"beef,coffee,flour,soft drink",wine red
+"coffee,flour,soft drink,wine red",beef
+"coffee,flour,soft drink","beef,wine red"
+"coffee,flour,soft drink,wine white",beef
+"beef,flour,sponge cake,veal",coffee
+"beef,coffee,sponge cake,veal",flour
+"coffee,sponge cake,veal","beef,flour"
+"beef,flour,sponge cake,wine red",coffee
+"beef,coffee,flour,sponge cake",wine red
+"coffee,flour,sponge cake,wine red",beef
+"flour,sponge cake,wine red","beef,coffee"
+"coffee,flour,sponge cake","beef,wine red"
+"beef,coffee,sponge cake","flour,wine red"
+"coffee,sponge cake,wine red","beef,flour"
+"coffee,sponge cake","beef,flour,wine red"
+"beef,flour,sponge cake,wine white",coffee
+"coffee,flour,sponge cake,wine white",beef
+"beef,coffee,sponge cake,wine white",flour
+"flour,sponge cake,wine white","beef,coffee"
+"coffee,sponge cake,wine white","beef,flour"
+"beef,flour,veal,wine red",coffee
+"coffee,flour,veal,wine red",beef
+"flour,veal,wine red","beef,coffee"
+"coffee,flour,veal","beef,wine red"
+"beef,coffee,veal","flour,wine red"
+"coffee,veal,wine red","beef,flour"
+"coffee,veal","beef,flour,wine red"
+"beef,flour,veal,wine white",coffee
+"coffee,flour,veal,wine white",beef
+"beef,coffee,veal,wine white",flour
+"flour,veal,wine white","beef,coffee"
+"coffee,veal,wine white","beef,flour"
+"beef,flour,water,wine red",coffee
+"coffee,flour,water,wine red",beef
+"flour,water,wine red","beef,coffee"
+"beef,flour,wine,wine red",coffee
+"beef,coffee,flour,wine",wine red
+"coffee,flour,wine,wine red",beef
+"flour,wine,wine red","beef,coffee"
+"coffee,flour,wine","beef,wine red"
+"beef,coffee,wine","flour,wine red"
+"coffee,wine,wine red","beef,flour"
+"coffee,wine","beef,flour,wine red"
+"beef,flour,wine red,wine white",coffee
+"beef,coffee,flour,wine white",wine red
+"flour,wine red,wine white","beef,coffee"
+"coffee,flour,wine white","beef,wine red"
+"beef,coffee,wine white","flour,wine red"
+"coffee,wine white","beef,flour,wine red"
+"beef,coffee,orange,pork",wine red
+"coffee,orange,pork","beef,wine red"
+"beef,coffee,orange,sponge cake",wine red
+"coffee,orange,sponge cake","beef,wine red"
+"beef,orange,veal,wine red",coffee
+"beef,coffee,orange,veal",wine red
+"coffee,orange,veal","beef,wine red"
+"beef,orange,wine red,wine white",coffee
+"beef,coffee,orange,wine white",wine red
+"orange,wine red,wine white","beef,coffee"
+"coffee,orange,wine white","beef,wine red"
+"beef,pork,sponge cake,wine red",coffee
+"beef,coffee,pork,sponge cake",wine red
+"coffee,pork,sponge cake,wine red",beef
+"pork,sponge cake,wine red","beef,coffee"
+"coffee,pork,sponge cake","beef,wine red"
+"beef,pork,veal,wine red",coffee
+"coffee,pork,veal,wine red",beef
+"beef,pork,wine red,wine white",coffee
+"beef,coffee,pork,wine white",wine red
+"pork,wine red,wine white","beef,coffee"
+"coffee,pork,wine white","beef,wine red"
+"coffee,scallop,wine red,wine white",beef
+"beef,coffee,soft drink,wine white",wine red
+"coffee,soft drink,wine red,wine white",beef
+"coffee,soft drink,wine white","beef,wine red"
+"beef,sponge cake,veal,wine red",coffee
+"beef,coffee,sponge cake,veal",wine red
+"sponge cake,veal,wine red","beef,coffee"
+"coffee,sponge cake,veal","beef,wine red"
+"beef,sponge cake,wine red,wine white",coffee
+"beef,coffee,sponge cake,wine white",wine red
+"coffee,sponge cake,wine red,wine white",beef
+"sponge cake,wine red,wine white","beef,coffee"
+"coffee,sponge cake,wine white","beef,wine red"
+"beef,veal,wine red,wine white",coffee
+"beef,coffee,veal,wine white",wine red
+"coffee,veal,wine red,wine white",beef
+"veal,wine red,wine white","beef,coffee"
+"coffee,veal,wine white","beef,wine red"
+"corn flour,flour,orange,wine red",beef
+"beef,corn flour,flour,sponge cake",wine red
+"corn flour,flour,sponge cake,wine red",beef
+"corn flour,flour,sponge cake","beef,wine red"
+"beef,corn flour,sponge cake","flour,wine red"
+"corn flour,sponge cake","beef,flour,wine red"
+"corn flour,flour,veal,wine red",beef
+"beef,flour,grapefruit,wine white",wine red
+"beef,grapefruit,wine red,wine white",flour
+"beef,grapefruit,wine white","flour,wine red"
+"grapefruit,wine white","beef,flour,wine red"
+"beef,flour,lime,orange",wine red
+"flour,lime,orange,wine red",beef
+"flour,lime,orange","beef,wine red"
+"beef,lime,orange","flour,wine red"
+"lime,orange","beef,flour,wine red"
+"flour,lime,wine red,wine white",beef
+"lime,wine red,wine white","beef,flour"
+"lime,wine white","beef,flour,wine red"
+"flour,mushroom,wine red,wine white",beef
+"beef,mushroom,wine red,wine white",flour
+"mushroom,wine red,wine white","beef,flour"
+"beef,flour,orange,soft drink",wine red
+"flour,orange,soft drink","beef,wine red"
+"beef,orange,soft drink","flour,wine red"
+"orange,soft drink","beef,flour,wine red"
+"beef,flour,orange,sponge cake",wine red
+"flour,orange,sponge cake","beef,wine red"
+"beef,orange,sponge cake","flour,wine red"
+"orange,sponge cake","beef,flour,wine red"
+"beef,orange,sponge cake,wine white",flour
+"beef,orange,veal","flour,wine red"
+"orange,veal","beef,flour,wine red"
+"beef,orange,veal,wine white",flour
+"orange,veal,wine white","beef,flour"
+"flour,orange,water,wine red",beef
+"beef,flour,pasta,wine white",wine red
+"beef,pasta,wine white","flour,wine red"
+"pasta,wine white","beef,flour,wine red"
+"beef,pork,soft drink","flour,wine red"
+"pork,soft drink","beef,flour,wine red"
+"beef,flour,pork,sponge cake",wine red
+"beef,pork,sponge cake,wine red",flour
+"flour,pork,sponge cake","beef,wine red"
+"beef,pork,sponge cake","flour,wine red"
+"pork,sponge cake","beef,flour,wine red"
+"beef,pork,veal,wine red",flour
+"pork,veal,wine red","beef,flour"
+"beef,flour,potato,wine white",wine red
+"flour,potato,wine white","beef,wine red"
+"beef,potato,wine white","flour,wine red"
+"potato,wine white","beef,flour,wine red"
+"beef,flour,soft drink,sponge cake",wine red
+"flour,soft drink,sponge cake","beef,wine red"
+"beef,soft drink,sponge cake","flour,wine red"
+"soft drink,sponge cake","beef,flour,wine red"
+"beef,soft drink,veal,wine red",flour
+"beef,sponge cake,veal,wine red",flour
+"beef,sponge cake,veal","flour,wine red"
+"sponge cake,veal,wine red","beef,flour"
+"sponge cake,veal","beef,flour,wine red"
+"beef,flour,sponge cake,wine white",wine red
+"beef,sponge cake,wine red,wine white",flour
+"flour,sponge cake,wine white","beef,wine red"
+"beef,sponge cake,wine white","flour,wine red"
+"sponge cake,wine red,wine white","beef,flour"
+"sponge cake,wine white","beef,flour,wine red"
+"beef,veal,wine red,wine white",flour
+"beef,veal,wine white","flour,wine red"
+"veal,wine red,wine white","beef,flour"
+"veal,wine white","beef,flour,wine red"
+"flour,water,wine red,wine white",beef
+"beef,flour,wine,wine white",wine red
+"flour,wine,wine red,wine white",beef
+"beef,wine,wine red,wine white",flour
+"flour,wine,wine white","beef,wine red"
+"beef,wine,wine white","flour,wine red"
+"wine,wine red,wine white","beef,flour"
+"wine,wine white","beef,flour,wine red"
+"beef,orange,sponge cake,wine white",wine red
+"orange,sponge cake,wine white","beef,wine red"
+"chicken,flour,wine red,wine white",coffee
+"chicken,coffee,flour,wine white",wine red
+"chicken,coffee,wine white","flour,wine red"
+"chocolate,coffee,orange,wine red",flour
+"chocolate,coffee,orange","flour,wine red"
+"chocolate,flour,wine red,wine white",coffee
+"chocolate,coffee,wine red,wine white",flour
+"chocolate,coffee,wine white","flour,wine red"
+"coffee,orange,pork","flour,wine red"
+"coffee,flour,orange,sponge cake",wine red
+"coffee,orange,sponge cake","flour,wine red"
+"flour,orange,wine red,wine white",coffee
+"coffee,flour,orange,wine white",wine red
+"coffee,orange,wine white","flour,wine red"
+"flour,pork,wine red,wine white",coffee
+"coffee,pork,wine white","flour,wine red"
+"flour,sponge cake,wine red,wine white",coffee
+"coffee,flour,sponge cake,wine white",wine red
+"coffee,sponge cake,wine red,wine white",flour
+"coffee,sponge cake,wine white","flour,wine red"
+"flour,veal,wine red,wine white",coffee
+"coffee,flour,veal,wine white",wine red
+"coffee,veal,wine red,wine white",flour
+"coffee,veal,wine white","flour,wine red"
+"beef,chicken,flour,wine red,wine white",coffee
+"chicken,flour,wine red,wine white","beef,coffee"
+"beef,chicken,coffee,wine white","flour,wine red"
+"chicken,coffee,wine white","beef,flour,wine red"
+"beef,chocolate,coffee,orange,wine red",flour
+"beef,chocolate,coffee,orange","flour,wine red"
+"chocolate,coffee,orange,wine red","beef,flour"
+"chocolate,coffee,orange","beef,flour,wine red"
+"beef,chocolate,flour,wine red,wine white",coffee
+"beef,chocolate,coffee,wine red,wine white",flour
+"chocolate,flour,wine red,wine white","beef,coffee"
+"beef,chocolate,coffee,wine white","flour,wine red"
+"chocolate,coffee,wine red,wine white","beef,flour"
+"chocolate,coffee,wine white","beef,flour,wine red"
+"beef,coffee,orange,pork","flour,wine red"
+"coffee,orange,pork","beef,flour,wine red"
+"beef,flour,orange,wine red,wine white",coffee
+"beef,coffee,flour,orange,wine white",wine red
+"flour,orange,wine red,wine white","beef,coffee"
+"coffee,flour,orange,wine white","beef,wine red"
+"beef,coffee,orange,wine white","flour,wine red"
+"coffee,orange,wine white","beef,flour,wine red"
+"beef,flour,pork,wine red,wine white",coffee
+"flour,pork,wine red,wine white","beef,coffee"
+"beef,coffee,pork,wine white","flour,wine red"
+"coffee,pork,wine white","beef,flour,wine red"
+"beef,flour,sponge cake,wine red,wine white",coffee
+"beef,coffee,flour,sponge cake,wine white",wine red
+"coffee,flour,sponge cake,wine red,wine white",beef
+"beef,coffee,sponge cake,wine red,wine white",flour
+"flour,sponge cake,wine red,wine white","beef,coffee"
+"coffee,flour,sponge cake,wine white","beef,wine red"
+"beef,coffee,sponge cake,wine white","flour,wine red"
+"coffee,sponge cake,wine red,wine white","beef,flour"
+"coffee,sponge cake,wine white","beef,flour,wine red"
+"beef,flour,veal,wine red,wine white",coffee
+"beef,coffee,flour,veal,wine white",wine red
+"coffee,flour,veal,wine red,wine white",beef
+"beef,coffee,veal,wine red,wine white",flour
+"flour,veal,wine red,wine white","beef,coffee"
+"coffee,flour,veal,wine white","beef,wine red"
+"beef,coffee,veal,wine white","flour,wine red"
+"coffee,veal,wine red,wine white","beef,flour"
+"coffee,veal,wine white","beef,flour,wine red"
