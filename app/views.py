@@ -250,7 +250,9 @@ def GetPredictedProductsBasedOnTransactionHistory():
     Cart_Products_Names.sort()
     Cart_Products_Names_Str=",".join(Cart_Products_Names)
     # Get Predicated_Product_Names_List
+
     Predicated_Products_Name=reterving_results_form_transaction_history(Cart_Products_Names_Str,Absolute_Trained_Model_Path)
+
     # Get Predicated_Product_Names_List to Predicated_Object_List
 
     Predicted_Products=[]
