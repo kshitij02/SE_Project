@@ -8,118 +8,53 @@ Skip Recommendation button at the end : will do nothing for now
 Future : We can keep track of number of hits on this button to measure how many people are actually using our recommendations -->
 
 <html>
-  <head>
-      <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+<head>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<link href="{{ url_for('static',filename = 'css/styles.css') }}" rel="stylesheet" type="text/css">
 
-    <link href="{{ url_for('static',filename = 'styles.css') }}" rel="stylesheet" type="text/css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <style>
-            .element
-               { position:fixed; bottom:2%; right:2%; }
-               .element2
-               { position:fixed; bottom:2%;  right:38%;}
-               .element3
-               { position:fixed; bottom:2%; left:2%; }
-          .cartbtn {
-            cursor:pointer;
-              cursor:hand;
-                }
-            table{
-              border: 1px solid #00498d;
-
-            }
-            table, th, td {
-
-              border-collapse: collapse;
-
-            }
-            th, td {
-              padding: 15px;
-              text-align: center;
-
-            }
-            th{
-              background: #00498d;
-              color: white
-            }
-
-            table#t01 {
-              width: 100%;
-              background-color: #f1f1c1;
-            }
-            div {
-              max-height: 96%;
-              overflow-y: auto;
-              margin: 1%;
-            }
-            thead tr{
-      position: absolute;
-      left: 0;
-      right: 15px;
-      /* to not cover the scrollbar*/
-      background: #00498d
-    }
-
-    thead th,
-    tfoot td {
-      display: inline-block;
-    }
-
-    thead tr {
-      top: 6%;
-      width:94%;
-      left: 3%;
-
-    }
-
-
-    th,
-    td {
-      width: calc((100%/3) - 5px);
-      font-size: 12px;
-      text-align: center;
-    }
-
-    tbody tr td{
-      width: calc((100%/3));
-    }
-    /*give some space between thead and tfoot*/
-
-    tbody tr td {
-      padding-top: 25px;
-
-      padding-bottom: 30px;
-    }
-
-    tr:nth-child(even) {background-color:white}
-    tr:nth-child(odd) {background-color: #EFFBFC  ;}
-    /* unvisited link */
-    a:link {
-      color: #00498d;
-    }
-
-    /* visited link */
-    a:visited {
-      color: #01598d;
-    }
-
-    /* mouse over link */
-    a:hover {
-      color: black;
-    }
-
-    /* selected link */
-    a:active {
-      color: #01598d;
-    }
-    .my-custom-scrollbar {
+<!------ Include the above in your HEAD tag ---------->
+<style>
+  .project-tab {
+    margin-top: -8%;
+}
+.project-tab #tabs{
+    background: #007b5e;
+    color: #eee;
+}
+.project-tab #tabs h6.section-title{
+    color: #eee;
+}
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #0062cc;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+.project-tab .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #0062cc;
+    font-size: 16px;
+    font-weight: 600;
+}
+.project-tab .nav-link:hover {
+    border: none;
+}
+.project-tab thead{
+    background: #f3f3f3;
+    color: #333;
+}
+.project-tab a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+.my-custom-scrollbar {
 position: relative;
 height: 200px;
 overflow: auto;
@@ -129,118 +64,146 @@ display: block;
 border-style: solid;
 }
 .container {
-      position: relative;
+  position: relative;
+  max-width: 100% !important;
 }
-    </style>
-      </head>
 
-        <body style="background-color:white";font-family: Arial, Helvetica, sans-serif;>
-          <p style="text-align: center; color : #00498d; font-size : 20px;"><b>Meal Recommendation Wizard</b></p>
-          <p style="text-align: left; color : #00498d; font-size : 20px;"><b>Recommendations from model</b></p>
-          <div class="container col-lg-12 col-md-12">
-              <div class="table-wrapper-scroll-y my-custom-scrollbar">
-            <table class="table table-bordered table-striped mb-0" id="ProductTable">
-                <thead>
-                    <tr style="background-color: #00498d">
-                      <th >Meal Name</th>
-                      <th>Add Meal</th>
-                      <th>Add Missing Ingredients</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for meal in MealList %}
-                    <tr id="{{meal[0]}}">
-                      <td >{{ meal[1] }}</td>
-                      <td><a href="/AddMealToCart/{{ meal[0] }}"><button style="background: #FFB81C" onclick="" id="Total2">Add Meal </button></a>
-                      </td>
-                      <td><a href="AddMissingProduct/{{ meal[0] }}"><button style="background: #8BC34A" onclick="" id="Total2">Add Missing Ingredients</button></a>
-                      </td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
+.fixed_header{
+    width: 400px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
 
-              </table>
-            </div>
-          </div>
-          <p style="text-align: left; color : #00498d; font-size : 20px;"><b>Recommendations from Database</b></p>
-          <div class="container col-lg-12 col-md-12">
-              <div class="table-wrapper-scroll-y my-custom-scrollbar">
-            <table class="table table-bordered table-striped mb-0" id="ProductTable">
-                <thead>
-                    <tr style="background-color: #00498d">
-                      <th >Meal Name</th>
-                      <th>Add Meal</th>
-                      <th>Add Missing Ingredients</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for meal in DbMealList %}
-                    <tr id="{{meal[0]}}">
-                      <td >{{ meal[1] }}</td>
-                      <td><a href="/AddMealToCart/{{ meal[0] }}"><button style="background: #FFB81C" onclick="" id="Total2">Add Meal </button></a>
-                      </td>
-                      <td><a href="AddMissingProduct/{{ meal[0] }}"><button style="background: #8BC34A" onclick="" id="Total2">Add Missing Ingredients</button></a>
-                      </td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
+.fixed_header tbody{
+  display:block;
+  width: 100%;
+  overflow: auto;
+  height: 500px;
+}
 
-              </table>
-            </div>
-          </div>
-          <p style="text-align: left; color : #00498d; font-size : 20px;"><b>Current Cart Items</b></p>
-          <div class="container col-lg-12 col-md-12">
-              <div class="table-wrapper-scroll-y my-custom-scrollbar">
-            <table class="table table-bordered table-striped mb-0" id="ProductTable">
-                <thead>
-                    <tr style="background-color: #00498d">
-                      <th >Ingredient</th>
-                      <th>View Similar</th>
-                      <th>View Complement</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for product in CartProducts %}
-                    <tr id="{{product[0]}}">
-                      <td >{{ product[1] }}</td>
-                      <td><a href="/ViewSimilar/{{ product[0] }}"><button style="background: #FFB81C" onclick="" id="Total2">View Similar</button></a>
-                      </td>
-                      <td><a href="/ViewComplement/{{ product[0] }}"><button style="background: #8BC34A" onclick="" id="Total2">View Complement</button></a>
-                      </td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
+.fixed_header thead tr {
+   display: block;
+}
 
-              </table>
-            </div>
-          </div>
-                  <center>
-                  <div class="element2" >
+.fixed_header thead {
+  background: black;
+  color:#fff;
+}
 
-                      <a href="/Home"><button style="background: #FFB81C" onclick="" id="Total2">Continue Shopping</button></a>
+  </style>
+</head>
+<body style="background-color:white";font-family: Arial, Helvetica, sans-serif;>
+  <p style="text-align: center; color : #00498d; font-size : 25px;"><b>Meal Recommendation Wizard</b></p>
 
+<section id="tabs" class="project-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav style="position: fixed; width:75%;">
+                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Recommendations from model</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Recommendations from Database</a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Current Cart Products</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent" style="overflow-y : unset; margin-top:80px;">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <table id="ProductTable" class="fixed_header">
+                                  <!-- <thead> -->
+                                      <tr style="background-color: #00498d">
+                                        <th >Meal Name</th>
+                                        <th>Add Meal</th>
+                                        <th>Add Missing Ingredients</th>
+                                      </tr>
+                                      <!-- </thead> -->
+                                      <!-- <tbody> -->
+                                      {% for meal in MealList %}
+                                      <tr id="{{meal[0]}}">
+                                        <td >{{ meal[1] }}</td>
+                                        <td><a href="/AddMealToCart/{{ meal[0] }}"><button style="background: #FFB81C" onclick="" id="Total2">Add Meal </button></a>
+                                        </td>
+                                        <td><a href="AddMissingProduct/{{ meal[0] }}"><button style="background: #8BC34A" onclick="" id="Total2">Add Missing Ingredients</button></a>
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                      <!-- </tbody> -->
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <table class="table" cellspacing="0">
+                                  <!-- <thead> -->
+                                      <tr style="background-color: #00498d">
+                                        <th >Meal Name</th>
+                                        <th>Add Meal</th>
+                                        <th>Add Missing Ingredients</th>
+                                      </tr>
+                                      <!-- </thead> -->
+                                      <!-- <tbody> -->
+                                      {% for meal in DbMealList %}
+                                      <tr id="{{meal[0]}}">
+                                        <td >{{ meal[1] }}</td>
+                                        <td><a href="/AddMealToCart/{{ meal[0] }}"><button style="background: #FFB81C" onclick="" id="Total2">Add Meal </button></a>
+                                        </td>
+                                        <td><a href="AddMissingProduct/{{ meal[0] }}"><button style="background: #8BC34A" onclick="" id="Total2">Add Missing Ingredients</button></a>
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                      <!-- </tbody> -->
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <table class="table" cellspacing="0">
+                                  <!-- <thead> -->
+                                      <tr style="background-color: #00498d">
+                                        <th >Ingredient</th>
+                                        <th>View Similar</th>
+                                        <th>View Complement</th>
+                                      </tr>
+                                      <!-- </thead> -->
+                                      <!-- <tbody> -->
+                                      {% for product in CartProducts %}
+                                      <tr id="{{product[0]}}">
+                                        <td >{{ product[1] }}</td>
+                                        <td><a href="/ViewSimilar/{{ product[0] }}"><button style="background: #FFB81C" onclick="" id="Total2">View Similar</button></a>
+                                        </td>
+                                        <td><a href="/ViewComplement/{{ product[0] }}"><button style="background: #8BC34A" onclick="" id="Total2">View Complement</button></a>
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                      <!-- </tbody> -->
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div class="element3" >
+                </div>
+            </div>
+        </section>
+        <center>
+        <div class="element2" >
 
-                        <button href="/AddMissingProduct/9" style="background: #FFB81C" onclick="" id="Total3">Checkout </button>
+            <a href="/Home"><button style="background: #FFB81C" onclick="" id="Total2">Continue Shopping</button></a>
 
-                      </div>
+          </div>
+          <div class="element3" >
 
-                </center>
+              <button href="/AddMissingProduct/9" style="background: #FFB81C" onclick="" id="Total3">Checkout </button>
 
+            </div>
 
-            <script>
-
-
-            var tab=document.getElementById('ProductTable');
-            prows=tab.rows;
-            prows[1].parentNode.removeChild(prows[1]);
-
-
-
-
-            </script>
+      </center>
 
 
-        </body>
-    </html>
+  <script>
+
+
+  var tab=document.getElementById('ProductTable');
+  prows=tab.rows;
+  prows[1].parentNode.removeChild(prows[1]);
+
+
+
+
+  </script>
+
+</body>
+</html>
