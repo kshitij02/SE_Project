@@ -445,27 +445,35 @@ def Predict_Cuisines(User_Details):
         cuisine_model = pickle.load(f)
     return cuisine_model[User_Details[0]]
 
-def Rank_By_Cuisine(cuisine,Recommendations):
+def Rank_By_Cuisine(cuisines,Recommendations):
+    temp_cuisines = []
+    for cuisine in cuisines:
+        temp_cuisines.append(cuisine[1:-1])
+    cuisine = temp_cuisines
     new_Recommendations = []
-    cusine_mapping#to be loaded
+    data_path = Absolute_Trained_Model_Path+"/Associative_Rules_Data/Cuisines_Mapping.pkl"
+    with open(data_path,'rb') as f:
+        cuisine_mapping = pickle.load(f)
     meal_cuisines = []
     for i in Recommendations:
         meal_id = i[0]
         meal_cuisine = MealDetails.query.with_entities(MealDetails.meal_id == meal_id, MealDetails.cuisine).first()
-        meal_cuisines.append((cuisine_mapping[meal_cuisine],i))
+        meal_cuisines.append((cuisine_mapping[meal_cuisine[1]],i))
     for i in meal_cuisines:
-        if i[0] in cuisine:
-            new_Recommendations.append(i[1])
+        for j in i[0]:
+            if j in cuisine:
+                new_Recommendations.append(i[1]) 
     for i in Recommendations:
         if i not in new_Recommendations:
             new_Recommendations.append(i)
     return new_Recommendations
 
 def Filter_By_FoodChoice(food_choice,Recommendations):
-    nonveg = "Non - Vegetarian"
-    egg = "Eggiterian"
-    veg = "Vegetarian"
-    if food_choice.strip() == nonveg:
+    food_choice = food_choice.strip()
+    nonveg = 'Non - Vegetarian'
+    egg = 'Eggiterian'
+    veg = 'Vegetarian'
+    if((food_choice != egg) and (food_choice != veg)):
         return Recommendations
     data_path = Absolute_Trained_Model_Path+"/Recommender_Data/Food_Category.json"
     with open(data_path,'r') as f:
@@ -478,11 +486,11 @@ def Filter_By_FoodChoice(food_choice,Recommendations):
         for ingredient in ingredients:
             product_n = Product.query.filter(Product.product_id == ingredient.product_id).first()
             ingredient_names.append(product_n.name)
-        if(food_choice.strip() == egg or food_choice.strip() == veg):
+        if(food_choice == egg or food_choice == veg):
             if(len(set(ingredient_names).intersection(set(food_choice_data["Non-Veg"])))):
                 continue
             else:
-                if(food_choice.strip() == veg):
+                if(food_choice == veg):
                     if(len(set(ingredient_names).intersection(set(food_choice_data["Egg"])))):
                         continue
                     else:
@@ -500,8 +508,7 @@ def Personalise_Recommendations(Recipe_Recommendations,DB_Recipe_Recommendations
         cuisines = Predict_Cuisines(User_Details)
         Recipe_Recommendations = Filter_By_FoodChoice(User_Details[3],Recipe_Recommendations)
         DB_Recipe_Recommendations = Filter_By_FoodChoice(User_Details[3],DB_Recipe_Recommendations)
-        return Recipe_Recommendations,DB_Recipe_Recommendations
-        # return Rank_By_Cuisine(cuisines,Recipe_Recommendations),Rank_By_Cuisine(cuisines,DB_Recipe_Recommendations)
+        return Rank_By_Cuisine(cuisines,Recipe_Recommendations),Rank_By_Cuisine(cuisines,DB_Recipe_Recommendations)
 
 
 @app.route('/Home', methods = ['GET', 'POST'])
@@ -639,6 +646,8 @@ def Recommendations():
     Recipe_Recommendations,DB_Recipe_Recommendations = Personalise_Recommendations(Recipe_Recommendations,DB_Recipe_Recommendations)
     if len(Recipe_Recommendations)>10:
         Recipe_Recommendations = Recipe_Recommendations[:10]
+    if len(DB_Recipe_Recommendations)>10:
+        DB_Recipe_Recommendations = DB_Recipe_Recommendations[:10]
     return render_template('MealRecommendation.html',MealList = Recipe_Recommendations,DbMealList = DB_Recipe_Recommendations,CartProducts = Cart_Products)
 
 @app.route('/RemoveFromCart/<ProductID>', methods = ['GET', 'POST'])
