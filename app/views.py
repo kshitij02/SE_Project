@@ -29,7 +29,7 @@ from app.Meal_Recommender.Predict_Autoencoder import*
 from app.Meal_Recommender.personalised_prediction import*
 
 from app.Meal_Recommender.Predication_Transaction_History import *
-Absolute_Trained_Model_Path = "/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/"
+Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models"
 
 
 
@@ -301,8 +301,8 @@ def GetRecipeRecommendations(Cart_Products,Predicted_Products):
     # 6. return final list
     ModelPath = Absolute_Trained_Model_Path + "Recommender_Data/word2vec_cl_new_ng7.model"
     VectorPath = Absolute_Trained_Model_Path + "Recommender_Data/culinaryDB_new_vectors.pkl"
-    return suggest_recipe(Cart_Product_Names, Predicted_Product_Names, ModelPath, VectorPath)
 
+    return suggest_recipe(Cart_Product_Names,Predicted_Product_Names, ModelPath, VectorPath)
 
 
 def GetRecipesFromDBUtil(product_meal):
