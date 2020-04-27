@@ -18,7 +18,7 @@ from sqlalchemy import desc
 from sqlalchemy.orm import load_only
 import json
 import numpy as np
-from app.models import User, Credentials, Product, Meal, MealDetails, Cart
+from app.models import User, Credentials, Product, Meal, MealDetails, Cart, UserDetails
 import operator
 from flask import jsonify
 
@@ -27,7 +27,7 @@ from app.Meal_Recommender.Predict_Recipes import*
 from app.Meal_Recommender.Predict_Persona import*
 from app.Meal_Recommender.Predict_Autoencoder import*
 from app.Meal_Recommender.personalised_prediction import*
-from app.Meal_Recommender.PRedication_Transaction_History import *
+from app.Meal_Recommender.Predication_Transaction_History import *
 Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
 
 
@@ -40,16 +40,38 @@ def firstpage():
 def Registration():
     return render_template('Register.html',title='Registration Page')
 
-
-@app.route('/FoodPreferenceForm')
-def Food_Preference_Form():
-    return render_template('Food_Preference.html',title='Food Choices Page')
-
-
-@app.route('/Logging', methods = ['GET', 'POST'])
+@app.route('/Logging', methods=["GET","POST"])
 def Logging():
     return render_template('Login.html')
 
+@app.route('/Food_Preference_Form', methods = ['GET', 'POST'])
+def Food_Preference_Form():
+    if request.method == 'POST':
+
+        foodchoice = request.form.get('foodchoice')
+        spiciness = request.form.get('spiciness')
+        location = request.form.get('location')
+        cuisines = request.form.getlist('cuisine')
+        allergies = request.form.getlist('allergy')
+
+        cuisines_str = ""
+        for cuisine in cuisines:
+            cuisines_str = cuisines_str + cuisine + ","
+
+        if len(allergies) == 1:
+            allergies_str = allergies[0]
+        else:
+            allergies_str = ""
+            for allergy in allergies:
+                allergies_str = allergies_str + allergy + ","
+
+        Num_Users = int(max(Credentials.query.with_entities(Credentials.user_id))[0])
+        UserDetail = UserDetails(user_id = Num_Users+1 , fav_cuisine = cuisines_str, spiciness = spiciness, food_choice = foodchoice, state = location)
+
+        db.session.add(UserDetail)
+        db.session.commit()
+
+    return render_template('Login.html')
 
 @app.route('/Food_Prefernce_Data', methods = ['GET', 'POST'])
 def Food_Prefernce_Data():
@@ -57,6 +79,7 @@ def Food_Prefernce_Data():
     # 1. Get Food_Prefernce Form content by POST method.
     # 2. Add entry in User_Info table with user food_preference info and userid.
     # 3. Commit database changes.
+
     Rules_FilePath = Absolute_Trained_Model_Path + "Associative_Rules_Data/cuisines.csv"
     Predicted_Cuisines = Predict_Cuisines(Rules_FilePath)
     return render_template('Login.html')
@@ -77,7 +100,8 @@ def Register():
           password = request.form['password']
           # pw_hash = generate_password_hash(password)
 
-          Num_Users = len(User.query.all())
+          # Num_Users = len(User.query.all())
+          Num_Users = int(max(Credentials.query.with_entities(Credentials.user_id))[0])
           user1 = User(user_id = Num_Users+1 , name = request.form['name'], email_id = request.form['email'], gender = request.form['gender'], age = request.form['age'])
           # Credential1 = Credentials(user_id = Num_Users+1, email_id = request.form['email'], password = pw_hash)
           Credential1 = Credentials(user_id = Num_Users+1, email_id = request.form['email'], password = password)
@@ -88,8 +112,9 @@ def Register():
 
           flash('Record was successfully added')
 
-    return render_template('Login.html')
-    # return render_template('FoodPreferenceForm.html')
+    # return render_template('Login.html')
+    Product_List = GetAllProducts()
+    return render_template('Food_Preference.html', ProductList = Product_List)
 
 
 @app.route('/Login', methods = ['POST'])
@@ -211,7 +236,7 @@ def GetProductObject(ProductName):
     product_n = Product.query.filter(Product.Product_Name == ProductName).first()
     return product_n
 
-# Returns List Product Objects on basis Apriori On Transaction History 
+# Returns List Product Objects on basis Apriori On Transaction History
 def GetPredictedProductsBasedOnTransactionHistory():
     # Get Current Cart Product ID's
     Cart_Products = GetCurrentCart()
@@ -223,14 +248,14 @@ def GetPredictedProductsBasedOnTransactionHistory():
     Cart_Products_Names_Str=",".join(Cart_Products_Names)
     # Get Predicated_Product_Names_List
     Predicated_Products_Name=reterving_results_form_transaction_history(Cart_Products_Names,Absolute_Trained_Model_Path)
-    
+
     # Get Predicated_Product_Names_List to Predicated_Object_List
 
     Predicted_Products=[]
     for product in Predicated_Products_Name:
         if product not in Cart_Products_Names:
             Predicted_Products.append(GetProductObject(product))
-    
+
     return Predicted_Products
 
 
@@ -272,7 +297,7 @@ def GetRecipeRecommendations(Cart_Products,Predicted_Products):
     # 6. return final list
     ModelPath = Absolute_Trained_Model_Path + "Recommender_Data/word2vec_cl_new_ng7.model"
     VectorPath = Absolute_Trained_Model_Path + "Recommender_Data/culinaryDB_new_vectors.pkl"
-    return suggest_recipe(Product_Names, ModelPath, VectorPath)
+    return suggest_recipe(Cart_Product_Names, Predicted_Product_Names, ModelPath, VectorPath)
 
 
 
@@ -348,7 +373,7 @@ def GetRecipesFromDB(Cart_Products,Predicted_Products):
         product_meal.append(meal_ids)
     if len(product_meal):
         Meal_Names.extend(GetRecipesFromDBUtil(product_meal))
-    
+
     if(len(Meal_Names) == 0):
         Product_Ids = []
         for Product in Predicted_Products:
