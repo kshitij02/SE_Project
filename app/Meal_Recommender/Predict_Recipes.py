@@ -11,24 +11,41 @@ from sklearn.metrics.pairwise import cosine_similarity
 import pickle
 import math
 from .Predict_Ingredients import *
+import operator
 
 
 def getCommonComplements(current_ingredients, ModelPath):
     complements = []
     for ingredient in current_ingredients:
         complements.append(findComplementaryIngredients(ingredient, ModelPath))
-    set1 = complements[0]
-    set1 = set(set1)
-    for i in range(1,len(complements),1):
-        set2 = set1.intersection(set(complements[i]))
-        set1 = set2
-    return list(set1)
+    complement_count = dict()
+    for list_l in complements:
+        for l in list_l:
+            if l not in complement_count:
+                complement_count[l] = 1
+            else:
+                complement_count[l] += 1
+    complement_count = sorted(complement_count.items(), key=operator.itemgetter(1),reverse=True)
+    count = 1
+    complements = []
+    for i in complement_count:
+        complements.append(i[0])
+        count += 1
+        if count > 20:
+            break
+    return complements
 
 
-def suggest_recipe(current_ingredients, ModelPath, VectorsPath):
-    complements = getCommonComplements(current_ingredients, ModelPath)
-    print("COMPLEMENTS", complements)
-    current_ingredients.extend(complements)
+def suggest_recipe(current_ingredients,predicted_ingredients, ModelPath, VectorsPath):
+    if(len(current_ingredients) == 0):
+        complements = getCommonComplements(predicted_ingredients, ModelPath)
+        complements = complements[:5]
+        current_ingredients = predicted_ingredients 
+    else:       
+        complements = getCommonComplements(current_ingredients, ModelPath)
+        complements = set(complements)
+        complements = complements.intersection(set(predicted_ingredients))
+    current_ingredients.extend(list(complements))
     recommended_recipes = []
     id_vector = dict()
     with open(VectorsPath,'rb') as f:
