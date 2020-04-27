@@ -28,8 +28,8 @@ from app.Meal_Recommender.Predict_Persona import*
 from app.Meal_Recommender.Predict_Autoencoder import*
 from app.Meal_Recommender.personalised_prediction import*
 
-from app.Meal_Recommender.PRedication_Transaction_History import *
-Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
+from app.Meal_Recommender.Predication_Transaction_History import *
+Absolute_Trained_Model_Path = "/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/"
 
 
 
@@ -203,15 +203,16 @@ def GetPredictedProducts():
             Cart_Product_obj.append(product_obj)
 
     print("Cart Products: ", Cart_Product_obj)
-    print("Predicted_Products: ", Predicted_Products)
+    # print("Predicted_Products: ", Predicted_Products)
 
     return Predicted_Products
 
 # Returns Object of products with Given Product Name
 def GetProductObject(ProductName):
     # 1. Database query to fetch current cart products for the user
-    product_n = Product.query.filter(Product.Product_Name == ProductName).first()
-    return product_n
+    product_n = Product.query.filter(Product.name == ProductName).first()
+    Product_Tuple = [product_n.product_id , product_n.name, product_n.price]
+    return Product_Tuple
 
 # Returns List Product Objects on basis Apriori On Transaction History 
 def GetPredictedProductsBasedOnTransactionHistory():
@@ -224,7 +225,7 @@ def GetPredictedProductsBasedOnTransactionHistory():
     Cart_Products_Names.sort()
     Cart_Products_Names_Str=",".join(Cart_Products_Names)
     # Get Predicated_Product_Names_List
-    Predicated_Products_Name=reterving_results_form_transaction_history(Cart_Products_Names,Absolute_Trained_Model_Path)
+    Predicated_Products_Name=reterving_results_form_transaction_history(Cart_Products_Names_Str,Absolute_Trained_Model_Path)
     
     # Get Predicated_Product_Names_List to Predicated_Object_List
 
@@ -403,9 +404,7 @@ def GetMealDetails(MealIDs):
 
 def GetUserDetails():
     uid = current_user.get_id()
-    print("UID",uid)
     userdetails_n = UserDetails.query.filter(UserDetails.user_id == uid).first()
-    print("User Details",userdetails_n)
     user_n = User.query.filter(User.user_id == uid).first()
     if(userdetails_n is not None):
         User_Details = (userdetails_n.user_id , userdetails_n.fav_cuisine, userdetails_n.spiciness, 
@@ -602,6 +601,10 @@ def Recommendations():
     Predicted_Products = []
     Cart_Product_Ids = GetCurrentCart()
     Predicted_Products = GetPredictedProducts()
+    print("COLLABORATIVE FILTERING RESULTS", Predicted_Products)
+    AR_Predicted_Products = GetPredictedProductsBasedOnTransactionHistory()
+    print("ASSOCIATIVE RULE RESULTS", AR_Predicted_Products)
+    Predicted_Products.extend(AR_Predicted_Products)
     Recipe_Recommendations = GetRecipeRecommendations(Cart_Product_Ids,Predicted_Products)
     Recipe_Recommendations = GetMealDetails(Recipe_Recommendations)
     DB_Recipe_Recommendations = GetRecipesFromDB(Cart_Product_Ids,Predicted_Products)
