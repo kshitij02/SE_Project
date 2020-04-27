@@ -1,0 +1,48 @@
+<!-- First Page which loads at route "/"
+This page will have one form with two buttons.
+One for registering new user and One for Login to existing user.
+
+Click on Register button : Redirect to route "/Registration" or function "Registration()"
+Click on Login button : Redirect to route "/Logging" or function "Logging()"  -->
+
+
+<html>
+  <head>
+
+    <link href="{{ url_for('static', filename='/css/styles.css') }}" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  </head>
+
+  <body style="background-color:#00498d;font-size: 2em; font-family: Arial, Helvetica, sans-serif; width: 80%; margin-left:15%;">
+
+      <form action="/" method="get" style="background-color:white;width: 100%;height: 85%">
+
+        <center style="margin-top:12%">
+          <h1 style ="font-style: bold;font-family:Verdana;font-weight: 650;display: inline-block;margin-top: 10px">Food Recommender</h1>
+
+          <!-- <img src="/static/wmt.jpg"  alt="Add to Cart" class="cartbtn"  height="25%" width="40%" style="margin-top: -20px"> -->
+          <div style="margin-top: 10%">
+          <div class="btn-group" style="display: inline-block;width: 35%;background-color: #FFB81C;">
+              <button style="font-size: 1em; font-family:Verdana;background-color: #FFB81C;" type="submit" formaction="{{ url_for('Registration') }}" id="aa">Register</button>
+          </div>
+
+          <div class="btn-group" style="display: inline-block; width: 35%; background-color: #8BC34A;">
+              <button  style="font-size: 1em; font-family: Verdana;background-color: #8BC34A;align-items: center;margin: auto;" type="submit" formaction="{{ url_for('Logging') }}" id="bb">Login</button>
+          </div>
+        </div>
+        </center>
+
+      </form>
+
+      {% if message %}
+      <div class="alert alert-info">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>{{ message }}</strong>
+      </div>
+      {% endif %}
+
+      </body>
+    </html>

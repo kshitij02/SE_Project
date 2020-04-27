@@ -1,0 +1,264 @@
+<!-- Route : "/MealRecommendation"
+Render when View Recommendation button on CartDetailPage is clicked
+Input : List of Meals as per ML algo
+Display : List of objects with Meal name as link(do nothing for now), Add Meal button and Add missing ingredients button.
+Add Meal button: call AddToCart function with MealID as paramter
+Add Missing Ingredients button : call AddMissingProduct function with MealID as paramter
+Skip Recommendation button at the end : will do nothing for now
+Future : We can keep track of number of hits on this button to measure how many people are actually using our recommendations -->
+
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<link href="{{ url_for('static',filename = 'css/styles.css') }}" rel="stylesheet" type="text/css">
+
+<!------ Include the above in your HEAD tag ---------->
+<style>
+  .project-tab {
+    margin-top: -8%;
+}
+.project-tab #tabs{
+    background: #007b5e;
+    color: #eee;
+}
+.project-tab #tabs h6.section-title{
+    color: #eee;
+}
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #0062cc;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+.project-tab .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #0062cc;
+    font-size: 16px;
+    font-weight: 600;
+}
+.project-tab .nav-link:hover {
+    border: none;
+}
+.project-tab thead{
+    background: #f3f3f3;
+    color: #333;
+}
+.project-tab a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+.my-custom-scrollbar {
+position: relative;
+height: 200px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+border-style: solid;
+}
+.container {
+  position: relative;
+  max-width: 100% !important;
+}
+
+.fixed_header{
+    width: 400px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.fixed_header tbody{
+  display:block;
+  width: 100%;
+  overflow: auto;
+  height: 500px;
+}
+
+.fixed_header thead tr {
+   display: block;
+}
+
+.fixed_header thead {
+  background: black;
+  color:#fff;
+}
+
+  </style>
+</head>
+
+<body style="width: 85%;height: 90%;margin-top: 5%;margin-bottom: 5%;margin-left: 10%;background-color:white;font-family: Arial, Helvetica, sans-serif;overflow-x: hidden;">
+  <p style="text-align: center; color : #00498d; font-size : 30px;"><b>Meal Recommendation Wizard</b></p>
+  <input type="text" id="SearchText" onkeyup="SearchProducts()" placeholder="Search for names.." title="Type in a product" style="width:93%; margin-left:3%; padding-right:50px; color: black">
+    <div style="height: 75%; margin-left: 2%; margin-top:2%; margin-right:3%; margin-bottom:3%;">
+
+<section id="tabs" class="project-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" style="margin:unset;">
+                        <nav style="position: fixed; width:80%; margin:unset; padding:unset;">
+                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Recommendations from model</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Recommendations from Database</a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Current Cart Products</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent" style="overflow-y : unset; margin-top:9%;">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <table id="ProductTable1" class="fixed_header" style="margin: unset; padding: unset; width: 100%;">
+                                  <!-- <thead> -->
+                                      <tr style="background-color: #00498d">
+                                        <th >Meal Name</th>
+                                        <th>Add Meal</th>
+                                        <th>Add Missing Ingredients</th>
+                                      </tr>
+                                      <!-- </thead> -->
+                                      <!-- <tbody> -->
+                                      {% for meal in MealList %}
+                                      <tr id="{{meal[0]}}">
+                                        <td >{{ meal[1] }}</td>
+                                        <td><a href="/AddMealToCart/{{ meal[0] }}"><button style="background: #FFB81C" onclick="" id="Total2">Add Meal </button></a>
+                                        </td>
+                                        <td><a href="AddMissingProduct/{{ meal[0] }}"><button style="background: #8BC34A" onclick="" id="Total2">Add Missing Ingredients</button></a>
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                      <!-- </tbody> -->
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <table id="ProductTable2" class="table" cellspacing="0">
+                                  <!-- <thead> -->
+                                      <tr style="background-color: #00498d">
+                                        <th >Meal Name</th>
+                                        <th>Add Meal</th>
+                                        <th>Add Missing Ingredients</th>
+                                      </tr>
+                                      <!-- </thead> -->
+                                      <!-- <tbody> -->
+                                      {% for meal in DbMealList %}
+                                      <tr id="{{meal[0]}}">
+                                        <td >{{ meal[1] }}</td>
+                                        <td><a href="/AddMealToCart/{{ meal[0] }}"><button style="background: #FFB81C" onclick="" id="Total2">Add Meal </button></a>
+                                        </td>
+                                        <td><a href="AddMissingProduct/{{ meal[0] }}"><button style="background: #8BC34A" onclick="" id="Total2">Add Missing Ingredients</button></a>
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                      <!-- </tbody> -->
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <table id="ProductTable3" class="table" cellspacing="0">
+                                  <!-- <thead> -->
+                                      <tr style="background-color: #00498d">
+                                        <th >Ingredient</th>
+                                        <th>View Similar</th>
+                                        <th>View Complement</th>
+                                      </tr>
+                                      <!-- </thead> -->
+                                      <!-- <tbody> -->
+                                      {% for product in CartProducts %}
+                                      <tr id="{{product[0]}}">
+                                        <td >{{ product[1] }}</td>
+                                        <td><a href="/ViewSimilar/{{ product[0] }}"><button style="background: #FFB81C" onclick="" id="Total2">View Similar</button></a>
+                                        </td>
+                                        <td><a href="/ViewComplement/{{ product[0] }}"><button style="background: #8BC34A" onclick="" id="Total2">View Complement</button></a>
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                      <!-- </tbody> -->
+                                </table>
+                            </div>
+                            <div class="element" style="font-size:1rem;">
+
+                              <a href="/Home"><button style="background: #FFB81C" >Continue Shopping</button></a>
+                              <a href="/Logout"><button style="background: #FFB81C" >Checkout</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+
+        <!-- <center>
+        <div class="element2" style="font-size:1rem;">
+
+            <a href="/Home"><button style="background: #FFB81C" onclick="" id="Total2">Continue Shopping</button></a>
+
+          </div>
+          <div class="element3" style="font-size:1rem;">
+
+              <button href="/Logout" style="background: #FFB81C" onclick="" id="Total3">Checkout </button>
+
+            </div>
+
+      </center> -->
+</div>
+
+  <script>
+
+
+  // var tab=document.getElementById('ProductTable1');
+  // prows=tab.rows;
+  // prows[1].parentNode.removeChild(prows[1]);
+
+//   $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+//    $($.fn.dataTable.tables(true)).DataTable()
+//       .columns.adjust()
+//       .responsive.recalc();
+// });
+
+  function SearchProducts() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue, TableIds;
+    input = document.getElementById("SearchText");
+    filter = input.value.toUpperCase();
+    TableIds = ["ProductTable1", "ProductTable2", "ProductTable3"]
+
+    for (var i = 0; i < TableIds.length; i++)
+    {
+      table = document.getElementById(TableIds[i]);
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++)
+      {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td)
+        {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1)
+          {
+            tr[i].style.display = "";
+          }
+          else
+          {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  }
+
+
+  </script>
+
+</body>
+</html>

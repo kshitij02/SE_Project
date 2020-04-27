@@ -1,0 +1,77 @@
+<html>
+  <head>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link href="{{ url_for('static', filename='/css/styles.css') }}" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      </head>
+
+        <body style="width: 85%;height: 90%;margin-top: 5%;margin-bottom: 5%;margin-left: 10%;background-color:white;font-family: Arial, Helvetica, sans-serif;overflow-x: hidden;">
+          <p style="text-align: center; color : #00498d; font-size : 30px;"><b>{{Heading}}</b></p>
+
+
+          <input type="text" id="SearchText" onkeyup="SearchProducts()" placeholder="Search for names.." title="Type in a product" style="width:93%; margin-left:3%; padding-right:50px; color: black">
+            <div style="height: 75%; margin-left: 2%; margin-top:2%; margin-right:3%; margin-bottom:3%;">
+          <table id="ProductTable">
+
+            <tr class="header">
+              <th >Product Name</th>
+              <th>Price</th>
+              <th>Buy Now</th>
+            </tr>
+
+
+            {% for product in ProductList %}
+            <tr>
+              <td >{{ product[1] }}</td>
+              <td>{{ product[2] }}</td>
+              {% if product[0] in Cart_Products %}
+              <td id="{{product[0]}}"><a href="/RemoveFromCart/{{ product[0]}}"><img src="/static/img/remove-from-cart.png" alt="Remove from Cart" title="Remove From Cart" class="cartbtn"  height="10%" width="10%" ></a></td>
+              {% else %}
+                <td id="{{product[0]}}"><a href="/AddToCart/{{ product[0]}}"><img src="/static/img/add-to-cart.png" alt="Add to Cart" title="Add to Cart" class="cartbtn"  height="10%" width="10%" ></a></td>
+              {% endif %}
+
+            </tr>
+            {% endfor %}
+
+          </table>
+          </div>
+
+          <div class="element" >
+
+            <a href="/ViewCart"><button style="background: #FFB81C" >Go To My Cart</button></a>
+            <a href="/Recommendations"><button style="background: #FFB81C" >Recommend recipes</button></a>
+          </div>
+
+
+          <script>
+              function SearchProducts() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("SearchText");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("ProductTable");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                  td = tr[i].getElementsByTagName("td")[0];
+                  if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                      tr[i].style.display = "";
+                    } else {
+                      tr[i].style.display = "none";
+                    }
+                  }
+                }
+              }
+              </script>

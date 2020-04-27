@@ -1,0 +1,159 @@
+<!-- Loads at route : "/FoodPreferenceForm"
+Loads when Register button is clicked on Registration Page
+Form with fields: Favourite cuisines (Dropdown, Multiple selection allowed),
+                  Food Spiciness (Dropdown), Allergies (Dropdown with ingredients
+                  in dataabse along with "None" and "Other" option), Location (Dropdown with Indian states)
+Buttons : DONE, SKIP
+On click SKIP button: Redirects to route "/Logging" or function Logging()
+On click DONE button: Redirects to route "/Food_Prefernce_Data" or function Food_Prefernce_Data()
+                      Submit form data
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <link href="{{ url_for('static', filename='/css/styles.css') }}" rel="stylesheet" type="text/css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style>
+  label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+input {
+  width: 30px;
+  height: 20px;
+  padding: 0;
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+}
+  </style>
+  </head>
+  <!-- 00498d -->
+  <body style="background-color:#00498d; width: 80%; margin-left:15%;">
+    <p class="label-txt" style="text-align: center; color : #00498d; font-size : 30px; top:12%; left:45%;"><b>Food Preference</b></p>
+
+    <form action="/" method="post" style="background-color:white;width: 100%;height: 85%; margin-left:0px; margin-right:0px; padding:2%;">
+
+      <div>
+        <div style="float: left; width:40%;">
+          <label style="width:100%;">
+            <p class="label-txt" style="text-align: left; color : #00498d; font-size : 1rem;"><b>Food Choice</b></p>
+            <br>
+            <select id="foodchoice" name="foodchoice" style="width:80%;">
+              <option value="Vegetarian">Vegetarian </option>
+              <option value="Non-Vegetarian">Non - Vegetarian</option>
+              <option value="Eggitarian">Eggitarian</option>
+              <option value="Vegan">Vegan</option>
+            </select>
+          </label>
+
+          <label style="width:100%;">
+            <p class="label-txt" style="text-align: left; color : #00498d; font-size : 1rem;"><b>Favourite Cuisines</b></p>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Italian">Italian</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Mexican">Mexican</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Arabic or Turkish">Arabic or Turkish</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Chinese">Chinese</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="American">American</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="African">African</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Jamaican">Jamaican</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Indian">Indian</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Kid Friendly">Kid Friendly</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Mediterranean">Mediterranean</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Asian">Asian</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Greek">Greek</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Portuguese">Portuguese</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Hungarian">Hungarian</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Swedish">Swedish</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Hawaiian">Hawaiian</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Cuban">Cuban</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Japanese">Japanese</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Irish">Irish</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="German">German</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Thai">Thai</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Spanish">Spanish</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="English">English</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Barbecue">Barbecue</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="Southwestern">Southwestern</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="cuisine" value="French">French</label></div>
+          </label>
+        </div>
+
+        <div style="float: right;  width:40%;">
+          <label style="width:100%;">
+            <p class="label-txt" style="text-align: left; color : #00498d; font-size : 1rem;"><b>Food Spiciness</b></p>
+            <br>
+            <select id="spiciness" name="spiciness" style="width:80%;">
+              <option value="Low">Low</option>
+              <option value="Moderate">Moderate</option>
+              <option value="High">High</option>
+            </select>
+          </label>
+
+          <label style="width:100%;">
+            <p class="label-txt" style="text-align: left; color : #00498d; font-size : 1rem;"><b>Location</b></p>
+            <br>
+            <select id="location" name="location" style="width:80%;">
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="UttarPradesh">Uttar Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="WestBengal">West Bengal</option>
+            </select>
+          </label>
+
+          <label style="width:100%;">
+            <p class="label-txt" style="text-align: left; color : #00498d; font-size : 1rem;"><b>Allergies</b></p>
+
+            <div class="checkbox"><label><input type="checkbox" name="allergy" value="No">None</label></div>
+            {% for product in ProductList %}
+            <div class="checkbox"><label><input type="checkbox" name="allergy" value="{{ product[1] }}">{{ product[1] }}</label></div>
+            {% endfor %}
+          </label>
+        </div>
+
+      </div>
+      <div class="btn-group" style="position: absolute; bottom: 10%; left: 40%; padding: unset;margin: unset;">
+          <button  type="submit" style="font-size: 1em;background-color:#FFB81C; width:200px;" formaction="{{ url_for('Food_Preference_Form') }}">DONE</button>
+          <button  type="submit" style="font-size: 1em;background-color:#FFB81C; width:200px; margin-left:20px;" formaction="{{ url_for('Logging') }}">SKIP</button>
+      </div>
+
+    </form>
+
+  </body>
+</html>
