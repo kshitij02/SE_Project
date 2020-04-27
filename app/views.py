@@ -250,13 +250,7 @@ def GetPredictedProductsBasedOnTransactionHistory():
     Cart_Products_Names.sort()
     Cart_Products_Names_Str=",".join(Cart_Products_Names)
     # Get Predicated_Product_Names_List
-<<<<<<< HEAD
-    Predicated_Products_Name=reterving_results_form_transaction_history(Cart_Products_Names,Absolute_Trained_Model_Path)
-
-=======
     Predicated_Products_Name=reterving_results_form_transaction_history(Cart_Products_Names_Str,Absolute_Trained_Model_Path)
-
->>>>>>> 9ea0c9c9960f4c33437a1c1e99a106abc286d39b
     # Get Predicated_Product_Names_List to Predicated_Object_List
 
     Predicted_Products=[]
@@ -305,11 +299,7 @@ def GetRecipeRecommendations(Cart_Products,Predicted_Products):
     # 6. return final list
     ModelPath = Absolute_Trained_Model_Path + "Recommender_Data/word2vec_cl_new_ng7.model"
     VectorPath = Absolute_Trained_Model_Path + "Recommender_Data/culinaryDB_new_vectors.pkl"
-<<<<<<< HEAD
     return suggest_recipe(Cart_Product_Names, Predicted_Product_Names, ModelPath, VectorPath)
-=======
-    return suggest_recipe(Cart_Product_Names,Predicted_Product_Names, ModelPath, VectorPath)
->>>>>>> 9ea0c9c9960f4c33437a1c1e99a106abc286d39b
 
 
 
