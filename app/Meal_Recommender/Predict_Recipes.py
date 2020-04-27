@@ -69,13 +69,14 @@ def suggest_recipe(current_ingredients,predicted_ingredients, ModelPath, Vectors
                 break
         if flag == 1:
             continue
-        x = cosine_similarity(current_sum,vector.reshape(1,-1))
+        # x = cosine_similarity(current_sum,vector.reshape(1,-1))
+        x = np.dot(current_sum,vector.reshape(-1,1))
         id_cos.append((x,recipe_id))
     id_cos = sorted(id_cos,reverse=True)
     count = 0
     for i in id_cos:
         recommended_recipes.append(i[1])
         count += 1
-        if(count>10):
+        if(count>20):
             break
     return recommended_recipes

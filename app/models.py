@@ -55,9 +55,10 @@ class UserDetails(db.Model):
     spiciness = db.Column(db.String(60))
     food_choice = db.Column(db.String(60))
     state = db.Column(db.String(60))
+    allergy = db.Column(db.String(60))
 
     def __repr__(self):
-        return "UserDetails('{self.user_id}', '{self.fav_cuisine}', '{self.spiciness}', '{self.food_choice}' '{self.state}')"
+        return "UserDetails('{self.user_id}', '{self.fav_cuisine}', '{self.spiciness}', '{self.food_choice}','{self.state}','{self.allergy}')"
 
 class UserAllergies(db.Model):
     __tablename__ = 'UserAllergies'

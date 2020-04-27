@@ -27,8 +27,10 @@ from app.Meal_Recommender.Predict_Recipes import*
 from app.Meal_Recommender.Predict_Persona import*
 from app.Meal_Recommender.Predict_Autoencoder import*
 from app.Meal_Recommender.personalised_prediction import*
+
 from app.Meal_Recommender.Predication_Transaction_History import *
-Absolute_Trained_Model_Path = "/Users/pranjali/Downloads/SE_Project_UI/app/Trained_Models/"
+Absolute_Trained_Model_Path = "/Users/kratikakothari/Desktop/SE/Project/User_Interface/SE_Project/app/Trained_Models/"
+
 
 
 @app.route('/')
@@ -66,7 +68,7 @@ def Food_Preference_Form():
                 allergies_str = allergies_str + allergy + ","
 
         Num_Users = int(max(Credentials.query.with_entities(Credentials.user_id))[0])
-        UserDetail = UserDetails(user_id = Num_Users+1 , fav_cuisine = cuisines_str, spiciness = spiciness, food_choice = foodchoice, state = location)
+        UserDetail = UserDetails(user_id = Num_Users+1 , fav_cuisine = cuisines_str, spiciness = spiciness, food_choice = foodchoice, state = location, allergy = allergies_str)
 
         db.session.add(UserDetail)
         db.session.commit()
@@ -226,15 +228,16 @@ def GetPredictedProducts():
             Cart_Product_obj.append(product_obj)
 
     print("Cart Products: ", Cart_Product_obj)
-    print("Predicted_Products: ", Predicted_Products)
+    # print("Predicted_Products: ", Predicted_Products)
 
     return Predicted_Products
 
 # Returns Object of products with Given Product Name
 def GetProductObject(ProductName):
     # 1. Database query to fetch current cart products for the user
-    product_n = Product.query.filter(Product.Product_Name == ProductName).first()
-    return product_n
+    product_n = Product.query.filter(Product.name == ProductName).first()
+    Product_Tuple = [product_n.product_id , product_n.name, product_n.price]
+    return Product_Tuple
 
 # Returns List Product Objects on basis Apriori On Transaction History
 def GetPredictedProductsBasedOnTransactionHistory():
@@ -247,8 +250,13 @@ def GetPredictedProductsBasedOnTransactionHistory():
     Cart_Products_Names.sort()
     Cart_Products_Names_Str=",".join(Cart_Products_Names)
     # Get Predicated_Product_Names_List
+<<<<<<< HEAD
     Predicated_Products_Name=reterving_results_form_transaction_history(Cart_Products_Names,Absolute_Trained_Model_Path)
 
+=======
+    Predicated_Products_Name=reterving_results_form_transaction_history(Cart_Products_Names_Str,Absolute_Trained_Model_Path)
+
+>>>>>>> 9ea0c9c9960f4c33437a1c1e99a106abc286d39b
     # Get Predicated_Product_Names_List to Predicated_Object_List
 
     Predicted_Products=[]
@@ -297,7 +305,11 @@ def GetRecipeRecommendations(Cart_Products,Predicted_Products):
     # 6. return final list
     ModelPath = Absolute_Trained_Model_Path + "Recommender_Data/word2vec_cl_new_ng7.model"
     VectorPath = Absolute_Trained_Model_Path + "Recommender_Data/culinaryDB_new_vectors.pkl"
+<<<<<<< HEAD
     return suggest_recipe(Cart_Product_Names, Predicted_Product_Names, ModelPath, VectorPath)
+=======
+    return suggest_recipe(Cart_Product_Names,Predicted_Product_Names, ModelPath, VectorPath)
+>>>>>>> 9ea0c9c9960f4c33437a1c1e99a106abc286d39b
 
 
 
@@ -401,7 +413,7 @@ def GetCurrentCart():
     return Cart_Products
 
 
-# Returns name of products in current cart
+# Returns name of product
 def GetProductName(ProductID):
     # 1. Database query to fetch current cart products for the user
     product_n = Product.query.filter(Product.product_id == ProductID).first()
@@ -424,7 +436,80 @@ def GetMealDetails(MealIDs):
     # return Meal_Names,Meal_Details
     return Meal_Names
 
+def GetUserDetails():
+    uid = current_user.get_id()
+    userdetails_n = UserDetails.query.filter(UserDetails.user_id == uid).first()
+    user_n = User.query.filter(User.user_id == uid).first()
+    if(userdetails_n is not None):
+        User_Details = (userdetails_n.user_id , userdetails_n.fav_cuisine, userdetails_n.spiciness,
+            userdetails_n.food_choice,userdetails_n.state, userdetails_n.allergy, user_n.gender)
+        return User_Details
+    else:
+        return None
 
+def Predict_Cuisines(User_Details):
+    Model_Path = Absolute_Trained_Model_Path + "Associative_Rules_Data/cuis_data.pkl"
+    with open(Model_Path,'rb') as f:
+        cuisine_model = pickle.load(f)
+    return cuisine_model[User_Details[0]]
+
+def Rank_By_Cuisine(cuisine,Recommendations):
+    new_Recommendations = []
+    cusine_mapping#to be loaded
+    meal_cuisines = []
+    for i in Recommendations:
+        meal_id = i[0]
+        meal_cuisine = MealDetails.query.with_entities(MealDetails.meal_id == meal_id, MealDetails.cuisine).first()
+        meal_cuisines.append((cuisine_mapping[meal_cuisine],i))
+    for i in meal_cuisines:
+        if i[0] in cuisine:
+            new_Recommendations.append(i[1])
+    for i in Recommendations:
+        if i not in new_Recommendations:
+            new_Recommendations.append(i)
+    return new_Recommendations
+
+def Filter_By_FoodChoice(food_choice,Recommendations):
+    nonveg = "Non - Vegetarian"
+    egg = "Eggiterian"
+    veg = "Vegetarian"
+    if food_choice.strip() == nonveg:
+        return Recommendations
+    data_path = Absolute_Trained_Model_Path+"/Recommender_Data/Food_Category.json"
+    with open(data_path,'r') as f:
+        food_choice_data = json.load(f)
+    new_Recommendations = []
+    for i in Recommendations:
+        meal_id = i[0]
+        ingredients = Meal.query.filter(Meal.meal_id == meal_id).all()
+        ingredient_names = []
+        for ingredient in ingredients:
+            product_n = Product.query.filter(Product.product_id == ingredient.product_id).first()
+            ingredient_names.append(product_n.name)
+        if(food_choice.strip() == egg or food_choice.strip() == veg):
+            if(len(set(ingredient_names).intersection(set(food_choice_data["Non-Veg"])))):
+                continue
+            else:
+                if(food_choice.strip() == veg):
+                    if(len(set(ingredient_names).intersection(set(food_choice_data["Egg"])))):
+                        continue
+                    else:
+                        new_Recommendations.append(i)
+                else:
+                    new_Recommendations.append(i)
+    return new_Recommendations
+
+
+def Personalise_Recommendations(Recipe_Recommendations,DB_Recipe_Recommendations):
+    User_Details = GetUserDetails()
+    if User_Details is None:
+        return Recipe_Recommendations,DB_Recipe_Recommendations
+    else:
+        cuisines = Predict_Cuisines(User_Details)
+        Recipe_Recommendations = Filter_By_FoodChoice(User_Details[3],Recipe_Recommendations)
+        DB_Recipe_Recommendations = Filter_By_FoodChoice(User_Details[3],DB_Recipe_Recommendations)
+        return Recipe_Recommendations,DB_Recipe_Recommendations
+        # return Rank_By_Cuisine(cuisines,Recipe_Recommendations),Rank_By_Cuisine(cuisines,DB_Recipe_Recommendations)
 
 
 @app.route('/Home', methods = ['GET', 'POST'])
@@ -549,12 +634,19 @@ def Recommendations():
     Predicted_Products = []
     Cart_Product_Ids = GetCurrentCart()
     Predicted_Products = GetPredictedProducts()
+    print("COLLABORATIVE FILTERING RESULTS", Predicted_Products)
+    AR_Predicted_Products = GetPredictedProductsBasedOnTransactionHistory()
+    print("ASSOCIATIVE RULE RESULTS", AR_Predicted_Products)
+    Predicted_Products.extend(AR_Predicted_Products)
     Recipe_Recommendations = GetRecipeRecommendations(Cart_Product_Ids,Predicted_Products)
     Recipe_Recommendations = GetMealDetails(Recipe_Recommendations)
     DB_Recipe_Recommendations = GetRecipesFromDB(Cart_Product_Ids,Predicted_Products)
     Cart_Products = []
     for product_id in Cart_Product_Ids:
         Cart_Products.append([product_id,GetProductName(product_id)])
+    Recipe_Recommendations,DB_Recipe_Recommendations = Personalise_Recommendations(Recipe_Recommendations,DB_Recipe_Recommendations)
+    if len(Recipe_Recommendations)>10:
+        Recipe_Recommendations = Recipe_Recommendations[:10]
     return render_template('MealRecommendation.html',MealList = Recipe_Recommendations,DbMealList = DB_Recipe_Recommendations,CartProducts = Cart_Products)
 
 @app.route('/RemoveFromCart/<ProductID>', methods = ['GET', 'POST'])
