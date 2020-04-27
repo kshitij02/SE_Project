@@ -1,0 +1,621 @@
+,ProductID,ProductName,Price,CategoryID,Class,ModifyDate,Resistant,IsAllergic,VitalityDays
+0,1,flour,"74,2988",3,Medium,2018-02-16 08:21:49.190,Durable,,
+1,2,butter,"91,2329",3,Medium,2017-02-12 11:39:10.970,,,
+2,3,onion,"9,1379",9,Medium,2018-03-15 08:11:51.560,Weak,False,111.0
+3,4,tandoori paste,"54,3055",9,Medium,2017-07-16 00:46:28.880,Durable,,
+4,5,artichoke,"65,4771",2,Low,2017-08-16 14:13:35.430,Durable,True,27.0
+5,6,wine red,"79,7184",8,High,2017-05-25 15:08:39.690,,,
+6,7,corn flour,"31,837",9,Medium,2017-02-24 15:14:30.050,Durable,False,
+7,8,halibut,"89,8573",5,Medium,2018-03-24 05:21:21.890,,True,108.0
+8,9,rabbit,"84,4219",11,Medium,2017-06-17 12:12:04.670,Durable,,
+9,10,prawn,"95,0957",4,Low,2017-07-30 10:11:45.990,Weak,True,105.0
+10,11,potato,"6,2949",9,Low,2017-01-05 21:02:21.330,Durable,True,67.0
+11,12,raisin,"49,3356",4,Medium,2017-11-01 09:49:59.030,Durable,True,
+12,13,water,"28,2232",11,Low,2017-01-16 19:49:10.930,Durable,False,69.0
+13,14,beef,"3,3324",7,Medium,2017-02-26 11:40:47.850,Durable,True,
+14,15,baking mix,"32,442",1,Low,2017-03-03 09:47:09.310,Weak,True,
+15,16,cereal,"54,7246",2,Low,2017-01-23 09:25:47.110,Durable,True,
+16,17,wine white,"43,9182",10,Medium,2017-03-01 14:03:04.920,,,
+17,18,lamb,"23,3966",10,Medium,2017-12-19 16:45:04.730,,False,
+18,19,tea black,"22,5614",3,Medium,2017-06-14 22:39:53.340,Weak,True,94.0
+19,20,chocolate,"85,9011",3,Low,2017-07-21 11:13:57.550,Durable,True,
+20,21,kiwi,"46,7252",7,High,2018-05-09 08:59:46.150,Durable,,
+21,22,rice,"27,8955",6,Medium,2017-05-09 14:08:23.630,Weak,,48.0
+22,23,crabmeat,"79,0184",11,Medium,2017-08-19 07:18:29.890,Durable,True,
+23,24,salt,"89,037",3,Medium,2017-05-23 03:36:02.420,Durable,True,65.0
+24,25,mixed nut,"80,7666",10,High,2017-04-09 15:30:41.250,Durable,True,
+25,26,squid,"33,7821",11,Medium,2018-03-26 19:31:26.970,Weak,False,10.0
+26,27,chocolate spread,"17,1724",1,Medium,2017-10-29 17:27:27.280,,,86.0
+27,28,fruit juice,"12,3153",9,High,2017-10-25 04:23:48.230,Durable,True,
+28,29,spinach,"33,5883",7,Low,2017-08-06 17:21:24.000,Durable,True,50.0
+29,30,cheese cream,"67,899",6,Low,2018-03-21 19:28:46.740,Weak,,72.0
+30,31,yeast,"73,9851",2,Medium,2017-04-17 23:33:06.110,Durable,False,
+31,32,lettuce,"96,4127",3,High,2017-01-09 18:29:05.790,Durable,True,
+32,33,bean green,"45,5551",10,Medium,2017-02-01 15:20:22.860,Weak,True,
+33,34,mustard,"43,3463",6,Medium,2017-09-21 16:05:20.820,Weak,,7.0
+34,35,cream,"15,7233",6,Low,2017-10-01 15:36:07.080,Durable,True,97.0
+35,36,parsley,"69,2574",9,Low,2018-03-04 18:24:57.500,Durable,True,
+36,37,chestnut,"80,3171",7,Low,2017-02-27 14:01:39.130,,False,
+37,38,sage,"81,6579",6,High,2017-09-26 00:45:35.600,Weak,False,
+38,39,fig,"75,2059",11,Medium,2017-08-04 21:51:44.260,Weak,False,120.0
+39,40,cocktail,"8,9372",8,Low,2017-06-28 03:05:34.400,,,
+40,41,coffee,"81,721",7,Medium,2018-03-15 16:02:55.860,,True,
+41,42,breadfruit,"81,0488",1,High,2018-04-01 08:39:17.290,Weak,False,
+42,43,sponge cake,"16,3983",9,High,2017-08-12 13:40:16.800,Weak,True,96.0
+43,44,vegetable oil,"48,5981",7,High,2018-04-09 16:28:48.450,Durable,True,
+44,45,lemon,"79,5324",4,Medium,2018-03-23 17:00:00.370,Weak,True,
+45,46,cilantro,"86,7915",9,High,2017-07-12 21:27:57.760,Durable,False,
+46,47,thyme,"47,1339",9,High,2018-02-16 02:50:46.780,Weak,False,
+47,48,pecan,"60,3625",7,Low,2017-11-26 03:31:03.240,,,114.0
+48,49,beer,"61,4317",8,High,2017-01-03 12:21:41.850,Durable,False,
+49,50,pork,"43,2864",7,High,2018-04-21 00:02:16.210,Weak,True,
+50,51,cayenne,"81,0134",11,Medium,2017-05-16 18:38:05.230,,,
+51,52,turnip,"55,6059",1,Low,2017-06-27 06:39:03.810,Durable,False,
+52,53,blackberry brandy,"92,6279",8,Medium,2018-02-16 15:42:44.950,Weak,True,
+53,54,banana,"53,5592",9,Medium,2017-06-23 03:31:04.500,Weak,True,
+54,55,cinnamon,"6,6182",3,High,2018-03-05 08:20:42.050,,False,85.0
+55,56,potato chip,"46,4033",9,Low,2017-10-10 18:13:25.560,Weak,False,
+56,57,sausage,"12,2145",3,Low,2017-11-03 04:20:41.080,,True,103.0
+57,58,miso,"20,1009",7,Low,2017-10-24 04:35:49.140,Durable,,91.0
+58,59,pastry,"73,5389",10,High,2017-04-08 09:15:47.620,,False,
+59,60,paprika,"31,6949",2,Medium,2017-09-29 18:42:08.470,Weak,,
+60,61,sardine,"62,546",8,Low,2017-12-03 21:41:12.420,Durable,False,90.0
+61,62,pear,"19,5217",1,Medium,2017-09-09 10:50:41.830,,,13.0
+62,63,ginger,"56,2689",9,Low,2017-08-18 11:59:57.890,Weak,,
+63,64,vinegar,"16,5229",6,Low,2017-08-05 16:43:17.930,,True,94.0
+64,65,brandy,"21,1106",3,High,2017-04-14 10:38:39.870,Weak,False,
+65,66,cherry,"9,8823",7,Medium,2018-05-06 02:33:15.540,Weak,False,
+66,67,rose wine,"3,7805",5,Low,2017-09-30 18:29:36.160,,True,108.0
+67,68,beet,"84,8769",6,High,2017-09-04 03:43:50.120,Durable,False,72.0
+68,69,raspberry,"87,6092",1,Low,2017-10-04 20:04:40.780,,True,
+69,70,carrot,"63,1846",4,Low,2017-05-08 15:22:11.810,Weak,True,45.0
+70,71,cheese white,"74,4076",6,Low,2018-04-04 19:24:07.990,Durable,,
+71,72,dried mixed fruit,"62,2603",4,High,2017-10-13 13:17:29.330,Durable,False,
+72,73,basil,"48,1907",11,Low,2017-05-17 18:53:20.470,Weak,True,
+73,74,soft drink,"13,6241",7,Medium,2018-04-26 19:34:18.940,Durable,False,26.0
+74,75,bun,"4,18",8,High,2017-09-14 19:11:01.690,Durable,,116.0
+75,76,celery,"65,6765",6,Low,2017-02-08 00:20:28.860,Durable,False,95.0
+76,77,oregano,"11,4971",9,Medium,2018-02-04 00:28:06.840,Durable,False,
+77,78,onion red,"30,4202",4,Medium,2017-09-18 14:49:41.440,Weak,,
+78,79,pasta,"9,5045",11,High,2017-07-09 10:36:02.050,Weak,False,104.0
+79,80,wasabi,"93,9752",2,High,2018-02-04 18:02:43.490,Weak,True,
+80,81,biscuit,"86,6483",2,Medium,2017-02-08 16:40:40.180,,,
+81,82,soy sauce,"56,8099",5,Low,2018-04-12 13:56:24.050,,,63.0
+82,83,shallot,"50,8837",1,High,2017-10-22 16:02:06.370,Durable,,116.0
+83,84,pea,"90,3019",1,Medium,2017-08-25 17:19:07.790,Durable,False,
+84,85,cheese parmesan,"86,8857",7,High,2017-11-06 00:50:41.510,Durable,,
+85,86,chicken,"18,3791",2,Low,2018-02-28 16:54:02.310,Weak,False,
+86,87,honey,"3,7847",7,Low,2017-04-02 02:46:20.850,,False,
+87,88,coconut,"91,996",2,Low,2017-12-19 11:49:18.370,Durable,,
+88,89,turmeric,"36,7281",3,Medium,2017-11-26 07:44:38.770,Weak,True,
+89,90,orange,"69,32",9,High,2018-04-30 21:22:41.530,,True,37.0
+90,91,almond,"57,0429",6,High,2017-05-02 14:04:16.410,Durable,True,97.0
+91,92,scallion,"60,2161",1,Low,2017-09-13 09:25:50.000,Weak,,
+92,93,coconut milk,"8,119",8,Low,2017-06-20 15:29:47.970,Durable,False,11.0
+93,94,strawberry,"43,5109",9,High,2018-03-15 03:09:35.790,Weak,,108.0
+94,95,bean kidney,"46,3913",1,High,2017-12-02 05:24:21.990,,,
+95,96,nutmeg,"62,1993",7,High,2017-07-07 05:12:14.030,,False,
+96,97,veal,"24,7798",4,Medium,2017-08-14 20:39:19.390,Weak,True,
+97,98,shrimp,"99,8755",3,High,2017-01-07 20:56:58.860,Weak,False,
+98,99,sesame,"27,4874",5,Low,2017-12-27 05:50:08.570,Weak,True,
+99,100,mint,"69,6501",9,Low,2018-03-27 14:26:44.840,Durable,,7.0
+100,101,lentil,"83,011",4,Medium,2018-02-19 02:58:21.610,Durable,,99.0
+101,102,rosemary,"62,257",4,High,2017-06-14 23:06:56.660,,False,
+102,103,lemon juice,"72,7534",7,Low,2017-02-22 07:26:22.460,,,
+103,104,coriander,"98,2471",5,High,2018-01-04 20:59:30.040,,False,
+104,105,baking soda,"68,8789",1,Medium,2017-01-17 04:38:08.220,Durable,True,
+105,106,walleye,"18,753",7,High,2017-12-11 05:20:35.910,Weak,False,19.0
+106,107,bread wheaten,"7,4151",1,High,2017-02-10 11:45:43.340,Weak,False,
+107,108,buttermilk,"79,0038",1,High,2018-03-01 20:08:26.010,Weak,True,
+108,109,clove,"49,3791",1,Medium,2018-02-15 08:20:02.820,Durable,False,
+109,110,currant black,"40,9417",9,High,2018-01-26 08:00:13.180,Durable,,48.0
+110,111,scallop,"34,9061",11,Medium,2018-01-13 17:45:18.720,Durable,,
+111,112,sugar,"81,7943",10,High,2017-02-15 13:30:59.640,Weak,,
+112,113,jalapeno,"10,5964",7,Low,2017-04-17 17:59:47.080,,False,106.0
+113,114,corn,"79,5638",8,High,2017-07-11 15:13:04.140,Weak,True,93.0
+114,115,grapefruit,"45,0466",11,Low,2017-08-22 02:01:28.280,Weak,False,
+115,116,vegetable stock,"5,736",3,Low,2017-12-31 07:44:48.370,Weak,True,104.0
+116,117,ketchup,"68,638",11,High,2018-03-27 18:48:35.460,Weak,,
+117,118,cucumber,"65,967",9,High,2018-05-02 18:40:50.110,Weak,,
+118,119,egg,"29,6372",11,Medium,2018-02-06 15:52:36.430,,False,
+119,120,worcestershire sauce,"2,7314",2,Medium,2017-06-23 17:44:37.560,Durable,,94.0
+120,121,syrup,"6,0976",11,Low,2018-02-03 23:46:54.680,Durable,,
+121,122,tortilla,"11,7845",4,High,2018-02-19 06:40:17.800,Weak,False,
+122,123,cooking oil,"48,1487",4,Low,2018-02-15 19:59:11.350,,,
+123,124,walnut,"18,2891",4,Low,2017-10-13 22:41:59.260,,True,81.0
+124,125,chive,"6,1417",9,Low,2017-01-07 01:17:55.400,Weak,False,
+125,126,graham cracker,"14,1914",6,Low,2017-07-23 09:58:17.980,,,76.0
+126,127,mango,"54,1413",8,Medium,2017-04-25 21:47:41.350,,False,34.0
+127,128,fennel,"4,6797",2,Medium,2017-07-12 15:43:44.680,Durable,,71.0
+128,129,cabbage,"67,2329",7,High,2017-05-26 14:09:56.940,Durable,True,
+129,130,cardamom,"41,9808",2,Low,2017-03-11 13:58:47.650,,False,
+130,131,anchovy,"40,8967",3,Medium,2017-11-03 03:41:09.480,Durable,False,
+131,132,avocado,"11,6217",6,High,2018-01-28 03:31:07.970,Weak,False,24.0
+132,133,cider vinegar,"2,9327",11,Low,2018-01-30 08:59:32.870,Weak,,
+133,134,dill,"39,8545",2,High,2017-08-21 20:09:17.220,Weak,True,
+134,135,chickpea,"10,9641",10,Low,2018-04-25 15:04:21.890,Durable,False,61.0
+135,136,puff pastry,"24,3913",10,Medium,2018-01-03 17:33:43.530,Weak,True,
+136,137,allspice,"84,0566",10,Low,2018-02-19 06:30:01.590,Durable,False,
+137,138,rum,"52,6367",7,Low,2018-02-24 19:02:36.330,Durable,,
+138,139,wheat,"21,423",1,High,2017-08-09 12:40:59.570,Weak,False,
+139,140,green chile,"68,1326",11,High,2018-04-04 19:30:05.600,Durable,,16.0
+140,141,tea leaf willow,"10,964",1,Low,2018-01-19 05:08:18.970,Durable,True,37.0
+141,142,bacon,"24,7809",6,Medium,2017-06-10 06:37:54.840,Weak,True,
+142,143,ham,"42,6169",1,Medium,2018-03-13 03:29:15.560,,True,
+143,144,garam masala,"95,7865",5,Medium,2018-03-09 23:44:25.600,Durable,False,
+144,145,wine,"34,4139",9,Low,2017-04-18 03:37:22.800,Durable,,27.0
+145,146,caper,"75,2486",7,High,2017-03-18 00:33:16.760,Durable,False,
+146,147,cheese mozzarella,"49,6197",5,High,2017-05-29 15:26:02.910,,False,
+147,148,hot sauce,"28,5553",11,Medium,2018-04-19 00:16:43.830,Durable,True,91.0
+148,149,zucchini,"98,4644",10,High,2017-07-25 01:08:07.500,Weak,True,
+149,150,asafoetida,"40,6552",9,High,2018-04-10 21:39:33.620,Durable,False,
+150,151,mushroom,"93,5613",7,High,2017-08-19 10:23:38.570,Weak,True,
+151,152,shortening,"58,8128",7,Medium,2017-08-22 01:58:29.290,,,26.0
+152,153,tea green,"70,2382",4,Low,2017-04-10 05:04:22.440,Weak,False,
+153,154,ice cream,"24,756",4,Medium,2017-07-06 12:05:31.010,Weak,True,
+154,155,pea pigeon,"63,5524",9,High,2017-02-21 14:39:50.150,Weak,False,
+155,156,alfalfa,"71,2264",1,High,2018-05-09 20:18:03.820,Durable,False,
+156,157,cranberry,"14,1082",11,Medium,2017-09-06 03:07:45.320,,False,19.0
+157,158,apricot,"54,4643",4,High,2017-09-18 08:44:23.210,,False,18.0
+158,159,eggplant,"92,1053",7,Medium,2017-12-29 19:41:34.640,Durable,True,
+159,160,ghee,"54,6874",7,Medium,2017-11-03 18:39:50.240,Weak,True,
+160,161,tarragon,"64,6118",10,Low,2017-08-18 07:32:54.550,Weak,,
+161,162,barbeque sauce,"2,7353",11,Medium,2017-12-08 20:01:58.660,Weak,True,117.0
+162,163,tomato,"11,7708",6,Low,2017-10-07 05:58:29.070,,True,116.0
+163,164,half half,"7,3982",11,Medium,2017-12-07 18:21:15.160,,False,
+164,165,bread,"0,0449",6,Low,2017-03-26 04:19:03.700,,False,
+165,166,cake mix,"23,2843",5,High,2018-04-25 14:14:10.760,Durable,False,
+166,167,cheese ricotta,"78,8615",11,Medium,2017-05-26 04:31:26.770,Durable,False,
+167,168,milk,"70,7419",6,Medium,2018-01-03 21:50:29.860,,True,29.0
+168,169,spaghetti,"68,5996",10,Medium,2017-07-26 00:08:42.260,,False,
+169,170,saffron,"20,6553",1,Medium,2017-12-26 08:27:44.760,Durable,False,
+170,171,leek,"21,6794",5,High,2018-03-21 01:14:46.790,Durable,False,
+171,172,sherry,"16,0013",5,High,2017-01-31 23:45:59.130,Durable,,72.0
+172,173,cooking spray,"44,544",8,Low,2017-09-24 05:59:50.530,Durable,False,
+173,174,guinea hen,"61,5047",11,High,2018-03-13 20:22:30.840,Durable,True,
+174,175,canola oil,"91,7675",1,Low,2017-10-12 12:36:18.600,Weak,True,52.0
+175,176,vodka,"81,3167",6,High,2017-08-27 17:08:59.840,Durable,True,90.0
+176,177,pine,"69,1677",3,Medium,2018-04-18 03:11:02.240,Weak,True,
+177,178,whiskey,"52,3623",10,High,2018-04-17 20:14:45.760,Weak,True,
+178,179,yoghurt,"83,8752",6,Low,2017-06-28 19:04:36.450,Durable,,26.0
+179,180,red chile,"30,8932",3,Low,2018-03-01 00:44:38.640,Durable,True,27.0
+180,181,peanut oil,"64,5718",1,Medium,2017-02-24 18:32:15.070,,False,
+181,182,gin,"25,586",9,Low,2017-05-16 21:30:57.530,Weak,False,54.0
+182,183,salt pepper,"6,2154",4,High,2018-04-27 14:35:37.180,Weak,False,
+183,184,mustard oil,"26,5776",9,Low,2017-06-24 16:30:23.320,Weak,True,
+184,185,gelatin,"48,4195",6,Low,2017-11-30 03:35:09.080,Weak,,40.0
+185,186,margarine,"82,0839",8,Low,2017-03-15 01:42:40.190,Weak,False,
+186,187,pepper,"41,3835",3,Medium,2017-10-20 22:26:45.530,Durable,False,31.0
+187,188,peanut,"78,1768",8,High,2017-07-27 20:54:01.860,Durable,False,91.0
+188,189,bread white,"76,3021",5,High,2017-07-01 05:29:27.070,,False,16.0
+189,190,cake,"39,7378",9,Medium,2018-04-25 18:46:18.070,Durable,True,93.0
+190,191,liquid smoke,"10,283",10,High,2017-04-30 14:25:58.210,Weak,,
+191,192,potato sweet,"29,5923",7,Medium,2017-06-03 21:45:38.370,Durable,,
+192,193,curry leaf,"60,5314",11,Medium,2017-02-26 23:21:01.690,,False,19.0
+193,194,prosciutto,"66,7357",6,Medium,2018-02-12 18:01:09.340,,False,
+194,195,broccoli,"3,5208",2,Medium,2017-08-18 11:57:11.040,Durable,,70.0
+195,196,salmon,"8,2286",1,High,2017-02-11 09:06:20.300,,,
+196,197,clam,"13,0101",1,Medium,2018-01-11 00:39:25.780,,True,
+197,198,lime,"35,2187",1,Low,2017-04-06 09:08:00.390,Durable,False,60.0
+198,199,bouillon,"95,7415",10,Medium,2017-12-15 19:25:21.890,Weak,,105.0
+199,200,garlic,"11,1295",5,Medium,2017-05-02 13:23:12.040,Weak,False,
+200,201,rose,"96,3871",8,Medium,2018-03-01 20:01:50.000,Weak,True,117.0
+201,202,bay leaf,"78,8778",11,Low,2017-10-02 17:35:33.050,Weak,True,
+202,203,coriander seed,"59,9557",1,High,2017-09-25 00:08:01.570,Weak,,29.0
+203,204,baguette,"77,809",9,Medium,2017-12-06 16:40:22.750,Durable,True,5.0
+204,205,turkey,"18,9757",5,High,2017-01-21 20:24:46.830,Weak,False,32.0
+205,206,cocoa butter,"77,56",3,Low,2017-07-19 10:37:39.440,,,
+206,207,cheese goat,"14,2688",10,Medium,2018-04-06 19:58:38.760,,True,116.0
+207,208,shiitake,"8,7335",5,Medium,2017-06-06 08:41:51.600,Weak,False,15.0
+208,209,pumpkin,"32,9885",3,Low,2018-01-31 23:29:12.410,,,
+209,210,peanut butter,"82,2358",3,High,2017-11-03 21:30:50.320,,,
+210,211,sparkling wine,"2,0587",9,Low,2017-01-22 17:07:01.570,,True,76.0
+211,212,curry powder,"61,746",2,High,2017-09-28 06:52:59.570,Weak,True,97.0
+212,213,pate,"70,5891",10,High,2017-03-23 13:39:46.750,Weak,True,39.0
+213,214,italian seasoning,"61,2121",5,Low,2018-03-09 18:56:56.000,Durable,,
+214,215,oyster,"90,1157",7,High,2017-09-10 00:07:35.160,Weak,,92.0
+215,216,oat,"39,0257",1,Low,2017-04-04 10:01:57.020,,,
+216,217,bread multigrain,"96,52",8,Medium,2017-12-21 05:26:21.480,Durable,True,
+217,218,codfish,"85,1933",8,High,2017-04-15 13:28:05.740,Weak,True,31.0
+218,219,candied mixed fruit,"58,9787",5,Low,2017-01-08 14:46:06.070,Durable,False,
+219,220,horseradish,"17,961",10,Low,2017-01-12 02:36:23.500,Weak,False,
+220,221,bread pita,"81,9008",3,Low,2017-07-06 15:47:25.220,,False,
+221,222,sole,"0,6846",3,High,2018-03-08 07:37:24.910,,False,
+222,223,pancetta,"94,4399",1,Medium,2017-07-06 16:21:02.790,,,
+223,224,tomato paste,"28,8618",1,High,2017-08-09 05:22:24.190,Weak,False,
+224,225,vegetable broth,"10,3722",3,Medium,2017-08-28 18:01:46.550,Weak,,
+225,226,pizza,"92,0872",10,Medium,2017-10-18 03:29:08.410,Durable,True,
+226,227,sirloin,"55,4699",5,Low,2018-04-14 00:24:57.440,Weak,False,
+227,228,lobster,"77,8083",3,High,2017-12-19 11:58:41.190,Durable,,93.0
+228,229,taco,"57,9838",9,Medium,2017-07-27 08:25:19.790,Weak,False,66.0
+229,230,cauliflower,"83,5389",11,Medium,2017-09-01 03:29:58.290,Weak,False,75.0
+230,231,vanilla,"68,3066",5,Medium,2017-12-24 16:29:34.060,,True,
+231,232,topping,"33,949",3,Medium,2018-01-12 18:03:01.840,Weak,False,
+232,233,duck,"56,6209",11,Low,2017-05-04 00:49:23.860,Durable,True,
+233,234,tofu,"72,7457",1,Medium,2017-02-27 05:41:24.410,Weak,,
+234,235,tamarind,"34,5061",6,High,2018-05-09 04:42:48.650,Durable,False,
+235,236,cherry tomato,"85,694",1,Low,2017-10-02 00:56:42.020,,True,113.0
+236,237,mayonnaise,"65,6303",8,Low,2017-12-29 21:22:55.960,Weak,False,94.0
+237,238,milk evaporated,"28,4065",6,Medium,2017-05-22 21:55:14.430,Durable,False,
+238,239,mascarpone,"7,6019",5,Medium,2017-06-03 20:05:36.490,Weak,True,
+239,240,basmati,"70,8596",4,Low,2017-05-14 16:57:29.640,Weak,False,
+240,241,cheese cheddar,"67,8151",9,Medium,2017-04-17 05:44:01.430,,,
+241,242,pistachio,"32,65",9,Low,2017-05-17 13:44:53.920,Weak,False,11.0
+242,243,cashew,"45,1883",6,Medium,2017-11-02 21:24:49.460,Weak,False,104.0
+243,244,dressing ranch,"94,0664",2,Low,2018-01-04 07:58:36.760,,True,
+244,245,grouper,"37,6791",1,Medium,2018-04-04 01:39:16.490,Weak,,111.0
+245,246,butternut squash,"48,5371",9,Low,2017-12-10 07:32:58.640,Weak,False,96.0
+246,247,apple juice,"59,0033",9,High,2017-03-14 08:05:51.620,Weak,False,58.0
+247,248,milk condensed,"99,3193",7,Low,2017-04-29 04:24:05.700,,,
+248,249,tomato puree,"76,6201",10,Medium,2017-06-05 17:53:34.170,Weak,True,
+249,250,barley,"64,4951",1,Low,2017-05-17 01:55:14.020,Durable,False,
+250,251,chile powder,"11,7087",5,Low,2017-07-01 03:39:58.820,Weak,True,7.0
+251,252,pomegranate,"27,8169",4,Medium,2017-09-28 11:11:20.030,Weak,,83.0
+252,253,wonton wrapper,"76,24",7,High,2017-03-29 18:21:54.320,,,
+253,254,radish,"77,7804",1,Low,2017-12-04 16:48:58.390,Weak,True,
+254,255,marjoram,"29,2287",3,Low,2018-03-05 21:35:46.830,Weak,False,
+255,256,pepper bell,"95,7024",6,Medium,2018-05-03 12:24:25.100,Durable,,
+256,257,cajun seasoning,"84,438",11,High,2017-03-30 01:14:30.260,Durable,,
+257,258,tea,"31,0939",1,Low,2017-02-16 18:45:37.370,Weak,,
+258,259,caraway,"67,4367",7,High,2017-04-10 22:38:36.190,,True,71.0
+259,260,yogurt,"26,8886",7,Low,2017-08-13 16:55:38.420,Durable,False,31.0
+260,261,salad dressing,"22,0901",9,High,2017-08-14 10:12:42.010,Durable,True,
+261,262,bagel,"36,4605",7,Medium,2017-04-19 07:59:57.570,Durable,,41.0
+262,263,food coloring,"50,7497",7,Low,2018-03-20 00:16:31.820,Weak,False,
+263,264,cheese romano,"49,4497",3,High,2017-06-02 19:59:14.110,Durable,True,
+264,265,anise star,"13,9292",10,Medium,2018-03-20 05:01:16.260,Weak,,7.0
+265,266,okra,"68,1097",7,High,2017-05-19 23:03:59.730,Weak,,
+266,267,grape,"5,125",2,Medium,2017-05-28 06:03:35.710,,True,
+267,268,pie crust,"97,8435",9,Low,2017-01-25 07:58:22.340,Durable,False,
+268,269,tortilla chip,"26,706",11,Medium,2018-03-10 14:14:07.360,Durable,True,
+269,270,cheese,"4,4216",6,Medium,2018-04-17 23:10:53.140,Durable,,101.0
+270,271,currant,"73,3954",5,High,2017-08-13 12:39:01.070,,True,
+271,272,tequila,"68,1134",2,Low,2017-08-01 07:31:07.050,Weak,True,13.0
+272,273,bean mung,"77,5913",4,Medium,2018-03-21 17:22:29.260,Weak,,
+273,274,papaya,"88,1192",2,Low,2018-01-03 21:48:36.440,Weak,False,
+274,275,lasagna,"50,146",1,Medium,2018-02-03 20:52:22.080,Durable,True,88.0
+275,276,champagne,"49,2508",5,High,2017-02-20 02:02:31.300,,True,
+276,277,fish,"55,4964",9,Medium,2017-05-06 10:12:35.440,Durable,,118.0
+277,278,squash yellow,"0,3735",11,Medium,2017-11-09 08:22:26.040,Weak,False,87.0
+278,279,habanero,"91,1828",1,Low,2017-09-14 03:43:07.710,Durable,True,
+279,280,poppy seed,"61,8352",5,Medium,2018-01-26 10:28:47.910,Durable,False,
+280,281,pineapple,"33,0839",2,High,2017-08-06 19:23:16.790,Durable,True,
+281,282,salad,"56,1506",10,Low,2017-12-16 20:00:51.740,Durable,False,88.0
+282,283,anise,"1,1882",4,Low,2017-07-16 18:05:07.010,Durable,False,
+283,284,sourdough,"93,4888",9,Low,2017-03-13 06:30:05.770,Weak,False,
+284,285,phyllo,"71,8302",7,Low,2017-03-03 23:49:59.470,,,107.0
+285,286,cheese provolone,"40,4897",2,Low,2017-03-29 05:18:14.030,Durable,False,29.0
+286,287,corn oil,"57,709",7,Medium,2017-10-16 23:41:07.520,Durable,True,
+287,288,adobo sauce,"78,8405",11,Low,2017-10-07 08:00:25.480,Durable,True,
+288,289,kale,"43,5169",10,Low,2017-05-03 08:05:37.580,Durable,False,
+289,290,hamburger,"38,8037",1,Low,2017-01-06 16:18:23.540,,True,110.0
+290,291,crab,"1,2559",2,Medium,2017-07-05 23:42:11.760,,False,
+291,292,semolina,"34,5364",8,Low,2017-11-13 02:37:18.580,,False,
+292,293,macaroni,"60,9698",11,Medium,2017-02-11 23:16:38.230,Durable,,
+293,294,garbanzo,"80,7133",10,Low,2018-02-28 03:09:58.080,Weak,,18.0
+294,295,ice,"48,7695",7,Low,2018-02-07 06:44:47.630,,True,
+295,296,hoisin sauce,"31,3545",3,Low,2018-05-07 21:44:03.870,Weak,False,90.0
+296,297,snapper,"81,9003",3,Low,2017-07-07 13:28:22.110,Durable,True,120.0
+297,298,date,"95,7387",4,Medium,2017-06-03 01:25:35.340,,False,
+298,299,apple,"80,1371",4,Medium,2018-02-24 02:57:20.510,,False,
+299,300,parsnip,"69,5694",5,Medium,2017-11-16 02:35:16.760,,True,
+300,301,vermouth,"43,412",8,Medium,2017-07-16 01:29:22.930,Weak,,
+301,302,rice brown,"61,1598",11,Medium,2017-02-18 00:07:29.280,Durable,,
+302,303,cod,"72,6133",7,High,2017-06-28 14:09:58.350,,False,
+303,304,port wine,"72,1984",5,High,2017-06-27 18:42:41.030,,True,
+304,305,self rising flour,"91,0997",8,Medium,2018-02-10 13:16:12.950,Weak,True,19.0
+305,306,pepper white,"43,5953",4,Low,2018-04-08 20:08:51.780,Durable,True,117.0
+306,307,prune,"50,2256",1,High,2017-11-16 17:48:50.780,Durable,,
+307,308,marshmallow,"88,1209",6,High,2017-08-02 20:33:17.890,Durable,,
+308,309,jasmine,"27,6344",11,Medium,2018-03-09 19:56:36.310,Durable,True,76.0
+309,310,fettuccine,"79,978",9,Low,2018-01-14 19:33:15.530,Weak,False,
+310,311,plantain french,"40,206",9,High,2017-12-29 02:11:49.650,Weak,,56.0
+311,312,red chili,"84,0645",1,Low,2017-09-27 16:52:04.230,Weak,True,54.0
+312,313,relish,"39,9111",11,High,2017-10-12 15:02:29.670,,,116.0
+313,314,steak,"5,6015",2,Medium,2017-07-23 12:09:48.290,,True,82.0
+314,315,chard,"93,8047",6,Medium,2017-01-07 21:32:21.630,,True,
+315,316,cheese feta,"65,9395",11,High,2018-01-05 14:11:50.270,Weak,False,94.0
+316,317,bay laurel,"35,2723",3,Low,2018-02-10 13:54:50.560,Weak,False,
+317,318,green chily,"57,261",10,High,2018-01-07 17:46:26.050,,,76.0
+318,319,sake,"77,6195",7,High,2017-04-01 20:09:14.640,,,
+319,320,endive,"73,4396",9,Low,2017-12-22 23:43:02.230,,,
+320,321,oregano mexican,"10,4007",1,Medium,2017-12-10 23:22:52.220,Durable,,
+321,322,poultry seasoning,"26,2846",2,Medium,2017-12-28 22:03:10.240,,,
+322,323,meat,"54,3266",10,High,2018-01-31 23:52:44.760,Weak,False,99.0
+323,324,lard,"87,9023",10,Low,2018-03-04 21:55:43.810,Durable,True,42.0
+324,325,scotch,"3,1657",5,Low,2017-10-13 23:28:41.380,,True,87.0
+325,326,carom seed,"38,859",9,High,2018-02-07 10:01:42.490,,False,
+326,327,egg roll,"7,1436",2,Medium,2017-06-20 08:14:28.810,,False,
+327,328,tuna,"96,8781",6,Medium,2017-01-22 14:12:31.170,Durable,True,35.0
+328,329,pea black eyed,"39,3496",6,High,2018-04-05 15:03:48.810,Weak,True,
+329,330,olive,"18,7914",10,Medium,2018-02-05 23:08:18.220,,False,
+330,331,plum,"67,3505",3,High,2017-12-23 12:34:09.200,Durable,,80.0
+331,332,italian herb seasoning,"59,7578",5,Low,2018-04-12 08:47:00.100,,False,
+332,333,cheese cottage,"20,2364",7,High,2018-01-23 05:25:05.530,Weak,False,
+333,334,adobo,"21,6133",7,High,2018-03-08 01:07:50.950,Weak,True,
+334,335,cheese gruyere,"18,4231",9,Low,2017-07-14 08:59:24.970,Weak,,84.0
+335,336,sweet corn,"71,9241",2,Low,2017-06-19 19:15:47.500,Durable,True,
+336,337,bread rye,"83,5373",3,Low,2017-06-21 05:50:53.390,Durable,True,
+337,338,cheese camembert,"28,9899",11,Low,2017-01-19 23:22:25.970,Durable,,
+338,339,enchilada,"2,389",2,Medium,2017-06-09 17:13:52.820,Weak,,
+339,340,pudding,"28,2349",3,High,2017-04-04 03:41:07.690,Durable,True,
+340,341,bread whole wheat,"90,2641",1,Low,2017-09-19 11:29:23.250,Weak,True,
+341,342,creole seasoning,"69,5881",1,Medium,2017-03-17 03:07:49.620,,False,51.0
+342,343,kelp,"51,2061",1,High,2017-12-07 12:03:49.170,Durable,False,
+343,344,pimiento,"63,5389",2,Low,2017-08-26 12:32:22.060,,False,114.0
+344,345,drumstick leaf,"98,5978",4,Medium,2017-05-18 14:06:33.900,Durable,False,67.0
+345,346,chervil,"17,1914",1,Low,2018-02-15 06:50:07.540,,True,
+346,347,water chestnut,"94,6253",8,Low,2017-02-01 11:34:48.910,,True,
+347,348,kaffir beer,"55,3683",10,Low,2017-11-29 11:06:49.950,Durable,True,54.0
+348,349,cocoa,"86,9086",4,Medium,2018-02-21 05:37:36.440,,True,
+349,350,jicama,"82,83",8,Low,2017-02-02 16:32:57.360,,True,
+350,351,chocolate hot,"96,0823",1,High,2017-03-28 07:49:13.300,Durable,,
+351,352,macadamia nut,"24,6393",4,Low,2017-11-06 19:41:56.060,,False,5.0
+352,353,milk powder,"18,1191",8,Medium,2017-03-04 05:16:20.700,Weak,True,80.0
+353,354,chanterelle,"6,6975",7,Medium,2017-03-05 03:14:18.270,,False,
+354,355,onion spring,"59,1687",5,Low,2018-04-15 03:12:24.540,Durable,False,12.0
+355,356,daikon,"17,1274",6,High,2017-11-25 03:26:12.700,Durable,,
+356,357,whitefish,"6,8332",2,Medium,2017-05-27 00:14:44.530,Durable,False,
+357,358,pie,"84,7111",9,Medium,2017-09-02 16:14:14.540,,True,
+358,359,vermicelli,"69,0327",11,High,2018-01-21 19:13:59.660,Durable,True,96.0
+359,360,hot dog,"52,2407",10,Medium,2017-01-04 03:14:30.460,Durable,True,89.0
+360,361,chaat masala,"36,4516",2,Medium,2017-10-20 11:54:22.960,Weak,True,71.0
+361,362,cumin,"53,3476",7,Medium,2017-10-26 03:36:19.600,Durable,,
+362,363,corn grit,"48,7712",11,High,2017-09-06 05:29:29.090,,True,
+363,364,bamboo shoot,"8,8429",1,High,2017-02-01 20:48:18.090,,,
+364,365,chinese five spice,"12,6274",7,Medium,2017-01-23 06:59:06.330,Weak,True,95.0
+365,366,tahini,"80,4483",4,High,2018-01-25 17:24:49.550,,False,
+366,367,corn bread,"63,8281",5,Medium,2018-01-12 11:26:58.700,,True,65.0
+367,368,quinoa,"18,2978",4,Low,2017-12-14 13:54:38.720,,False,
+368,369,lychee,"87,1785",5,Medium,2017-01-10 03:10:23.310,,True,10.0
+369,370,coriander cumin seed powder,"21,8806",4,Low,2017-11-28 02:16:34.130,Weak,True,
+370,371,milk fat,"82,4022",8,High,2017-07-18 08:20:56.880,Durable,,
+371,372,bean lima,"6,2824",3,Low,2018-01-22 14:32:24.580,,True,
+372,373,catfish,"54,8719",9,Medium,2017-08-01 00:32:33.220,Durable,False,
+373,374,pork fat,"49,3846",5,Low,2018-05-07 16:28:06.950,Durable,False,
+374,375,herbe de provence,"83,1755",8,High,2017-04-05 12:13:38.970,,True,80.0
+375,376,bulgur,"40,8126",11,High,2017-09-26 20:15:02.590,Durable,True,51.0
+376,377,trout,"75,0785",1,Medium,2017-01-22 09:59:21.060,Durable,False,7.0
+377,378,rhubarb,"90,7877",9,High,2017-06-08 11:20:22.690,Durable,False,
+378,379,caviar,"89,3046",7,High,2017-10-18 07:49:09.900,,False,81.0
+379,380,pepper sweet,"85,9743",4,High,2018-01-05 16:38:33.840,,True,
+380,381,rice wild,"44,2337",1,High,2018-01-06 22:26:53.580,,,41.0
+381,382,bean,"51,7754",4,Medium,2017-11-28 21:07:38.870,Weak,,
+382,383,madeira,"9,9694",2,High,2017-04-10 08:34:54.730,Weak,,
+383,384,cocoa powder,"56,5197",10,High,2018-03-03 22:30:51.450,,True,105.0
+384,385,mandarin,"22,7091",10,High,2017-11-11 15:19:04.910,Durable,False,97.0
+385,386,tapioca,"42,7112",10,Medium,2017-02-16 16:52:13.130,Weak,False,
+386,387,icing,"41,6386",9,High,2018-02-09 03:30:39.400,Durable,False,100.0
+387,388,nigella seed,"13,5389",1,Medium,2017-11-21 02:10:47.260,Durable,True,
+388,389,rutabaga,"62,4447",3,Medium,2018-04-01 21:55:26.420,,,103.0
+389,390,capsicum,"1,2956",3,Low,2017-12-27 05:33:12.280,,False,
+390,391,mace,"65,0908",1,Medium,2017-01-24 19:01:02.970,,True,72.0
+391,392,swordfish,"98,8263",5,High,2018-02-25 13:36:38.850,,True,33.0
+392,393,coconut oil,"59,9572",1,Low,2017-05-08 04:08:26.320,,,
+393,394,tangerine,"50,1484",3,High,2017-06-06 13:59:22.350,Durable,True,76.0
+394,395,stuffing,"91,7833",1,Low,2017-10-22 15:46:44.740,Weak,True,
+395,396,buffalo,"36,9165",6,High,2018-04-03 07:53:03.650,Durable,False,
+396,397,mushroom oyster,"20,8169",1,Medium,2017-11-17 21:38:20.540,Weak,False,70.0
+397,398,old bay seasoning,"42,3632",11,High,2017-11-05 15:15:31.080,Weak,True,67.0
+398,399,harissa,"50,9114",6,Medium,2017-08-04 05:33:15.730,,True,
+399,400,yam,"18,1495",1,High,2017-08-30 20:41:44.350,Durable,True,
+400,401,tart shell,"53,3634",8,High,2017-02-03 19:23:08.840,,,51.0
+401,402,nectarine,"76,3275",5,High,2017-06-27 21:40:10.190,Durable,,6.0
+402,403,baking powder,"68,1898",5,Medium,2017-11-20 07:56:26.630,,,
+403,404,bean haricot,"65,028",1,Medium,2017-03-27 03:21:02.310,Durable,False,
+404,405,lager,"0,4278",11,Medium,2017-11-25 08:12:00.480,Durable,True,
+405,406,peppermint,"89,7999",9,High,2017-07-13 17:16:48.730,Durable,False,
+406,407,quail,"69,7674",7,High,2017-04-08 19:09:22.830,Weak,False,
+407,408,blueberry,"68,7346",4,Low,2017-03-06 12:48:13.750,,False,
+408,409,honeydew,"23,522",11,Medium,2018-04-08 15:00:39.310,Durable,,
+409,410,fenugreek,"18,356",6,Low,2017-07-20 06:57:21.940,,,91.0
+410,411,melon,"42,0489",6,Low,2017-11-03 17:26:51.640,,True,
+411,412,buckwheat,"16,0456",5,High,2018-04-27 12:54:21.840,Weak,True,
+412,413,ice cream cone,"95,4065",3,High,2018-03-25 08:25:04.650,Durable,False,5.0
+413,414,sauerkraut,"83,0585",7,Low,2017-01-17 02:35:25.820,Durable,,87.0
+414,415,coleslaw,"8,0069",10,High,2017-05-07 04:47:36.890,Durable,False,
+415,416,bean red,"84,6763",10,Low,2018-03-31 14:46:44.090,Weak,True,
+416,417,brandy cognac,"43,3781",5,Medium,2017-07-18 19:01:24.860,,,12.0
+417,418,truffle,"92,2516",2,Low,2017-11-12 06:58:37.640,,True,
+418,419,meatball,"86,1338",3,Low,2017-07-31 05:29:13.180,Weak,True,8.0
+419,420,cherry sour,"69,9163",9,High,2018-04-15 14:06:53.200,Weak,True,
+420,421,cherry pepper,"38,8096",6,High,2018-04-25 13:54:10.160,Durable,False,
+421,422,ginger garlic paste,"50,2892",5,High,2017-02-22 09:16:11.430,Weak,,60.0
+422,423,spread,"55,8531",2,Medium,2018-01-21 15:59:12.310,,,35.0
+423,424,bonito,"85,8828",3,Medium,2017-05-23 21:37:11.040,,False,
+424,425,ravioli,"56,7898",4,Medium,2017-11-04 07:15:31.160,Weak,,
+425,426,guava,"83,5759",3,Low,2017-09-29 18:44:18.040,,,
+426,427,strawberry jam,"46,3252",3,High,2017-09-17 10:23:58.260,Durable,False,
+427,428,chayote,"4,7235",7,Medium,2017-02-25 10:33:10.870,,True,48.0
+428,429,kombu,"57,6013",4,High,2017-07-17 00:41:22.210,Weak,False,
+429,430,custard,"46,2589",2,Low,2017-05-12 04:20:35.330,Durable,False,84.0
+430,431,paneer,"19,9957",10,Medium,2018-03-18 22:36:42.060,Weak,False,89.0
+431,432,haddock,"32,7153",2,High,2017-07-26 18:43:49.990,,False,44.0
+432,433,bean red kidney,"39,8762",3,Low,2018-03-14 05:47:06.970,Durable,False,11.0
+433,434,focaccia,"71,1551",7,Low,2017-02-18 11:07:25.550,Weak,True,
+434,435,salsify,"32,6109",8,High,2017-12-02 21:15:24.990,Durable,True,
+435,436,monosodium glutamate,"67,9063",7,High,2017-07-13 00:46:43.380,,False,25.0
+436,437,bean french,"83,5856",10,High,2017-01-09 13:11:12.230,Durable,,
+437,438,currant red,"44,9415",2,Low,2017-01-15 05:13:52.420,Durable,,
+438,439,merlot,"56,0919",11,Medium,2017-04-09 14:18:50.960,,False,108.0
+439,440,quince,"32,9092",1,Low,2017-05-01 22:02:16.170,,,
+440,441,blackberry,"72,9439",3,Medium,2018-03-19 21:42:50.300,Weak,,
+441,442,pea chick,"72,9041",6,Medium,2017-12-06 14:42:25.640,,,106.0
+442,443,dandelion,"90,0169",2,Low,2017-12-22 11:10:07.960,,False,79.0
+443,444,cheese blue,"44,0886",8,Low,2017-09-13 14:58:04.470,Durable,,56.0
+444,445,soy milk,"59,2467",8,High,2017-02-23 12:06:20.630,Weak,,76.0
+445,446,sunflower,"49,0452",7,High,2017-02-06 06:06:41.130,,,18.0
+446,447,vegetable juice,"3,4198",3,High,2018-04-12 05:11:34.210,,True,
+447,448,brandy apple,"76,8988",5,Low,2017-04-22 01:33:00.490,,False,
+448,449,peach,"42,1414",4,Low,2017-01-31 09:11:45.450,,False,
+449,450,corn chip,"7,107",3,Low,2017-12-01 01:00:00.650,,,
+450,451,tomato paste,"93,5384",1,Low,2017-09-16 12:51:38.780,Durable,False,
+451,452,arrowroot,"28,5653",11,Low,2017-01-06 14:39:42.890,Durable,,
+452,453,armagnac brandy,1,1,NA,NA,NA,NA,NA
+453,454,agave,1,1,NA,NA,NA,NA,NA
+454,455,dumpling,1,1,NA,NA,NA,NA,NA
+455,456,pancake,1,1,NA,NA,NA,NA,NA
+456,457,pig,1,1,NA,NA,NA,NA,NA
+457,458,goat milk,1,1,NA,NA,NA,NA,NA
+458,459,cherry sweet,1,1,NA,NA,NA,NA,NA
+459,460,flax seed,1,1,NA,NA,NA,NA,NA
+460,461,pectin,1,1,NA,NA,NA,NA,NA
+461,462,red chily,1,1,NA,NA,NA,NA,NA
+462,463,sambar powder,1,1,NA,NA,NA,NA,NA
+463,464,cheese roquefort,1,1,NA,NA,NA,NA,NA
+464,465,butter bean,1,1,NA,NA,NA,NA,NA
+465,466,taro,1,1,NA,NA,NA,NA,NA
+466,467,epazote,1,1,NA,NA,NA,NA,NA
+467,468,soup,1,1,NA,NA,NA,NA,NA
+468,469,tostada,1,1,NA,NA,NA,NA,NA
+469,470,kumquat,1,1,NA,NA,NA,NA,NA
+470,471,goose,1,1,NA,NA,NA,NA,NA
+471,472,marzipan,1,1,NA,NA,NA,NA,NA
+472,473,meringue,1,1,NA,NA,NA,NA,NA
+473,474,ale,1,1,NA,NA,NA,NA,NA
+474,475,mackerel,1,1,NA,NA,NA,NA,NA
+475,476,dal toor,1,1,NA,NA,NA,NA,NA
+476,477,persimmon,1,1,NA,NA,NA,NA,NA
+477,478,cider,1,1,NA,NA,NA,NA,NA
+478,479,broccolini,1,1,NA,NA,NA,NA,NA
+479,480,cashew nut,1,1,NA,NA,NA,NA,NA
+480,481,lingonberry,1,1,NA,NA,NA,NA,NA
+481,482,butternut pumpkin,1,1,NA,NA,NA,NA,NA
+482,483,croissant,1,1,NA,NA,NA,NA,NA
+483,484,sultana,1,1,NA,NA,NA,NA,NA
+484,485,porcini,1,1,NA,NA,NA,NA,NA
+485,486,chicory,1,1,NA,NA,NA,NA,NA
+486,487,remoulade,1,1,NA,NA,NA,NA,NA
+487,488,tandoori masala,1,1,NA,NA,NA,NA,NA
+488,489,italian style seasoning,1,1,NA,NA,NA,NA,NA
+489,490,cracker crumb,1,1,NA,NA,NA,NA,NA
+490,491,toffee,1,1,NA,NA,NA,NA,NA
+491,492,zucchini green,1,1,NA,NA,NA,NA,NA
+492,493,orange sour,1,1,NA,NA,NA,NA,NA
+493,494,pheasant,1,1,NA,NA,NA,NA,NA
+494,495,conch,1,1,NA,NA,NA,NA,NA
+495,496,dulce de leche,1,1,NA,NA,NA,NA,NA
+496,497,green chili,1,1,NA,NA,NA,NA,NA
+497,498,bean string,1,1,NA,NA,NA,NA,NA
+498,499,cassava,1,1,NA,NA,NA,NA,NA
+499,500,bottle gourd,1,1,NA,NA,NA,NA,NA
+500,501,millet,1,1,NA,NA,NA,NA,NA
+501,502,cedar,1,1,NA,NA,NA,NA,NA
+502,503,asafetida,1,1,NA,NA,NA,NA,NA
+503,504,bitter gourd,1,1,NA,NA,NA,NA,NA
+504,505,huckleberry black,1,1,NA,NA,NA,NA,NA
+505,506,raspberry red,1,1,NA,NA,NA,NA,NA
+506,507,chole masala,1,1,NA,NA,NA,NA,NA
+507,508,vinegar cider,1,1,NA,NA,NA,NA,NA
+508,509,amaranth,1,1,NA,NA,NA,NA,NA
+509,510,fudge,1,1,NA,NA,NA,NA,NA
+510,511,herring,1,1,NA,NA,NA,NA,NA
+511,512,cheese sheep,1,1,NA,NA,NA,NA,NA
+512,513,soy bean,1,1,NA,NA,NA,NA,NA
+513,514,tumeric,1,1,NA,NA,NA,NA,NA
+514,515,savory summer,1,1,NA,NA,NA,NA,NA
+515,516,sorghum,1,1,NA,NA,NA,NA,NA
+516,517,rockfish,1,1,NA,NA,NA,NA,NA
+517,518,snail,1,1,NA,NA,NA,NA,NA
+518,519,waffle,1,1,NA,NA,NA,NA,NA
+519,520,fern tree,1,1,NA,NA,NA,NA,NA
+520,521,sorrel,1,1,NA,NA,NA,NA,NA
+521,522,rasam powder,1,1,NA,NA,NA,NA,NA
+522,523,malt,1,1,NA,NA,NA,NA,NA
+523,524,orange bitter,1,1,NA,NA,NA,NA,NA
+524,525,colocasia,1,1,NA,NA,NA,NA,NA
+525,526,verbena lemon,1,1,NA,NA,NA,NA,NA
+526,527,purslane,1,1,NA,NA,NA,NA,NA
+527,528,bluefish,1,1,NA,NA,NA,NA,NA
+528,529,boysenberry,1,1,NA,NA,NA,NA,NA
+529,530,wakame,1,1,NA,NA,NA,NA,NA
+530,531,spinach fettuccine,1,1,NA,NA,NA,NA,NA
+531,532,arctic char,1,1,NA,NA,NA,NA,NA
+532,533,amchoor,1,1,NA,NA,NA,NA,NA
+533,534,frankfurter sausage,1,1,NA,NA,NA,NA,NA
+534,535,mutton,1,1,NA,NA,NA,NA,NA
+535,536,kalonji,1,1,NA,NA,NA,NA,NA
+536,537,empanada,1,1,NA,NA,NA,NA,NA
+537,538,sheep milk,1,1,NA,NA,NA,NA,NA
+538,539,jackfruit,1,1,NA,NA,NA,NA,NA
+539,540,pear prickly,1,1,NA,NA,NA,NA,NA
+540,541,gooseberry,1,1,NA,NA,NA,NA,NA
+541,542,raspberry black,1,1,NA,NA,NA,NA,NA
+542,543,candy bar,1,1,NA,NA,NA,NA,NA
+543,544,raspberry brandy,1,1,NA,NA,NA,NA,NA
+544,545,orange oil,1,1,NA,NA,NA,NA,NA
+545,546,lady finger,1,1,NA,NA,NA,NA,NA
+546,547,eel,1,1,NA,NA,NA,NA,NA
+547,548,squab,1,1,NA,NA,NA,NA,NA
+548,549,meat loaf,1,1,NA,NA,NA,NA,NA
+549,550,corn starch,1,1,NA,NA,NA,NA,NA
+550,551,shellfish,1,1,NA,NA,NA,NA,NA
+551,552,kohlrabi,1,1,NA,NA,NA,NA,NA
+552,553,boar,1,1,NA,NA,NA,NA,NA
+553,554,stew,1,1,NA,NA,NA,NA,NA
+554,555,tamale,1,1,NA,NA,NA,NA,NA
+555,556,potato bread,1,1,NA,NA,NA,NA,NA
+556,557,brandy pear,1,1,NA,NA,NA,NA,NA
+557,558,curd,1,1,NA,NA,NA,NA,NA
+558,559,potato fried,1,1,NA,NA,NA,NA,NA
+559,560,squash winter,1,1,NA,NA,NA,NA,NA
+560,561,bison,1,1,NA,NA,NA,NA,NA
+561,562,carp,1,1,NA,NA,NA,NA,NA
+562,563,mullet,1,1,NA,NA,NA,NA,NA
+563,564,orange roughy,1,1,NA,NA,NA,NA,NA
+564,565,sturgeon,1,1,NA,NA,NA,NA,NA
+565,566,treacle,1,1,NA,NA,NA,NA,NA
+566,567,citric acid,1,1,NA,NA,NA,NA,NA
+567,568,canadian whiskey,1,1,NA,NA,NA,NA,NA
+568,569,kiwifruit,1,1,NA,NA,NA,NA,NA
+569,570,ajwain,1,1,NA,NA,NA,NA,NA
+570,571,bean cluster,1,1,NA,NA,NA,NA,NA
+571,572,agar,1,1,NA,NA,NA,NA,NA
+572,573,chia,1,1,NA,NA,NA,NA,NA
+573,574,moose,1,1,NA,NA,NA,NA,NA
+574,575,spelt,1,1,NA,NA,NA,NA,NA
+575,576,smelt,1,1,NA,NA,NA,NA,NA
+576,577,laver,1,1,NA,NA,NA,NA,NA
+577,578,bream,1,1,NA,NA,NA,NA,NA
+578,579,turtle,1,1,NA,NA,NA,NA,NA
+579,580,quesadilla,1,1,NA,NA,NA,NA,NA
+580,581,berry saskatoon,1,1,NA,NA,NA,NA,NA
+581,582,whisky,1,1,NA,NA,NA,NA,NA
+582,583,mate,1,1,NA,NA,NA,NA,NA
+583,584,chamomile,1,1,NA,NA,NA,NA,NA
+584,585,lovage,1,1,NA,NA,NA,NA,NA
+585,586,carambola,1,1,NA,NA,NA,NA,NA
+586,587,lemon balm,1,1,NA,NA,NA,NA,NA
+587,588,pimenta,1,1,NA,NA,NA,NA,NA
+588,589,abalone,1,1,NA,NA,NA,NA,NA
+589,590,butterfish,1,1,NA,NA,NA,NA,NA
+590,591,turbot,1,1,NA,NA,NA,NA,NA
+591,592,yautia,1,1,NA,NA,NA,NA,NA
+592,593,frog,1,1,NA,NA,NA,NA,NA
+593,594,burrito,1,1,NA,NA,NA,NA,NA
+594,595,hushpuppy,1,1,NA,NA,NA,NA,NA
+595,596,potato gratin,1,1,NA,NA,NA,NA,NA
+596,597,crisp bread,1,1,NA,NA,NA,NA,NA
+597,598,camphor,1,1,NA,NA,NA,NA,NA
+598,599,sandalwood,1,1,NA,NA,NA,NA,NA
+599,600,apple sauce,1,1,NA,NA,NA,NA,NA
+600,601,cherry morello,1,1,NA,NA,NA,NA,NA
+601,602,brazil nut,1,1,NA,NA,NA,NA,NA
+602,603,rye,1,1,NA,NA,NA,NA,NA
+603,604,bean adzuki,1,1,NA,NA,NA,NA,NA
+604,605,bean gram,1,1,NA,NA,NA,NA,NA
+605,606,ginseng,1,1,NA,NA,NA,NA,NA
+606,607,elk,1,1,NA,NA,NA,NA,NA
+607,608,pompano,1,1,NA,NA,NA,NA,NA
+608,609,jujube,1,1,NA,NA,NA,NA,NA
+609,610,pike northern,1,1,NA,NA,NA,NA,NA
+610,611,tile fish,1,1,NA,NA,NA,NA,NA
+611,612,gourd towel,1,1,NA,NA,NA,NA,NA
+612,613,whiting,1,1,NA,NA,NA,NA,NA
+613,614,lemon sole,1,1,NA,NA,NA,NA,NA
+614,615,palm oil,1,1,NA,NA,NA,NA,NA
+615,616,falafel,1,1,NA,NA,NA,NA,NA
+616,617,fruit salad,1,1,NA,NA,NA,NA,NA
+617,618,scrapple,1,1,NA,NA,NA,NA,NA
+618,619,chocolate mousse,1,1,NA,NA,NA,NA,NA
+619,620,green chutney,1,1,NA,NA,NA,NA,NA
