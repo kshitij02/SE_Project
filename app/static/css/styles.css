@@ -138,8 +138,8 @@ tbody tr td
   padding-bottom: 30px;
 }
 
-tr:nth-child(even) {background-color:white}
-tr:nth-child(odd) {background-color: #EFFBFC  ;}
+tr:nth-child(even) {background-color:white !important;}
+tr:nth-child(odd) {background-color: #EFFBFC !important;}
 
 label
 {
@@ -222,14 +222,14 @@ button:hover
 .element
 {
   position:fixed;
-  bottom:2%; right:2%;
+  bottom:2%; right:5%;
 }
 
 .element2
 {
   position:fixed;
   bottom:2%;
-  right:38%;
+  right:43%;
 }
 
 .element3
