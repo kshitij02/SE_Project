@@ -61,7 +61,7 @@ def Personalization():
 
         User_ID = UserID_List[i]
         Cart_Product_Ids = []
-        Cart_Product_vector = Test_Data[User_ID]
+        Cart_Product_vector = Test_Data[Test_Data[UserID_Col]==User_ID].loc[i][Col_List]
 
         for j in range(len(Cart_Product_vector)):
             if int(Cart_Product_vector[j]) == 1:
@@ -72,9 +72,9 @@ def Personalization():
 
         temp = np.zeros((1,Total_No_Recipes))
         for recipe_no in Recommendations:
-            temp[recipe_no] = 1
+            temp[0][recipe_no] = 1
 
-        All_Recommendations_Matrix.append(temp)
+        All_Recommendations_Matrix = np.append(All_Recommendations_Matrix,temp,axis=0)
 
     Avg_Similarity = AvgSimilarity(All_Recommendations_Matrix)
 
@@ -103,8 +103,8 @@ def Intra_List_Similarity():
 
         User_ID = UserID_List[i]
         Cart_Product_Ids = []
-        Cart_Product_vector = Test_Data[User_ID]
-
+        Cart_Product_vector = Test_Data[Test_Data[UserID_Col]==User_ID].loc[i][Col_List]
+        
         for j in range(len(Cart_Product_vector)):
             if int(Cart_Product_vector[j]) == 1:
                 Cart_Product_Ids.append(j+1)
@@ -116,9 +116,9 @@ def Intra_List_Similarity():
         for recipe_no in Recommendations:
             Cuisine_Name = Cuisine_Data[recipe_no]
             Cuisine_No = Cuisines[Cuisine_Name]
-            temp[Cuisines_No] = 1
+            temp[0][Cuisine_No] = 1
          
-        User_Cuisine_Matrix.append(temp)
+        User_Cuisine_Matrix = np.append(User_Cuisine_Matrix,temp,axis=0)
 
     IntraListSimilarity = AvgSimilarity(User_Cuisine_Matrix)
 
