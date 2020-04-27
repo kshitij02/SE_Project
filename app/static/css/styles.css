@@ -222,21 +222,22 @@ button:hover
 .element
 {
   position:fixed;
-  bottom:2%; right:5%;
+  bottom:2%;
+  right:5%;
 }
 
 .element2
 {
   position:fixed;
   bottom:2%;
-  right:43%;
+  right:38%;
 }
 
 .element3
 {
   position:fixed;
   bottom:2%;
-  left:2%;
+  left:10%;
 }
 
 .cartbtn

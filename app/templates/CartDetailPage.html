@@ -18,19 +18,21 @@ Buttons:
 
 
       </head>
+      <body style="width: 85%;height: 90%;margin-top: 5%;margin-bottom: 5%;margin-left: 10%;background-color:white;font-family: Arial, Helvetica, sans-serif;overflow-x: hidden;">
+        <p style="text-align: center; color : #00498d; font-size : 30px;"><b>My Cart</b></p>
 
-        <body style="background-color:white";font-family: Arial, Helvetica, sans-serif;>
-          <p style="text-align: center; color : #00498d; font-size : 20px;"><b>My Cart</b></p>
-          <div>
-            <table style="width: 100%;margin-top: 10px" id="ProductTable">
-                <thead>
-                    <tr style="background-color: #00498d">
+        <input type="text" id="SearchText" onkeyup="SearchProducts()" placeholder="Search for names.." title="Type in a product" style="width:93%; margin-left:3%; padding-right:50px; color: black">
+          <div style="height: 75%; margin-left: 2%; margin-top:2%; margin-right:3%; margin-bottom:3%;">
+
+
+            <table id="ProductTable">
+                    <tr>
                       <th >Product Name</th>
                       <th>Price</th>
                       <th>Quantity</th>
                     </tr>
-                  </thead>
-                  <tbody>
+
+
                     {% for product in CartList %}
                     <tr id="{{product[0]}}">
                       <td >{{ product[1] }}</td>
@@ -38,9 +40,10 @@ Buttons:
                       <td><button type="button" style="display: inline-block;" onclick="dec(this.parentNode)">-</button><input type="number" value=1 style="width:15%;text-align:center"/><button type="button" onclick="inc(this.parentNode)">+</button></td>
                     </tr>
                     {% endfor %}
-                  </tbody>
+
 
               </table>
+
             </div>
 
             <div class="element" >
@@ -107,6 +110,27 @@ Buttons:
         document.getElementById("Total").innerHTML="Total Amount : "+amt;
       }
 
+      function SearchProducts() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("SearchText");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("ProductTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
 
             </script>
 
