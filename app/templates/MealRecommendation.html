@@ -9,6 +9,13 @@ Future : We can keep track of number of hits on this button to measure how many 
 
 <html>
 <head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -92,23 +99,26 @@ border-style: solid;
 
   </style>
 </head>
-<body style="background-color:white";font-family: Arial, Helvetica, sans-serif;>
-  <p style="text-align: center; color : #00498d; font-size : 25px;"><b>Meal Recommendation Wizard</b></p>
+
+<body style="width: 85%;height: 90%;margin-top: 5%;margin-bottom: 5%;margin-left: 10%;background-color:white;font-family: Arial, Helvetica, sans-serif;overflow-x: hidden;">
+  <p style="text-align: center; color : #00498d; font-size : 30px;"><b>Meal Recommendation Wizard</b></p>
+  <input type="text" id="SearchText" onkeyup="SearchProducts()" placeholder="Search for names.." title="Type in a product" style="width:93%; margin-left:3%; padding-right:50px; color: black">
+    <div style="height: 75%; margin-left: 2%; margin-top:2%; margin-right:3%; margin-bottom:3%;">
 
 <section id="tabs" class="project-tab">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <nav style="position: fixed; width:75%;">
+                    <div class="col-md-12" style="margin:unset;">
+                        <nav style="position: fixed; width:80%; margin:unset; padding:unset;">
                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Recommendations from model</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Recommendations from Database</a>
                                 <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Current Cart Products</a>
                             </div>
                         </nav>
-                        <div class="tab-content" id="nav-tabContent" style="overflow-y : unset; margin-top:80px;">
+                        <div class="tab-content" id="nav-tabContent" style="overflow-y : unset; margin-top:9%;">
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <table id="ProductTable" class="fixed_header">
+                                <table id="ProductTable1" class="fixed_header" style="margin: unset; padding: unset; width: 100%;">
                                   <!-- <thead> -->
                                       <tr style="background-color: #00498d">
                                         <th >Meal Name</th>
@@ -130,7 +140,7 @@ border-style: solid;
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                <table class="table" cellspacing="0">
+                                <table id="ProductTable2" class="table" cellspacing="0">
                                   <!-- <thead> -->
                                       <tr style="background-color: #00498d">
                                         <th >Meal Name</th>
@@ -152,7 +162,7 @@ border-style: solid;
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                <table class="table" cellspacing="0">
+                                <table id="ProductTable3" class="table" cellspacing="0">
                                   <!-- <thead> -->
                                       <tr style="background-color: #00498d">
                                         <th >Ingredient</th>
@@ -173,34 +183,79 @@ border-style: solid;
                                       <!-- </tbody> -->
                                 </table>
                             </div>
+                            <div class="element" style="font-size:1rem;">
+
+                              <a href="/Home"><button style="background: #FFB81C" >Continue Shopping</button></a>
+                              <a href="/Logout"><button style="background: #FFB81C" >Checkout</button></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </section>
-        <center>
-        <div class="element2" >
+
+
+
+        <!-- <center>
+        <div class="element2" style="font-size:1rem;">
 
             <a href="/Home"><button style="background: #FFB81C" onclick="" id="Total2">Continue Shopping</button></a>
 
           </div>
-          <div class="element3" >
+          <div class="element3" style="font-size:1rem;">
 
-              <button href="/AddMissingProduct/9" style="background: #FFB81C" onclick="" id="Total3">Checkout </button>
+              <button href="/Logout" style="background: #FFB81C" onclick="" id="Total3">Checkout </button>
 
             </div>
 
-      </center>
-
+      </center> -->
+</div>
 
   <script>
 
 
-  var tab=document.getElementById('ProductTable');
-  prows=tab.rows;
-  prows[1].parentNode.removeChild(prows[1]);
+  // var tab=document.getElementById('ProductTable1');
+  // prows=tab.rows;
+  // prows[1].parentNode.removeChild(prows[1]);
 
+//   $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+//    $($.fn.dataTable.tables(true)).DataTable()
+//       .columns.adjust()
+//       .responsive.recalc();
+// });
 
+  function SearchProducts() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue, TableIds;
+    input = document.getElementById("SearchText");
+    filter = input.value.toUpperCase();
+    TableIds = ["ProductTable1", "ProductTable2", "ProductTable3"]
+
+    for (var i = 0; i < TableIds.length; i++)
+    {
+      table = document.getElementById(TableIds[i]);
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++)
+      {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td)
+        {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1)
+          {
+            tr[i].style.display = "";
+          }
+          else
+          {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  }
 
 
   </script>
